@@ -1,0 +1,6 @@
+@echo off
+echo Checking if Docker Desktop is running...
+powershell -Command "if (!(docker info 2>$null)) { Start-Process -FilePath \"$Env:ProgramFiles\Docker\Docker\Docker Desktop.exe\" -Wait }"
+echo Starting the Redis container...
+powershell -Command "docker start altepost"
+pause
