@@ -1,0 +1,1656 @@
+{
+  "20": {
+    "inputs": {
+      "ckpt_name": "juggernautXL_juggXIByRundiffusion.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text": "a wide angle panoramic shot of a snow mountain, smxl, bright sunny day, colorful, <lora:snowmountxl_v1:0.45>, A wide panorama shot of a snowy mountain top, chilly winds breeze around the cloudy peak, beautiful colore pallette, intricate details, award winning, chilly winds",
+      "clip": [
+        "514",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "BASE PROMPT"
+    }
+  },
+  "30": {
+    "inputs": {
+      "text": "text, letters, numbers, watermark, low resolution, out of frame, cropped, low quality, blur, out of focus, unsharp, bad colors, oversaturated",
+      "clip": [
+        "514",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "BASE ENGATIV PROMPT"
+    }
+  },
+  "31": {
+    "inputs": {
+      "control_net_name": "control-lora-depth-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "32": {
+    "inputs": {
+      "image": "DepthF_1600x800.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "34": {
+    "inputs": {
+      "strength": 0.3500000000000001,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "29",
+        0
+      ],
+      "negative": [
+        "30",
+        0
+      ],
+      "control_net": [
+        "31",
+        0
+      ],
+      "image": [
+        "375",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "150": {
+    "inputs": {
+      "seed": 1,
+      "tileX": 1,
+      "tileY": 0,
+      "steps": 50,
+      "cfg": 8.5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.7200000000000002,
+      "model": [
+        "509",
+        0
+      ],
+      "positive": [
+        "279",
+        0
+      ],
+      "negative": [
+        "279",
+        1
+      ],
+      "latent_image": [
+        "504",
+        0
+      ]
+    },
+    "class_type": "Asymmetric Tiled KSampler",
+    "_meta": {
+      "title": "Asymmetric Tiled KSampler"
+    }
+  },
+  "169": {
+    "inputs": {
+      "samples": [
+        "150",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "Circular VAEDecode",
+    "_meta": {
+      "title": "Circular VAEDecode"
+    }
+  },
+  "175": {
+    "inputs": {
+      "upscale_model": [
+        "176",
+        0
+      ],
+      "image": [
+        "441",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "176": {
+    "inputs": {
+      "model_name": "RealESRGAN_x2plus.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "181": {
+    "inputs": {
+      "seed": 1,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.4200000000000001,
+      "mode_type": "Linear",
+      "tile_width": 1280,
+      "tile_height": 1280,
+      "mask_blur": 32,
+      "tile_padding": 64,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 0.5000000000000001,
+      "seam_fix_width": 512,
+      "seam_fix_mask_blur": 32,
+      "seam_fix_padding": 256,
+      "force_uniform_tiles": true,
+      "tiled_decode": false,
+      "upscaled_image": [
+        "175",
+        0
+      ],
+      "model": [
+        "509",
+        0
+      ],
+      "positive": [
+        "211",
+        0
+      ],
+      "negative": [
+        "211",
+        1
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "UltimateSDUpscaleNoUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale (No Upscale)"
+    }
+  },
+  "197": {
+    "inputs": {
+      "preset": "PLUS (high strength)",
+      "model": [
+        "514",
+        0
+      ]
+    },
+    "class_type": "IPAdapterUnifiedLoader",
+    "_meta": {
+      "title": "IPAdapter Unified Loader"
+    }
+  },
+  "206": {
+    "inputs": {
+      "image": "Screenshot 2025-04-23 010553.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "210": {
+    "inputs": {
+      "control_net_name": "TTPLANET_Controlnet_Tile_realistic_v2_fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "211": {
+    "inputs": {
+      "strength": 0.25000000000000006,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "367",
+        0
+      ],
+      "negative": [
+        "368",
+        0
+      ],
+      "control_net": [
+        "210",
+        0
+      ],
+      "image": [
+        "175",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "214": {
+    "inputs": {
+      "roll": 0,
+      "h_deg": 0,
+      "v_deg": 180,
+      "padding_mode": "bilinear",
+      "e_img": [
+        "464",
+        0
+      ]
+    },
+    "class_type": "Equirectangular Rotation",
+    "_meta": {
+      "title": "Equirectangular Rotation"
+    }
+  },
+  "228": {
+    "inputs": {
+      "image": "stitch4.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "229": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "228",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "232": {
+    "inputs": {
+      "seed": 1,
+      "tileX": 0,
+      "tileY": 0,
+      "steps": 20,
+      "cfg": 7.5,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.3500000000000001,
+      "model": [
+        "509",
+        0
+      ],
+      "positive": [
+        "367",
+        0
+      ],
+      "negative": [
+        "368",
+        0
+      ],
+      "latent_image": [
+        "290",
+        0
+      ]
+    },
+    "class_type": "Asymmetric Tiled KSampler",
+    "_meta": {
+      "title": "Asymmetric Tiled KSampler"
+    }
+  },
+  "235": {
+    "inputs": {
+      "pixels": [
+        "285",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "241": {
+    "inputs": {
+      "seed": 1,
+      "tileX": 0,
+      "tileY": 0,
+      "steps": 20,
+      "cfg": 7.5,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.45000000000000007,
+      "model": [
+        "509",
+        0
+      ],
+      "positive": [
+        "367",
+        0
+      ],
+      "negative": [
+        "368",
+        0
+      ],
+      "latent_image": [
+        "242",
+        0
+      ]
+    },
+    "class_type": "Asymmetric Tiled KSampler",
+    "_meta": {
+      "title": "Asymmetric Tiled KSampler"
+    }
+  },
+  "242": {
+    "inputs": {
+      "samples": [
+        "243",
+        0
+      ],
+      "mask": [
+        "245",
+        0
+      ]
+    },
+    "class_type": "SetLatentNoiseMask",
+    "_meta": {
+      "title": "Set Latent Noise Mask"
+    }
+  },
+  "243": {
+    "inputs": {
+      "pixels": [
+        "302",
+        5
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "245": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "246",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "246": {
+    "inputs": {
+      "image": "bodenrepair3.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "252": {
+    "inputs": {
+      "mask": [
+        "245",
+        0
+      ]
+    },
+    "class_type": "MaskPreview+",
+    "_meta": {
+      "title": "🔧 Mask Preview"
+    }
+  },
+  "258": {
+    "inputs": {
+      "strength": 0.28,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "367",
+        0
+      ],
+      "negative": [
+        "368",
+        0
+      ],
+      "control_net": [
+        "263",
+        0
+      ],
+      "image": [
+        "261",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "259": {
+    "inputs": {
+      "seed": 1,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.3500000000000001,
+      "mode_type": "Linear",
+      "tile_width": 2560,
+      "tile_height": 2560,
+      "mask_blur": 64,
+      "tile_padding": 128,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 0.5000000000000001,
+      "seam_fix_width": 512,
+      "seam_fix_mask_blur": 32,
+      "seam_fix_padding": 256,
+      "force_uniform_tiles": true,
+      "tiled_decode": true,
+      "upscaled_image": [
+        "261",
+        0
+      ],
+      "model": [
+        "509",
+        0
+      ],
+      "positive": [
+        "258",
+        0
+      ],
+      "negative": [
+        "258",
+        1
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "UltimateSDUpscaleNoUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale (No Upscale)"
+    }
+  },
+  "261": {
+    "inputs": {
+      "upscale_model": [
+        "264",
+        0
+      ],
+      "image": [
+        "432",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "263": {
+    "inputs": {
+      "control_net_name": "TTPLANET_Controlnet_Tile_realistic_v2_fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "264": {
+    "inputs": {
+      "model_name": "RealESRGAN_x2plus.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "278": {
+    "inputs": {
+      "image": "sha-map-HofG2_1600x800.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "279": {
+    "inputs": {
+      "strength": 1.0000000000000002,
+      "start_percent": 0,
+      "end_percent": 0.8000000000000002,
+      "positive": [
+        "34",
+        0
+      ],
+      "negative": [
+        "34",
+        1
+      ],
+      "control_net": [
+        "280",
+        0
+      ],
+      "image": [
+        "371",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "280": {
+    "inputs": {
+      "control_net_name": "qrcode_monster_sdxl.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "285": {
+    "inputs": {
+      "width": 2048,
+      "height": 5120,
+      "position": "top-center",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "214",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "287": {
+    "inputs": {
+      "stitch": "right",
+      "feathering": 0,
+      "image_a": [
+        "465",
+        0
+      ],
+      "image_b": [
+        "396",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "288": {
+    "inputs": {
+      "stitch": "left",
+      "feathering": 0,
+      "image_a": [
+        "287",
+        0
+      ],
+      "image_b": [
+        "397",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "290": {
+    "inputs": {
+      "samples": [
+        "235",
+        0
+      ],
+      "mask": [
+        "229",
+        0
+      ]
+    },
+    "class_type": "SetLatentNoiseMask",
+    "_meta": {
+      "title": "Set Latent Noise Mask"
+    }
+  },
+  "295": {
+    "inputs": {
+      "tile_size": 2048,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "232",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "299": {
+    "inputs": {
+      "tile_size": 2048,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "241",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "300": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/floor",
+      "images": [
+        "496",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "301": {
+    "inputs": {
+      "face_width": -1,
+      "padding_mode": "bilinear",
+      "cube_format": "stack",
+      "e_img": [
+        "391",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Cubemap",
+    "_meta": {
+      "title": "Equirectangular to Cubemap"
+    }
+  },
+  "302": {
+    "inputs": {
+      "face_stack": [
+        "301",
+        0
+      ]
+    },
+    "class_type": "Split Cubemap Faces",
+    "_meta": {
+      "title": "Split Cubemap Faces"
+    }
+  },
+  "304": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/right",
+      "images": [
+        "302",
+        1
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "305": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/back",
+      "images": [
+        "302",
+        2
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "306": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/left",
+      "images": [
+        "302",
+        3
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "307": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/front",
+      "images": [
+        "302",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "309": {
+    "inputs": {
+      "face_width": -1,
+      "padding_mode": "bicubic",
+      "cube_format": "stack",
+      "e_img": [
+        "411",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Cubemap",
+    "_meta": {
+      "title": "Equirectangular to Cubemap"
+    }
+  },
+  "311": {
+    "inputs": {
+      "face_stack": [
+        "309",
+        0
+      ]
+    },
+    "class_type": "Split Cubemap Faces",
+    "_meta": {
+      "title": "Split Cubemap Faces"
+    }
+  },
+  "325": {
+    "inputs": {
+      "face_width": -1,
+      "padding_mode": "bilinear",
+      "cube_format": "stack",
+      "e_img": [
+        "392",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Cubemap",
+    "_meta": {
+      "title": "Equirectangular to Cubemap"
+    }
+  },
+  "327": {
+    "inputs": {
+      "face_stack": [
+        "325",
+        0
+      ]
+    },
+    "class_type": "Split Cubemap Faces",
+    "_meta": {
+      "title": "Split Cubemap Faces"
+    }
+  },
+  "367": {
+    "inputs": {
+      "text": "a wide angle panoramic shot of a snow mountain, smxl, bright sunny day, colorful, <lora:snowmountxl_v1:0.45>, A wide panorama shot of a snowy mountain top, chilly winds breeze around the cloudy peak, beautiful colore pallette, intricate details, award winning, chilly winds",
+      "clip": [
+        "514",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "UPSCALE PROMPT"
+    }
+  },
+  "368": {
+    "inputs": {
+      "text": "text, letters, numbers, watermark, low resolution, out of frame, cropped, low quality, blur, out of focus, unsharp, bad colors, oversaturated",
+      "clip": [
+        "514",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "UPSCALE NEG PROMPT"
+    }
+  },
+  "371": {
+    "inputs": {
+      "x": 0,
+      "y": 160,
+      "width": 1600,
+      "height": 640,
+      "image": [
+        "278",
+        0
+      ]
+    },
+    "class_type": "ETN_CropImage",
+    "_meta": {
+      "title": "Crop Image"
+    }
+  },
+  "375": {
+    "inputs": {
+      "x": 0,
+      "y": 160,
+      "width": 1600,
+      "height": 640,
+      "image": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "ETN_CropImage",
+    "_meta": {
+      "title": "Crop Image"
+    }
+  },
+  "391": {
+    "inputs": {
+      "left": 0,
+      "top": 1280,
+      "right": 0,
+      "bottom": 0,
+      "feathering": 0,
+      "image": [
+        "288",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "392": {
+    "inputs": {
+      "left": 0,
+      "top": 640,
+      "right": 0,
+      "bottom": 0,
+      "feathering": 0,
+      "image": [
+        "467",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "393": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/PANO",
+      "images": [
+        "405",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "396": {
+    "inputs": {
+      "width": 1024,
+      "height": 5120,
+      "position": "top-left",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "490",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "397": {
+    "inputs": {
+      "width": 1024,
+      "height": 5120,
+      "position": "top-right",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "490",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "405": {
+    "inputs": {
+      "h": -1,
+      "w": -1,
+      "padding_mode": "bicubic",
+      "cube_format": "stack",
+      "e_img": [
+        "406",
+        0
+      ]
+    },
+    "class_type": "Cubemap to Equirectangular",
+    "_meta": {
+      "title": "Cubemap to Equirectangular"
+    }
+  },
+  "406": {
+    "inputs": {
+      "Front": [
+        "302",
+        0
+      ],
+      "Right": [
+        "302",
+        1
+      ],
+      "Back": [
+        "302",
+        2
+      ],
+      "Left": [
+        "302",
+        3
+      ],
+      "Up": [
+        "496",
+        0
+      ],
+      "Down": [
+        "496",
+        0
+      ]
+    },
+    "class_type": "Stack Cubemap Faces",
+    "_meta": {
+      "title": "Stack Cubemap Faces"
+    }
+  },
+  "411": {
+    "inputs": {
+      "left": 0,
+      "top": 320,
+      "right": 0,
+      "bottom": 0,
+      "feathering": 0,
+      "image": [
+        "466",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "412": {
+    "inputs": {
+      "images": [
+        "411",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "413": {
+    "inputs": {
+      "images": [
+        "392",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "414": {
+    "inputs": {
+      "images": [
+        "391",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "428": {
+    "inputs": {
+      "strength": 0.2700000000000001,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "367",
+        0
+      ],
+      "negative": [
+        "368",
+        0
+      ],
+      "control_net": [
+        "430",
+        0
+      ],
+      "image": [
+        "433",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "430": {
+    "inputs": {
+      "control_net_name": "TTPLANET_Controlnet_Tile_realistic_v2_fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "431": {
+    "inputs": {
+      "model_name": "RealESRGAN_x2plus.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "432": {
+    "inputs": {
+      "seed": 1,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.3500000000000001,
+      "mode_type": "Linear",
+      "tile_width": 2560,
+      "tile_height": 2560,
+      "mask_blur": 64,
+      "tile_padding": 128,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 0.5000000000000001,
+      "seam_fix_width": 512,
+      "seam_fix_mask_blur": 32,
+      "seam_fix_padding": 256,
+      "force_uniform_tiles": true,
+      "tiled_decode": true,
+      "upscaled_image": [
+        "433",
+        0
+      ],
+      "model": [
+        "509",
+        0
+      ],
+      "positive": [
+        "428",
+        0
+      ],
+      "negative": [
+        "428",
+        1
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "UltimateSDUpscaleNoUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale (No Upscale)"
+    }
+  },
+  "433": {
+    "inputs": {
+      "upscale_model": [
+        "431",
+        0
+      ],
+      "image": [
+        "181",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "436": {
+    "inputs": {
+      "width": 128,
+      "height": 640,
+      "position": "top-left",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "169",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "437": {
+    "inputs": {
+      "width": 128,
+      "height": 640,
+      "position": "top-right",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "169",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "440": {
+    "inputs": {
+      "stitch": "right",
+      "feathering": 0,
+      "image_a": [
+        "169",
+        0
+      ],
+      "image_b": [
+        "436",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "441": {
+    "inputs": {
+      "stitch": "left",
+      "feathering": 0,
+      "image_a": [
+        "440",
+        0
+      ],
+      "image_b": [
+        "437",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "464": {
+    "inputs": {
+      "width": 12800,
+      "height": 5120,
+      "position": "top-center",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "259",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "465": {
+    "inputs": {
+      "width": 10752,
+      "height": 5120,
+      "position": "top-center",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "464",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "466": {
+    "inputs": {
+      "width": 3200,
+      "height": 1280,
+      "position": "top-center",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "181",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "467": {
+    "inputs": {
+      "width": 6400,
+      "height": 2560,
+      "position": "top-center",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "432",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "468": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/PANO_MEDIUM",
+      "images": [
+        "392",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "469": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/PANO_SMALL",
+      "images": [
+        "411",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "470": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/PANO_UNREPAIRED",
+      "images": [
+        "391",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "471": {
+    "inputs": {
+      "face_stack": [
+        "477",
+        0
+      ]
+    },
+    "class_type": "Split Cubemap Faces",
+    "_meta": {
+      "title": "Split Cubemap Faces"
+    }
+  },
+  "477": {
+    "inputs": {
+      "face_width": -1,
+      "padding_mode": "bicubic",
+      "cube_format": "stack",
+      "e_img": [
+        "478",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Cubemap",
+    "_meta": {
+      "title": "Equirectangular to Cubemap"
+    }
+  },
+  "478": {
+    "inputs": {
+      "left": 0,
+      "top": 160,
+      "right": 0,
+      "bottom": 0,
+      "feathering": 0,
+      "image": [
+        "169",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "480": {
+    "inputs": {
+      "images": [
+        "478",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "481": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/PANO_ULTRASMALL",
+      "images": [
+        "478",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "490": {
+    "inputs": {
+      "blend_percentage": 1,
+      "image_a": [
+        "285",
+        0
+      ],
+      "image_b": [
+        "295",
+        0
+      ],
+      "mask": [
+        "492",
+        0
+      ]
+    },
+    "class_type": "Image Blend by Mask",
+    "_meta": {
+      "title": "Image Blend by Mask"
+    }
+  },
+  "491": {
+    "inputs": {
+      "images": [
+        "492",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "492": {
+    "inputs": {
+      "mask": [
+        "229",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "495": {
+    "inputs": {
+      "mask": [
+        "245",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "496": {
+    "inputs": {
+      "blend_percentage": 1,
+      "image_a": [
+        "302",
+        5
+      ],
+      "image_b": [
+        "299",
+        0
+      ],
+      "mask": [
+        "495",
+        0
+      ]
+    },
+    "class_type": "Image Blend by Mask",
+    "_meta": {
+      "title": "Image Blend by Mask"
+    }
+  },
+  "504": {
+    "inputs": {
+      "pixels": [
+        "507",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "505": {
+    "inputs": {
+      "images": [
+        "507",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "506": {
+    "inputs": {
+      "image": "Foto_1600x800.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "507": {
+    "inputs": {
+      "x": 0,
+      "y": 160,
+      "width": 1600,
+      "height": 640,
+      "image": [
+        "506",
+        0
+      ]
+    },
+    "class_type": "ETN_CropImage",
+    "_meta": {
+      "title": "Crop Image"
+    }
+  },
+  "509": {
+    "inputs": {
+      "weight": 0.3500000000000001,
+      "start_at": 0,
+      "end_at": 1,
+      "weight_type": "standard",
+      "model": [
+        "197",
+        0
+      ],
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "image": [
+        "206",
+        0
+      ]
+    },
+    "class_type": "IPAdapter",
+    "_meta": {
+      "title": "IPAdapter"
+    }
+  },
+  "514": {
+    "inputs": {
+      "lora_name": "snowmountxl_v1.safetensors",
+      "strength_model": 0.7500000000000001,
+      "strength_clip": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "516": {
+    "inputs": {
+      "ckpt_name": "depth_anything_vitl14.pth",
+      "resolution": 2048,
+      "image": [
+        "405",
+        0
+      ]
+    },
+    "class_type": "DepthAnythingPreprocessor",
+    "_meta": {
+      "title": "Depth Anything"
+    }
+  },
+  "517": {
+    "inputs": {
+      "filename_prefix": "HOFPANO/pano_depth",
+      "images": [
+        "516",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

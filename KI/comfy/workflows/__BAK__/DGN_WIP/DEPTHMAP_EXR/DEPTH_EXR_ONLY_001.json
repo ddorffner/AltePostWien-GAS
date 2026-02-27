@@ -1,0 +1,73 @@
+{
+  "1": {
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "2": {
+    "inputs": {
+      "filename_prefix": "ENT_UPSCALED/DEPTH_",
+      "tonemap": "sRGB",
+      "version": 1,
+      "start_frame": 1001,
+      "frame_pad": 4,
+      "save_workflow": "ui",
+      "images": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "SaveEXR",
+    "_meta": {
+      "title": "Save EXR"
+    }
+  },
+  "3": {
+    "inputs": {
+      "da_model": [
+        "4",
+        0
+      ],
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "DepthAnything_V2",
+    "_meta": {
+      "title": "Depth Anything V2"
+    }
+  },
+  "4": {
+    "inputs": {
+      "model": "depth_anything_v2_vits_fp16.safetensors"
+    },
+    "class_type": "DownloadAndLoadDepthAnythingV2Model",
+    "_meta": {
+      "title": "DownloadAndLoadDepthAnythingV2Model"
+    }
+  },
+  "6": {
+    "inputs": {
+      "mode": "incremental_image",
+      "seed": 150,
+      "index": 0,
+      "label": "Batch 001",
+      "path": "M:\\P\\ALTE_POST_WIEN\\incoming\\style_images\\ENT_01_selected\\selected_5_mj",
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "true"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch"
+    }
+  }
+}

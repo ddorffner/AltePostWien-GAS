@@ -1,0 +1,438 @@
+{
+  "8": {
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "115",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "Flux_IPA",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "11": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "12": {
+    "inputs": {
+      "unet_name": "flux1-dev.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "13": {
+    "inputs": {
+      "noise": [
+        "25",
+        0
+      ],
+      "guider": [
+        "22",
+        0
+      ],
+      "sampler": [
+        "16",
+        0
+      ],
+      "sigmas": [
+        "17",
+        0
+      ],
+      "latent_image": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "16": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "17": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 25,
+      "denoise": 1,
+      "model": [
+        "103",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "22": {
+    "inputs": {
+      "model": [
+        "103",
+        0
+      ],
+      "conditioning": [
+        "88",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "25": {
+    "inputs": {
+      "noise_seed": 48129002418134
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "77": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "78": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "79": {
+    "inputs": {
+      "weight": 0.4,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "model": [
+        "12",
+        0
+      ],
+      "ipadapter_flux": [
+        "78",
+        0
+      ],
+      "image": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "Apply IPAdapter Flux Model"
+    }
+  },
+  "80": {
+    "inputs": {
+      "image": "Screenshot 2024-07-23 at 05-07-46 Curved Lines © Randy Langstraat ADVENTR.co Randy Langstraat Flickr.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "87": {
+    "inputs": {
+      "text": "a photography of a majestic cave with a closed ceiling, the photo is taken from the ground and the camera is looking straight up towards the ceiling, the walls consist of rocks with very detailed structures and contrastful colors, the rock formations are sharp and soft, a soft lightning is touching the walls of the cave",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "88": {
+    "inputs": {
+      "guidance": 3.6,
+      "conditioning": [
+        "87",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "99": {
+    "inputs": {
+      "image": "ceiling-of-melidoni-cave-two-small-potatoes (1).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "100": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "101": {
+    "inputs": {
+      "weight": 0.6,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "model": [
+        "79",
+        0
+      ],
+      "ipadapter_flux": [
+        "100",
+        0
+      ],
+      "image": [
+        "99",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "Apply IPAdapter Flux Model"
+    }
+  },
+  "102": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "103": {
+    "inputs": {
+      "weight": 0.5,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "model": [
+        "101",
+        0
+      ],
+      "ipadapter_flux": [
+        "102",
+        0
+      ],
+      "image": [
+        "104",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "Apply IPAdapter Flux Model"
+    }
+  },
+  "104": {
+    "inputs": {
+      "image": "depositphotos_643814956-stock-photo-cave-inkaya-ceiling-formations-izmir (1).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "105": {
+    "inputs": {
+      "samples": [
+        "110",
+        0
+      ],
+      "vae": [
+        "115",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "106": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "108": {
+    "inputs": {
+      "image": "ENT_Depth_250128.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "110": {
+    "inputs": {
+      "seed": 722124175528711,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "113",
+        0
+      ],
+      "positive": [
+        "114",
+        0
+      ],
+      "negative": [
+        "114",
+        1
+      ],
+      "latent_image": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "111": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "113": {
+    "inputs": {
+      "lora_name": "flux1-depth-dev-lora.safetensors",
+      "strength_model": 0.65,
+      "model": [
+        "111",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    }
+  },
+  "114": {
+    "inputs": {
+      "positive": [
+        "88",
+        0
+      ],
+      "negative": [
+        "106",
+        0
+      ],
+      "vae": [
+        "115",
+        0
+      ],
+      "pixels": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "InstructPixToPixConditioning",
+    "_meta": {
+      "title": "InstructPixToPixConditioning"
+    }
+  },
+  "115": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "116": {
+    "inputs": {
+      "filename_prefix": "ComfyUI_IPA-Depth",
+      "images": [
+        "105",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

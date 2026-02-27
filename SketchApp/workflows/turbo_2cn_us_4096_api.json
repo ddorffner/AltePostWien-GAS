@@ -1,0 +1,478 @@
+{
+  "13": {
+    "inputs": {
+      "add_noise": true,
+      "noise_seed": 212109770009960,
+      "cfg": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "positive": [
+        "37",
+        0
+      ],
+      "negative": [
+        "37",
+        1
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "22",
+        0
+      ],
+      "latent_image": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "SamplerCustom",
+    "_meta": {
+      "title": "SamplerCustom"
+    }
+  },
+  "14": {
+    "inputs": {
+      "sampler_name": "lcm"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "20": {
+    "inputs": {
+      "ckpt_name": "sd_xl_turbo_1.0_fp16.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "22": {
+    "inputs": {
+      "steps": 1,
+      "denoise": 1,
+      "model": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "SDTurboScheduler",
+    "_meta": {
+      "title": "SDTurboScheduler"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text": "A photograph of fassade of a magical (cake:1.4) house, cherry on top, hard light, intricate details\n",
+      "clip": [
+        "45",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "30": {
+    "inputs": {
+      "text": "face, humans, text, ugly, low resolution",
+      "clip": [
+        "45",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "31": {
+    "inputs": {
+      "control_net_name": "control-lora-canny-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "32": {
+    "inputs": {
+      "image": "InpDep (2).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "34": {
+    "inputs": {
+      "strength": 0.75,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "29",
+        0
+      ],
+      "negative": [
+        "30",
+        0
+      ],
+      "control_net": [
+        "38",
+        0
+      ],
+      "image": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "37": {
+    "inputs": {
+      "strength": 0.65,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "34",
+        0
+      ],
+      "negative": [
+        "34",
+        1
+      ],
+      "control_net": [
+        "31",
+        0
+      ],
+      "image": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "38": {
+    "inputs": {
+      "control_net_name": "control-lora-depth-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "45": {
+    "inputs": {
+      "lora_name": "lcm-lora-sdxl.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "52": {
+    "inputs": {
+      "image": "InpCan (3).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "66": {
+    "inputs": {
+      "samples": [
+        "13",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "68": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "scale_by": 4,
+      "image": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "ImageScaleBy",
+    "_meta": {
+      "title": "Upscale Image By"
+    }
+  },
+  "70": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "71": {
+    "inputs": {
+      "filename_prefix": "2cn_1024",
+      "images": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "73": {
+    "inputs": {
+      "images": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "89": {
+    "inputs": {
+      "steps": 1,
+      "denoise": 0.55,
+      "model": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "SDTurboScheduler",
+    "_meta": {
+      "title": "SDTurboScheduler"
+    }
+  },
+  "100": {
+    "inputs": {
+      "tile_size": 1024,
+      "pixels": [
+        "68",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncodeTiled",
+    "_meta": {
+      "title": "VAE Encode (Tiled)"
+    }
+  },
+  "106": {
+    "inputs": {
+      "tile_size": 1024,
+      "samples": [
+        "107",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "107": {
+    "inputs": {
+      "add_noise": true,
+      "noise_seed": 212109770009960,
+      "cfg": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "positive": [
+        "37",
+        0
+      ],
+      "negative": [
+        "37",
+        1
+      ],
+      "sampler": [
+        "14",
+        0
+      ],
+      "sigmas": [
+        "89",
+        0
+      ],
+      "latent_image": [
+        "100",
+        0
+      ]
+    },
+    "class_type": "SamplerCustom",
+    "_meta": {
+      "title": "SamplerCustom"
+    }
+  },
+  "118": {
+    "inputs": {
+      "filename_prefix": "2cn_us2_4096",
+      "images": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "119": {
+    "inputs": {
+      "images": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "126": {
+    "inputs": {
+      "node_id": 107,
+      "set_state": true,
+      "signal": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "ImpactNodeSetMuteState",
+    "_meta": {
+      "title": "Set Mute State"
+    }
+  },
+  "127": {
+    "inputs": {
+      "node_id": 100,
+      "set_state": true,
+      "signal": [
+        "126",
+        0
+      ]
+    },
+    "class_type": "ImpactNodeSetMuteState",
+    "_meta": {
+      "title": "Set Mute State"
+    }
+  },
+  "135": {
+    "inputs": {
+      "node_id": 89,
+      "set_state": true,
+      "signal": [
+        "126",
+        0
+      ]
+    },
+    "class_type": "ImpactNodeSetMuteState",
+    "_meta": {
+      "title": "Set Mute State"
+    }
+  },
+  "136": {
+    "inputs": {
+      "node_id": 106,
+      "set_state": true,
+      "signal": [
+        "126",
+        0
+      ]
+    },
+    "class_type": "ImpactNodeSetMuteState",
+    "_meta": {
+      "title": "Set Mute State"
+    }
+  },
+  "137": {
+    "inputs": {
+      "node_id": 119,
+      "set_state": true,
+      "signal": [
+        "126",
+        0
+      ]
+    },
+    "class_type": "ImpactNodeSetMuteState",
+    "_meta": {
+      "title": "Set Mute State"
+    }
+  },
+  "138": {
+    "inputs": {
+      "node_id": 118,
+      "set_state": true,
+      "signal": [
+        "126",
+        0
+      ]
+    },
+    "class_type": "ImpactNodeSetMuteState",
+    "_meta": {
+      "title": "Set Mute State"
+    }
+  },
+  "145": {
+    "inputs": {
+      "node_id": 68,
+      "set_state": true,
+      "signal": [
+        "126",
+        0
+      ]
+    },
+    "class_type": "ImpactNodeSetMuteState",
+    "_meta": {
+      "title": "Set Mute State"
+    }
+  }
+}

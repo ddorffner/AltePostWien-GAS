@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="FbDf2OBhF9iLerJjF8Uq1Q" LanguageVersion="2025.7.0-0384-g212a8f1596" Version="0.128">
+  <NugetDependency Id="JngbdjrQttWP3C056ivUGZ" Location="VL.CoreLib" Version="2025.7.0-0384-g212a8f1596" />
+  <Patch Id="IiCA7zHpiE6LeILS7YZGKy">
+    <Canvas Id="PmobLB0HSYAL6JU48f5ahA" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="399,230" Id="JtBCvSXkYVJM5hw4K561FZ">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <FullNameCategoryReference ID="Primitive" />
+      </p:NodeReference>
+      <Patch Id="VX8x6j7wJ3GQSwpxICFXQ7">
+        <Canvas Id="FntGeiaET6xNjAVP7uNJ4R" CanvasType="Group">
+          <Pad Id="BfLDmsMxtouMcjJf8v4Wm2" Bounds="123,140,261,25" ShowValueBox="true" isIOBox="true" Value="Choose a source and wait a few seconds. ">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="QJklW1YGnhEMWNCvO51fWV" Comment="Source" Bounds="72,115,237,15" ShowValueBox="true" isIOBox="true" Value="NONE">
+            <p:TypeAnnotation LastCategoryFullName="IO.NDI" LastDependency="VL.IO.NDI.vl">
+              <Choice Kind="TypeFlag" Name="Source" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="-348,576,123,19" Id="Vmmt7RHuV5MMillF2Tp2MZ">
+            <p:NodeReference LastCategoryFullName="Stride.Video" LastDependency="VL.Stride.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="VideoSourceToTexture" />
+            </p:NodeReference>
+            <Pin Id="Uu0FZPMkoVPPY4LfFU1rU6" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="QglbqrNatcuM2n1JFRRXjg" Name="Input" Kind="InputPin" />
+            <Pin Id="Ma1J05qhaQIPcC5pm5cnYq" Name="Fallback" Kind="InputPin" />
+            <Pin Id="E473ewZrirWOytZscLYU9s" Name="Output" Kind="OutputPin" />
+            <Pin Id="Iyeqtu1OZCNN3l9VjuTP4b" Name="Prefer Push" Kind="InputPin" />
+            <Pin Id="VboSs1Syp8rOA9aPVIsXrH" Name="Prefer Gpu" Kind="InputPin" />
+          </Node>
+          <Pad Id="EathHN4Q0YNNYUZMKVKp6c" Bounds="-264,363,184,81" ShowValueBox="true" isIOBox="true" Value="&lt; NDIReceiver&#xD;&#xA;&#xD;&#xA;Uses more CPU but is more stable and can receive Audio">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="-200,620,60,19" Id="S9Oo7iaVBDVMuoGJzkNpm6">
+            <p:NodeReference LastCategoryFullName="Audio.Sink" LastDependency="VL.Audio.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="AudioOut" />
+            </p:NodeReference>
+            <Pin Id="Pe1i2ctqmNROKKTf90ZeOB" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="LFHkvtAH4KaMJe0XT35Nzx" Name="Input" Kind="InputPin" />
+            <Pin Id="TOg2pEuB7LdORkFCgicJND" Name="Channel Offset" Kind="InputPin" />
+          </Node>
+          <Node Bounds="-200,576,139,19" Id="Nbjed6dozQEMIEzb6RQfGo">
+            <p:NodeReference LastCategoryFullName="Audio.Conversion" LastDependency="VL.Audio.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <FullNameCategoryReference ID="Audio.Conversion" />
+              <Choice Kind="ProcessAppFlag" Name="AudioSourceToAudioSignal" />
+            </p:NodeReference>
+            <Pin Id="N4UcOfxRHxsOD6Qiv82te9" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="M6WowPCctdsMra9eFz2ddX" Name="Audio Source" Kind="InputPin" />
+            <Pin Id="NM6xae9fjTRLj6z3itRkC3" Name="Channel Count" Kind="InputPin" />
+            <Pin Id="BQVW4WJDJSWLKRiJKH8y8Y" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="H2eNQSwVvUUOs7OItjC5d5" Comment="Enabled" Bounds="-279,312,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="T70mnTimnu9La2qi4uZC47" Comment="" Bounds="-350,676,190,132" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="-347,353,71,19" Id="O6OwBqXJJlCNVtt09fJRvY">
+            <p:NodeReference LastCategoryFullName="IO.NDI" LastDependency="VL.IO.NDI.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="NDIReceiver" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="LTb0ar2yF2pPvO6rcJyCcv" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TYwr1elDEtWLZNtKYY9SJS" Name="Source" Kind="InputPin" />
+            <Pin Id="L1OUMEnye7tMbxqcqiA7Fy" Name="Receiver Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PdtaUf3ruWHLYWug93P7t1" Name="On Program" Kind="InputPin" />
+            <Pin Id="TS2V2nqLCP1OHx1xq9y80S" Name="On Preview" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NSUwzefiAOAPrOYRVANzaP" Name="Bandwidth" Kind="InputPin" />
+            <Pin Id="HwzcROjrjSGQTmCJJxHdRz" Name="Color Format" Kind="InputPin" IsHidden="true" />
+            <Pin Id="VpPMiejQ65gMUclwXn1BDY" Name="Allow Video Fields" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PVL4a0aGxIoPLwphNoPk4d" Name="Enabled" Kind="InputPin" />
+            <Pin Id="FH8SrMjHHk9Ot23ql7VZWN" Name="Video Source" Kind="OutputPin" />
+            <Pin Id="OIc1n1wBHS9OzwHsCPKVbv" Name="Audio Source" Kind="OutputPin" />
+            <Pin Id="L5aILvGAcbRPksYKsSToKW" Name="Metadata Frames" Kind="OutputPin" />
+          </Node>
+          <Pad Id="VkccpaRTLfoOwtI6hKLPrn" Comment="Bandwidth" Bounds="-312,274,165,15" ShowValueBox="true" isIOBox="true" Value="recv_bandwidth_highest">
+            <p:TypeAnnotation LastCategoryFullName="IO.NDI" LastDependency="VL.IO.NDI.vl">
+              <Choice Kind="TypeFlag" Name="Bandwidth" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="Qj3aVi0SiY6M0gn3VJHNmM" Bounds="-308,457,357,63" ShowValueBox="true" isIOBox="true" Value="Check for hidden pins to configure receiving properties.&#xD;&#xA;- ColorFormat: the format NDI will convert the source to&#xD;&#xA;- AllowVideoFields: let NDI deinterlace the source">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="198,-210,85,19" Id="VZsAOTTLfHaMI5SLrqsOyl">
+            <p:NodeReference LastCategoryFullName="IO.Net" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="IPs" />
+            </p:NodeReference>
+            <Pin Id="Ad8u4MqwKWoLEOurEgp4hZ" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="S2BwtGk2p4JLSDu4MYIb7q" Name="Update" Kind="InputPin" />
+            <Pin Id="Skbo9CBHhYYOoXqoMHtNkT" Name="Address" Kind="OutputPin" />
+            <Pin Id="MlWqvwfEbuiPA8Q5jWXBs8" Name="Name" Kind="OutputPin" />
+            <Pin Id="FsHAZRykiXQMQUpo0lE061" Name="Description" Kind="OutputPin" />
+            <Pin Id="BXQbfLIlqBxOiR9McLNjiG" Name="Type" Kind="OutputPin" />
+            <Pin Id="APrlr83hWDLMqy7md4BQw3" Name="Is Up" Kind="OutputPin" />
+          </Node>
+          <Pad Id="BtmSvPj65M8NOAriz2TcmO" Comment="Address" Bounds="200,-131,226,139" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="-399,-230,75,19" Id="ASRkWWPxijePHgpQdKJdil">
+            <p:NodeReference LastCategoryFullName="IO.NDI" LastDependency="VL.IO.NDI.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="SourceFinder" />
+            </p:NodeReference>
+            <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+            <Pin Id="NsLT8wNqG2dLOn8xPourTz" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Hzeex66ZfpDPKZqHKMrnIv" Name="Show Local Sources" Kind="InputPin" />
+            <Pin Id="CoBZ0ThTn6BN48oL9J8eoE" Name="Groups" Kind="InputPin" />
+            <Pin Id="J7qyJ90kTylQBNsiTXB0AQ" Name="Extra Ips" Kind="InputPin" />
+            <Pin Id="JppzhvrNMQPLWJdtPEYBt2" Name="Clear" Kind="InputPin" />
+            <Pin Id="AuHQVYBl7RWLXaTu9AwxxX" Name="Sources" Kind="OutputPin" />
+          </Node>
+          <Pad Id="UPJ5MDMA87xNPV2rssLbjV" Comment="Sources" Bounds="-397,-155,237,109" ShowValueBox="true" isIOBox="true">
+            <p:Value>
+              <Item>CV570 (HX-Stream-10.5.5.191)</Item>
+            </p:Value>
+          </Pad>
+          <Node Bounds="-148,-163,44,26" Id="Ga8Oec6afg4L8OIm1QQnR3">
+            <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Count" />
+              <CategoryReference Kind="RecordType" Name="Spread" NeedsToBeDirectParent="true" />
+            </p:NodeReference>
+            <Pin Id="H64jZaFCNJiLjh3ryW0dNx" Name="Input" Kind="StateInputPin" />
+            <Pin Id="UrfNV3SINV7Ly9qiT2uKO8" Name="Count" Kind="OutputPin" />
+          </Node>
+          <Pad Id="M9XyvfHmwOKNfoeYkCRKe1" Comment="Count" Bounds="-146,-114,35,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="Q283Eo1WlfTLgtH1w8WzFu" Comment="Show Local Sources" Bounds="-397,-369,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <FullNameCategoryReference ID="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="MHbv0AY5jnROccvdliYPhs" Comment="Groups" Bounds="-374,-314,35,34" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Spread" />
+              <p:TypeArguments>
+                <TypeReference LastCategoryFullName="Primitive" LastDependency="CoreLibBasics.vl">
+                  <Choice Kind="TypeFlag" Name="String" />
+                </TypeReference>
+              </p:TypeArguments>
+            </p:TypeAnnotation>
+            <p:Value>
+              <Item>Public</Item>
+            </p:Value>
+          </Pad>
+          <Pad Id="FMzLQv4QLnPPtKjTDDnQyK" Comment="Extra Ips" Bounds="-350,-263,77,36" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Spread" />
+              <p:TypeArguments>
+                <TypeReference LastCategoryFullName="Primitive" LastDependency="CoreLibBasics.vl">
+                  <Choice Kind="TypeFlag" Name="String" />
+                </TypeReference>
+              </p:TypeArguments>
+            </p:TypeAnnotation>
+            <p:Value>
+              <Item>10.5.5.191</Item>
+            </p:Value>
+          </Pad>
+          <Pad Id="Q6pLKUU3MhUP9kgYWaP1b7" Bounds="-236,-371,500,19" ShowValueBox="true" isIOBox="true" Value="Tells the finder whether it should locate and report NDI send sources that are running on the current local machine.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="ElYm36HxKkFOGm5ziO0S2o" Bounds="-236,-318,370,19" ShowValueBox="true" isIOBox="true" Value="Specifies groups for which this NDI finder will report sources.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="FW12GY933HoLR6SadBjDXE" Bounds="-236,-267,490,19" ShowValueBox="true" isIOBox="true" Value="List of IP addresses outside the local network that will be queried for NDI sources.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="BpctDTwG7j4QTueMKl3XMS" Bounds="-305,-223,156,19" ShowValueBox="true" isIOBox="true" Value="&lt; Lists available Sources">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="KmYPOFR1dMkP1YM8o1RTix" Comment="Clear" Bounds="-83,-210,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="-379,-29,52,19" Id="PZwVMUrtvNYM2cjGmRt3dx">
+            <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="4026531840" Name="Spread" NeedsToBeDirectParent="true" />
+              <Choice Kind="OperationCallFlag" Name="GetSlice" />
+            </p:NodeReference>
+            <Pin Id="DzgFtd74x7rPV4JykormOr" Name="Input" Kind="StateInputPin" />
+            <Pin Id="DHpyzBMf551PECUQJ98uvL" Name="Default Value" Kind="InputPin" />
+            <Pin Id="GnRgAbATtzrLIiId4M1TA5" Name="Index" Kind="InputPin" />
+            <Pin Id="JTYziFqg73QMhYQlSagz1L" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Pad Id="PhZLFaWmgEZQUlkRBSCQoB" Comment="On Program" Bounds="-322,210,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="U2OTkOi16hnMJ8LPJfJYJZ" Comment="Source" Bounds="-321,70,124,15" ShowValueBox="true" isIOBox="true" Value="NONE">
+            <p:TypeAnnotation LastCategoryFullName="IO.NDI" LastDependency="VL.IO.NDI.vl">
+              <Choice Kind="TypeFlag" Name="Source" />
+            </p:TypeAnnotation>
+          </Pad>
+        </Canvas>
+        <Patch Id="RXbXPrEDZ5UN9J32SGvmAW" Name="Create" />
+        <Patch Id="QpxSgEoztp6NSBKwkBB7d3" Name="Update" />
+        <ProcessDefinition Id="OO7oPOAxfBdMB8hVif48eh">
+          <Fragment Id="G8ypkxvorGeMXrHUFXsQWk" Patch="RXbXPrEDZ5UN9J32SGvmAW" Enabled="true" />
+          <Fragment Id="IHf0xeXdBqUNyDlUj1QSpd" Patch="QpxSgEoztp6NSBKwkBB7d3" Enabled="true" />
+        </ProcessDefinition>
+        <Patch Id="M902u7q3k0RP1kg1zsLj5M" Name="Dispose" />
+        <Link Id="NP8TNbsdQskPm7Ibh0DapY" Ids="BQVW4WJDJSWLKRiJKH8y8Y,LFHkvtAH4KaMJe0XT35Nzx" />
+        <Link Id="Kw1UIWejsfLO1nRf4bTjF7" Ids="E473ewZrirWOytZscLYU9s,T70mnTimnu9La2qi4uZC47" />
+        <Link Id="CH3t5yngzGTPCb95Py8fgP" Ids="FH8SrMjHHk9Ot23ql7VZWN,QglbqrNatcuM2n1JFRRXjg" />
+        <Link Id="D3N3OKpjvJfPZSfW6imE4n" Ids="OIc1n1wBHS9OzwHsCPKVbv,M6WowPCctdsMra9eFz2ddX" />
+        <Link Id="NULhe7uwlHDMnjQqpvZYy4" Ids="H2eNQSwVvUUOs7OItjC5d5,PVL4a0aGxIoPLwphNoPk4d" />
+        <Link Id="LT5OmuLbF8OLbMH6WBt2RJ" Ids="VkccpaRTLfoOwtI6hKLPrn,NSUwzefiAOAPrOYRVANzaP" />
+        <Link Id="FzpltpiVB6jLxRfmMDkvmF" Ids="Skbo9CBHhYYOoXqoMHtNkT,BtmSvPj65M8NOAriz2TcmO" />
+        <Link Id="Ud5RDuJy7YIMOLxtf9STkD" Ids="AuHQVYBl7RWLXaTu9AwxxX,UPJ5MDMA87xNPV2rssLbjV" />
+        <Link Id="PsdSrrhiU8QNX1g3UEvezE" Ids="AuHQVYBl7RWLXaTu9AwxxX,H64jZaFCNJiLjh3ryW0dNx" />
+        <Link Id="HG5Ml8dh1gxNmcIhRxHwit" Ids="UrfNV3SINV7Ly9qiT2uKO8,M9XyvfHmwOKNfoeYkCRKe1" />
+        <Link Id="Hb6dqd81ld6NEzKM0kRok6" Ids="Q283Eo1WlfTLgtH1w8WzFu,Hzeex66ZfpDPKZqHKMrnIv" />
+        <Link Id="KFeol6PeXpENHKvwjh1P5u" Ids="MHbv0AY5jnROccvdliYPhs,CoBZ0ThTn6BN48oL9J8eoE" />
+        <Link Id="SjBM2v3b96OOVeuDJNEXff" Ids="FMzLQv4QLnPPtKjTDDnQyK,J7qyJ90kTylQBNsiTXB0AQ" />
+        <Link Id="AiDdmb91OBGO08YtSwlDIE" Ids="KmYPOFR1dMkP1YM8o1RTix,JppzhvrNMQPLWJdtPEYBt2" />
+        <Link Id="CVunRGph3xFN5NkFGmKk7m" Ids="UPJ5MDMA87xNPV2rssLbjV,DzgFtd74x7rPV4JykormOr" />
+        <Link Id="LTLQ5zID7MqLF497JnZUJ6" Ids="PhZLFaWmgEZQUlkRBSCQoB,PdtaUf3ruWHLYWug93P7t1" />
+        <Link Id="APMyM3lSpPoPajt8kDyDMM" Ids="U2OTkOi16hnMJ8LPJfJYJZ,TYwr1elDEtWLZNtKYY9SJS" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="Idvdnq9xFUMNW17X2JHvW3" Location="VL.IO.NDI" Version="1.0.0" />
+  <NugetDependency Id="IG6ELVcVfbHN3zbagziMdg" Location="VL.Audio" Version="1.9.13" />
+  <NugetDependency Id="AyLuER4gO4jMep4tGyU9f0" Location="VL.Stride" Version="2025.7.0-0384-g212a8f1596" />
+</Document>

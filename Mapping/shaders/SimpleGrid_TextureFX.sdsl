@@ -1,0 +1,42 @@
+[TextureSource]
+[Category("Source")]
+[Summary("")]
+shader SimpleGrid_TextureFX : TextureFX
+{
+    [Color]
+    float4 StrokeColor = float4(1, 1, 1, 1);
+    [Color]
+    float4 BgColor = float4(1, 1, 1, 1);
+
+    float strokeWidth = 0.98;
+    float2 offset= (.0, .0);
+    float gridSize = 5.;
+    float sharpEdges = .0;
+    float2 gridMultXY = 1.0;
+
+    stage override float4 Shading()
+    {
+        float2 uv = streams.TexCoord; // divided by resolution ?
+
+
+        // scale from center
+        float2 scaleCenter = float2(0.5f, 0.5f);
+        uv = ( uv - scaleCenter) * gridSize ;
+
+        uv += offset;
+        // float2 tiledUv = frac(uv*gridSize);
+        float2 gridSizeMult = gridMultXY * gridSize;
+        float2 tiledUv = frac(uv*gridSizeMult) ;
+        
+
+        float2 grid = abs(frac(tiledUv - 0.5) - 0.5) / fwidth(tiledUv);
+        float linee = (min(grid.x, grid.y) / strokeWidth);
+        float c = 1.0 - min(linee, 1.0);
+        c = pow(c, 1.0 / 2.2);
+
+        // swich between anti aliasing with alpha or sharp edges without alpha
+        c = lerp(c, round(c), sharpEdges);
+        return float4(lerp(BgColor, (StrokeColor * c), c ));
+
+    }
+};

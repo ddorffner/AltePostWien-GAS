@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="AxPiGuC7C6qORqdz0UgcZF" LanguageVersion="2024.6.3" Version="0.128">
+  <NugetDependency Id="Cz4aYDQWPQ3LqXAmGNmZOg" Location="VL.CoreLib" Version="2024.6.3" />
+  <Patch Id="BtLGEXa9FR4MaYmT4eF12m">
+    <Canvas Id="AmUuOozeQeKNuSkamq6orn" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="F4VprNnhsnfNyiHkYGoRbk">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="JdqNamrpUWDOiyw96yqzE0">
+        <Canvas Id="C8cTKb2qaVWOp6YA2ns4RZ" CanvasType="Group">
+          <Node Bounds="486,359,258,19" Id="TmUuIrTElUxNsGXGhhJdMn">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="AltePost-Simulator.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="AltePostSimulator" />
+            </p:NodeReference>
+            <Pin Id="HzGf8oztXCkOjcbBJ9MnqY" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="LGMuXIFG3vnO1RBs6cACHx" Name="PathControlNet01" Kind="InputPin" />
+            <Pin Id="KizAAbWb0iVNB8htI6mHyY" Name="PathControlNet02" Kind="InputPin" />
+            <Pin Id="AktydIbN9kTPEz4LhRnxkr" Name="PathComfyUIOutputs" Kind="InputPin" />
+            <Pin Id="CcZM7bQhounLdztbEh4pZb" Name="StartAIGeneration" Kind="OutputPin" />
+            <Pin Id="HsBmuy74yFePay9yk3wDkz" Name="SimulatorValues" Kind="OutputPin" />
+            <Pin Id="UoiH8lRrwtQQY2BCRRZry0" Name="TextureIn" Kind="InputPin" />
+          </Node>
+          <Node Bounds="333,265,87,19" Id="UG71zGjiWmjNqe4LZs5dgQ">
+            <p:NodeReference LastCategoryFullName="System.Application" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="ApplicationPath" />
+            </p:NodeReference>
+            <Pin Id="CCova1a1bvcOOWOrYBKc2p" Name="Output" Kind="OutputPin" />
+            <Pin Id="RtxYclb9ZbqQKP3c9d7TUn" Name="Node Context" Kind="InputPin" IsHidden="true" />
+          </Node>
+          <Node Bounds="333,299,371,19" Id="Vdthgd9pieYM2wDNHbjSrY">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="Config.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="LoadConfig" />
+            </p:NodeReference>
+            <Pin Id="Ok1sttX6r7KOPYRh0WR7LJ" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Ebbgm5CUlT5NfIsM4TrGWv" Name="ApplicationPath" Kind="InputPin" />
+            <Pin Id="O4h6TazqlR6P1GooFDodGc" Name="Result" Kind="OutputPin" />
+            <Pin Id="IJ8u2nwtb4ZMHkLHHqcSpW" Name="PathComfyUIOutput" Kind="OutputPin" />
+            <Pin Id="KEmZDYF05zYL4qD9fPF9GT" Name="PathControlNet01" Kind="OutputPin" />
+            <Pin Id="JblJFhSM6ECP6T0oNRsyZw" Name="PathControlNet02" Kind="OutputPin" />
+            <Pin Id="GuIIN3bfe4uLsQQYPriKoC" Name="PathComfyWorkflow" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="424,417,98,19" Id="MCbYBW0oaBkNbLn416o6CW">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="VVVVtoCOMFY.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="VVVVtoCOMFY" />
+            </p:NodeReference>
+            <Pin Id="LA1uXuTt4KwNtApu3htY6s" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PAUHPTH5N8JMB1eeOVa9QN" Name="SwitchControlNEtInputs" Kind="InputPin" />
+            <Pin Id="AbnCrZvwdLTOKcL1MUnEAp" Name="PathComfyWorkflow" Kind="InputPin" />
+            <Pin Id="Qbvu9UtsbbmNQ7Y5i3iW6R" Name="StartAIGeneration" Kind="InputPin" />
+            <Pin Id="REooU7POcLRO1DjPEhG9Ui" Name="SimulatorValues" Kind="InputPin" />
+            <Pin Id="Bal9LRphA0ANq9o22zZdYD" Name="StatusHttpPost" Kind="OutputPin" />
+            <Pin Id="BLflOIlevAxOTz8DADY1qn" Name="In Progress" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="746,527,111,19" Id="MK3oeK6hxPNPvS0rhlHEBH">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="SketchApp-Rendering.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="SketchAppRendering" />
+            </p:NodeReference>
+            <Pin Id="EkLJbznrB2xMrgRzUaZ7u1" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="IwtB0dYTTA3MRdhrN7FRav" Name="SimulatorValues" Kind="InputPin" />
+          </Node>
+          <Node Bounds="740,129,111,19" Id="JxUDvjNy37HOcSl4kYumQi">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="NoiseControlNets.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="ControlNetGenerator" />
+            </p:NodeReference>
+            <Pin Id="ICGCnryT7i2MAmIJ6K0tZw" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="IteeHKzfPy0LvP9MuujX1L" Name="TextureSize" Kind="InputPin" />
+            <Pin Id="TYoU3zub9UMLvUaNFAU20F" Name="Texture" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="333,214,61,19" Id="La8XlO1haKqOtwS7VkdgE0">
+            <p:NodeReference LastCategoryFullName="System.Application" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="MainLoop" />
+            </p:NodeReference>
+            <Pin Id="FYyIJUoZPniNxQvU4NOStm" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="AdAj99MNx1wNU9DC1vsMH5" Name="Input" Kind="InputPin" IsHidden="true" />
+            <Pin Id="FHQ84f6BA8EM8690AIVrlJ" Name="Max FPS" Kind="InputPin" />
+            <Pin Id="Kg2jkJOmWDpLpc9ZyxfHbP" Name="Is Incremental" Kind="InputPin" />
+            <Pin Id="FVClbyZMa4YL1erGIVxhKJ" Name="Incremental FPS" Kind="InputPin" />
+            <Pin Id="PcRvKZcmHgAP9jQlWBXWmO" Name="Max FPS" Kind="OutputPin" />
+            <Pin Id="Bui3tHgtrAkNdHHOUzzdUu" Name="Is Incremental" Kind="OutputPin" />
+            <Pin Id="JPYd3pVKJMWO63JsvOisTb" Name="Incremental FPS" Kind="OutputPin" />
+            <Pin Id="MFUNOq51DKmLNOnTsw6HaT" Name="Wait Accuracy" Kind="InputPin" IsHidden="true" />
+            <Pin Id="N5Pb5tIGX71PIN1g2s5pvu" Name="Wait Accuracy" Kind="OutputPin" IsHidden="true" />
+          </Node>
+          <Pad Id="Q6JBNUthfDJN8iai2lNcHq" Comment="Max FPS" Bounds="335,190,35,15" ShowValueBox="true" isIOBox="true" Value="60">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="CKsktv3pWu8Md2qKRezuah" Comment="StatusHttpPost" Bounds="425,534,149,41" ShowValueBox="true" isIOBox="true">
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">15</p:fontsize>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="Sn3gN74AsBBPCZ4sJv4b2h" Comment="Generation Started" Bounds="444,463,52,58" ShowValueBox="true" isIOBox="true" />
+          <Overlay Id="Tl3szCAnXGtN1c6rbqqsd4" Name="dirty renderer" Bounds="688,454,200,184" />
+          <ControlPoint Id="DaPu2QIpTFVLAlW3VRco4w" Bounds="774,322" />
+          <ControlPoint Id="US4yDIGguvOL88AU8KNNo8" Bounds="775,412" />
+          <Pad Id="MwNPq5i8wBmO7S0RYoxYc2" Comment="SwitchControlNets" Bounds="231,379,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Overlay Id="T4ZFihwPomHOkVCNeJjtEO" Name="Noise Textures here" Bounds="708,98,200,106">
+            <p:ColorIndex p:Type="Int32">5</p:ColorIndex>
+          </Overlay>
+        </Canvas>
+        <Patch Id="IZZkA2VKtNyL1rWzkbSQfR" Name="Create" />
+        <Patch Id="FWb0O5e4JK9MNaQSWuxw90" Name="Update" />
+        <ProcessDefinition Id="H6OvhgPQZoIP2CqnLWHh4X">
+          <Fragment Id="ETw28RO1IIkOxOFTbVf42v" Patch="IZZkA2VKtNyL1rWzkbSQfR" Enabled="true" />
+          <Fragment Id="QA1eeEfIWRdPxltxSen4vO" Patch="FWb0O5e4JK9MNaQSWuxw90" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="H01iw7aIc1EPSMYPDYOZED" Ids="CCova1a1bvcOOWOrYBKc2p,Ebbgm5CUlT5NfIsM4TrGWv" />
+        <Link Id="D9173PRomvjPFuzSVRGFt3" Ids="KEmZDYF05zYL4qD9fPF9GT,LGMuXIFG3vnO1RBs6cACHx" />
+        <Link Id="HyjdbyKOCtmOk5Lpl4Q9bc" Ids="IJ8u2nwtb4ZMHkLHHqcSpW,AktydIbN9kTPEz4LhRnxkr" />
+        <Link Id="IdopxtHh09qMQ9ls7lCErR" Ids="HsBmuy74yFePay9yk3wDkz,REooU7POcLRO1DjPEhG9Ui" />
+        <Link Id="BE6FHnO5iNoO1rLjmYEAqo" Ids="HsBmuy74yFePay9yk3wDkz,IwtB0dYTTA3MRdhrN7FRav" />
+        <Link Id="DCYuB5Z5HZvML0cNpWQ7LI" Ids="CcZM7bQhounLdztbEh4pZb,Qbvu9UtsbbmNQ7Y5i3iW6R" />
+        <Link Id="O1upycGNlqTPY4uCnxrZoa" Ids="JblJFhSM6ECP6T0oNRsyZw,KizAAbWb0iVNB8htI6mHyY" />
+        <Link Id="LcyCJ1S32ehNTjrvlKEAUR" Ids="Q6JBNUthfDJN8iai2lNcHq,FHQ84f6BA8EM8690AIVrlJ" />
+        <Link Id="PosvhmmEhjCP6oE5bnHs72" Ids="Q6JBNUthfDJN8iai2lNcHq,FVClbyZMa4YL1erGIVxhKJ" />
+        <Link Id="K2zKLSN0cdkMtvCoK4DT5a" Ids="Bal9LRphA0ANq9o22zZdYD,CKsktv3pWu8Md2qKRezuah" />
+        <Link Id="VI0QlTvucazNIfCGB2Hupf" Ids="GuIIN3bfe4uLsQQYPriKoC,DaPu2QIpTFVLAlW3VRco4w,US4yDIGguvOL88AU8KNNo8,AbnCrZvwdLTOKcL1MUnEAp" />
+        <Link Id="KTYABz4QxnwPEQFHYgR4g6" Ids="BLflOIlevAxOTz8DADY1qn,Sn3gN74AsBBPCZ4sJv4b2h" />
+        <Link Id="Rj9ne7c3HzjLm2dpckL4ql" Ids="MwNPq5i8wBmO7S0RYoxYc2,PAUHPTH5N8JMB1eeOVa9QN" />
+        <Link Id="Ue1yhObXnZlQSSuKwKrSkl" Ids="TYoU3zub9UMLvUaNFAU20F,UoiH8lRrwtQQY2BCRRZry0" />
+      </Patch>
+    </Node>
+  </Patch>
+  <DocumentDependency Id="Tdrvok3aqlLOpMlSEMO7jo" Location="./vl/AltePost-Simulator.vl" />
+  <DocumentDependency Id="SoRRX4O8HxOPfNdrhDd3Fg" Location="./vl/Config.vl" />
+  <DocumentDependency Id="Tijofwg8oPiOD7NTeZUPq2" Location="./vl/VVVVtoCOMFY.vl" />
+  <DocumentDependency Id="NN743NNy1AWNwiTKRJH0TM" Location="./vl/SketchApp-Rendering.vl" />
+  <DocumentDependency Id="QYOtW5o8nAtNE7TpFnJO9h" Location="./vl/NoiseControlNets.vl" />
+</Document>

@@ -1,0 +1,183 @@
+{
+  "37": {
+    "inputs": {
+      "image": "..."
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Upscale Input Image"
+    }
+  },  
+  "26": {
+    "inputs": {
+      "width": 9600,
+      "height": 2752,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "35",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "VL Upscale Resize Final"
+    }
+  },  
+  "28": {
+    "inputs": {
+      "value": "DGN_Medium"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Medium"
+    }
+  },
+  "29": {
+    "inputs": {
+      "value": "DGN_Color"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Color"
+    }
+  },
+  "30": {
+    "inputs": {
+      "value": "DGN_Thumb"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Thumb"
+    }
+  },
+  "31": {
+    "inputs": {
+      "value": "DGN_Depth"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Depth"
+    }
+  },
+  "32": {
+    "inputs": {
+      "width": 4800,
+      "height": 1376,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": "stretch",
+      "pad_color": "0, 0, 0",
+      "crop_position": "center",
+      "divisible_by": 1,
+      "device": "gpu",
+      "image": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "VL Depth Output Size Final"
+    }
+  },  
+  "20": {
+    "inputs": {
+      "width": 3600,
+      "height": 1032,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "37",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "VL Upscale Resize 1"
+    }
+  },
+  "21": {
+    "inputs": {
+      "text": "best quality, 8K, smooth details",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL Upscale Ultimate Prompt"
+    }
+  },  
+  "18": {
+    "inputs": {
+      "width": 2400,
+      "height": 688,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": "stretch",
+      "pad_color": "0, 0, 0",
+      "crop_position": "center",
+      "divisible_by": 1,
+      "device": "gpu",
+      "image": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "VL Depth Output Size Gen"
+    }
+  },  
+  "13": {
+    "inputs": {
+      "seed": [
+        "16",
+        0
+      ],
+      "steps": 30,
+      "cfg_scale_start": 0.9000000000000001,
+      "cfg_scale_end": 1.0000000000000002,
+      "EDM_s_churn": 3,
+      "s_noise": 1.0030000000000001,
+      "DPMPP_eta": 1,
+      "control_scale_start": 1,
+      "control_scale_end": 0.9,
+      "restore_cfg": 1.0000000000000002,
+      "keep_model_loaded": false,
+      "sampler": "RestoreDPMPP2MSampler",
+      "sampler_tile_size": [
+        "10",
+        0
+      ],
+      "sampler_tile_stride": [
+        "11",
+        0
+      ],
+      "SUPIR_model": [
+        "5",
+        0
+      ],
+      "latents": [
+        "3",
+        0
+      ],
+      "positive": [
+        "12",
+        0
+      ],
+      "negative": [
+        "12",
+        1
+      ]
+    },
+    "class_type": "SUPIR_sample",
+    "_meta": {
+      "title": "VL SUPIR Sampler"
+    }
+  },
+}

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="EuwYyyibkRVMWvCPqR5vRO" LanguageVersion="2024.6.7" Version="0.128">
+  <NugetDependency Id="PMPZlX8CbBTP0Gb2lIgvCr" Location="VL.CoreLib" Version="2024.6.7" />
+  <Patch Id="NZAlqxzoXEeLID4QuE2NCc">
+    <Canvas Id="BCO7vOZ6xZ4OxrqOJnYraJ" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="MloGoYmdOS5NpdbjbA2dLm">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="F8LVXbLRtGRLhVZ01vbfP3">
+        <Canvas Id="Oogg0KSRuZrNRzaY1tBuvY" CanvasType="Group">
+          <Node Bounds="536,382,87,19" Id="D9PNTy20XqELVlM72nMOwJ">
+            <p:NodeReference LastCategoryFullName="Main" LastDependency="WatchDog.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="WatchDogReply" />
+            </p:NodeReference>
+            <Pin Id="QhKiKmS6LdKOB4MMAotRYQ" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NwKKIjWWO0qLzddh9Tjuy4" Name="Remote Port" Kind="InputPin" />
+          </Node>
+          <Pad Id="VbTMEIiqEvKLHc7drW6pJB" Comment="Remote Port" Bounds="539,307,35,15" ShowValueBox="true" isIOBox="true" Value="1001">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+          </Pad>
+        </Canvas>
+        <Patch Id="OGQg5llzH5NMoEuTqPH3lW" Name="Create" />
+        <Patch Id="LQITFgHf7NCMPSKzUQGMD1" Name="Update" />
+        <ProcessDefinition Id="PVA7Su4GA4uO0FHH0fTrs3">
+          <Fragment Id="VG7riobpxEkPAGBUpP7VJc" Patch="OGQg5llzH5NMoEuTqPH3lW" Enabled="true" />
+          <Fragment Id="ONpPnMZgWCcM2m3pbixYvp" Patch="LQITFgHf7NCMPSKzUQGMD1" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="Ca4mU07pY5wPgnKFjtNEzE" Ids="VbTMEIiqEvKLHc7drW6pJB,NwKKIjWWO0qLzddh9Tjuy4" />
+      </Patch>
+    </Node>
+  </Patch>
+  <DocumentDependency Id="LWYGDE8tIz2MyRKPPHZiG4" Location="./WatchDog/WatchDog.vl" />
+</Document>

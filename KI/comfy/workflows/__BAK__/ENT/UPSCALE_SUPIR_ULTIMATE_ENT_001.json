@@ -1,0 +1,572 @@
+{
+  "2": {
+    "inputs": {
+      "image": "FLUX-DepthCN-IPA1_20250804-052506-0.85-0.88_00001_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "5": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "36",
+        0
+      ],
+      "decoder_tile_size": [
+        "36",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "21",
+        1
+      ],
+      "image": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "SUPIR_first_stage",
+    "_meta": {
+      "title": "SUPIR First Stage (Denoiser)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "seed": [
+        "29",
+        0
+      ],
+      "steps": 30,
+      "cfg_scale_start": 0.9000000000000001,
+      "cfg_scale_end": 1.0000000000000002,
+      "EDM_s_churn": 2,
+      "s_noise": 1.0020000000000002,
+      "DPMPP_eta": 1,
+      "control_scale_start": 1,
+      "control_scale_end": 0.9,
+      "restore_cfg": 1.0000000000000002,
+      "keep_model_loaded": false,
+      "sampler": "RestoreDPMPP2MSampler",
+      "sampler_tile_size": [
+        "36",
+        0
+      ],
+      "sampler_tile_stride": [
+        "37",
+        0
+      ],
+      "SUPIR_model": [
+        "21",
+        0
+      ],
+      "latents": [
+        "11",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "9",
+        1
+      ]
+    },
+    "class_type": "SUPIR_sample",
+    "_meta": {
+      "title": "SUPIR Sampler"
+    }
+  },
+  "9": {
+    "inputs": {
+      "positive_prompt": "high quality, detailed, photograph",
+      "negative_prompt": "blurry, messy, cartoon",
+      "SUPIR_model": [
+        "21",
+        0
+      ],
+      "latents": [
+        "5",
+        2
+      ]
+    },
+    "class_type": "SUPIR_conditioner",
+    "_meta": {
+      "title": "SUPIR Conditioner"
+    }
+  },
+  "10": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "decoder_tile_size": [
+        "36",
+        0
+      ],
+      "SUPIR_VAE": [
+        "21",
+        1
+      ],
+      "latents": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "SUPIR_decode",
+    "_meta": {
+      "title": "SUPIR Decode"
+    }
+  },
+  "11": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "36",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "5",
+        0
+      ],
+      "image": [
+        "5",
+        1
+      ]
+    },
+    "class_type": "SUPIR_encode",
+    "_meta": {
+      "title": "SUPIR Encode"
+    }
+  },
+  "13": {
+    "inputs": {
+      "width": [
+        "32",
+        0
+      ],
+      "height": [
+        "39",
+        0
+      ],
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 4,
+      "image": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "14": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 1,
+      "image_ref": [
+        "13",
+        0
+      ],
+      "image_target": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "Color Match"
+    }
+  },
+  "21": {
+    "inputs": {
+      "supir_model": "SUPIR-v0Q_fp16.safetensors",
+      "fp8_unet": false,
+      "diffusion_dtype": "auto",
+      "high_vram": true,
+      "model": [
+        "22",
+        0
+      ],
+      "clip": [
+        "22",
+        1
+      ],
+      "vae": [
+        "22",
+        2
+      ]
+    },
+    "class_type": "SUPIR_model_loader_v2",
+    "_meta": {
+      "title": "SUPIR Model Loader (v2)"
+    }
+  },
+  "22": {
+    "inputs": {
+      "ckpt_name": "Juggernaut_RunDiffusionPhoto2_Lightning_4Steps.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "23": {
+    "inputs": {
+      "output": "",
+      "input": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "Display Int (rgthree)",
+    "_meta": {
+      "title": "Display Int (rgthree)"
+    }
+  },
+  "24": {
+    "inputs": {
+      "output": "",
+      "input": [
+        "13",
+        2
+      ]
+    },
+    "class_type": "Display Int (rgthree)",
+    "_meta": {
+      "title": "Display Int (rgthree)"
+    }
+  },
+  "25": {
+    "inputs": {
+      "upscale_by": 2.0000000000000004,
+      "seed": [
+        "29",
+        0
+      ],
+      "steps": 4,
+      "cfg": 2,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.15000000000000002,
+      "mode_type": "None",
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 8,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": "enable",
+      "tiled_decode": false,
+      "image": [
+        "14",
+        0
+      ],
+      "model": [
+        "22",
+        0
+      ],
+      "positive": [
+        "27",
+        0
+      ],
+      "negative": [
+        "31",
+        0
+      ],
+      "vae": [
+        "22",
+        2
+      ],
+      "upscale_model": [
+        "26",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale"
+    }
+  },
+  "26": {
+    "inputs": {
+      "model_name": "RealESRGAN_x4plus.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "27": {
+    "inputs": {
+      "text": "best quality, 8K, smooth details",
+      "clip": [
+        "22",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "29": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "Seed (rgthree)"
+    }
+  },
+  "31": {
+    "inputs": {
+      "text": "text, water mark, cartoon",
+      "clip": [
+        "22",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "32": {
+    "inputs": {
+      "value": 2048
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "ImpactInt"
+    }
+  },
+  "33": {
+    "inputs": {
+      "filename_prefix": "ENT_UPSCALED/8K",
+      "images": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "34": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_rtnac_00015_.png&type=temp&subfolder=&rand=0.516371668920637"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_rtnac_00016_.png&type=temp&subfolder=&rand=0.6864357009922688"
+          }
+        ]
+      },
+      "image_a": [
+        "50",
+        0
+      ],
+      "image_b": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "35": {
+    "inputs": {
+      "filename_prefix": "ENT_UPSCALED/2K",
+      "images": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "36": {
+    "inputs": {
+      "value": 1024
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Size"
+    }
+  },
+  "37": {
+    "inputs": {
+      "value": 512
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Stride"
+    }
+  },
+  "38": {
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "39": {
+    "inputs": {
+      "value": 2128
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "ImpactInt"
+    }
+  },
+  "40": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_drtpj_00012_.png&type=temp&subfolder=&rand=0.9387733052276132"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_drtpj_00013_.png&type=temp&subfolder=&rand=0.8366878914232183"
+          }
+        ]
+      },
+      "image_a": [
+        "50",
+        0
+      ],
+      "image_b": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer ORIGINAL > SUPIR"
+    }
+  },
+  "41": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_sekma_00011_.png&type=temp&subfolder=&rand=0.9714933748269741"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_sekma_00012_.png&type=temp&subfolder=&rand=0.3521944100122425"
+          }
+        ]
+      },
+      "image_a": [
+        "14",
+        0
+      ],
+      "image_b": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer SUPIR > FINAL"
+    }
+  },
+  "45": {
+    "inputs": {
+      "width": 8192,
+      "height": 8512,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "47": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ebzpm_00011_.png&type=temp&subfolder=&rand=0.0676604154446333"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ebzpm_00012_.png&type=temp&subfolder=&rand=0.17847769278850212"
+          }
+        ]
+      },
+      "image_a": [
+        "25",
+        0
+      ],
+      "image_b": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "50": {
+    "inputs": {
+      "mode": "incremental_image",
+      "seed": 49,
+      "index": 0,
+      "label": "Batch 001",
+      "path": "C:\\ComfyUI\\output\\ENT_001",
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "true"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch"
+    }
+  }
+}

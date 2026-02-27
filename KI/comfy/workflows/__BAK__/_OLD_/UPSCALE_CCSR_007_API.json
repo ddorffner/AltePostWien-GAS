@@ -1,0 +1,256 @@
+{
+  "32": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ykvca_00001_.png&type=temp&subfolder=&rand=0.044792431921027775"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ykvca_00002_.png&type=temp&subfolder=&rand=0.34592692245522616"
+          }
+        ]
+      },
+      "image_a": [
+        "141",
+        0
+      ],
+      "image_b": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "39": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 1,
+      "multithread": true,
+      "image_ref": [
+        "137",
+        0
+      ],
+      "image_target": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "VL Color Match"
+    }
+  },
+  "40": {
+    "inputs": {
+      "amount": 0.8,
+      "image": [
+        "137",
+        0
+      ]
+    },
+    "class_type": "ImageCASharpening+",
+    "_meta": {
+      "title": "VL Image Contrast Adaptive Sharpening"
+    }
+  },
+  "69": {
+    "inputs": {
+      "images": [
+        "137",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "100": {
+    "inputs": {
+      "ckpt_name": "real-world_ccsr-fp16.safetensors"
+    },
+    "class_type": "CCSR_Model_Select",
+    "_meta": {
+      "title": "VL CCSR Model"
+    }
+  },
+  "137": {
+    "inputs": {
+      "resize_method": "lanczos",
+      "scale_by": 4,
+      "steps": 40,
+      "t_max": 0.6667,
+      "t_min": 0.3333,
+      "sampling_method": "ccsr_tiled_mixdiff",
+      "tile_size": 1024,
+      "tile_stride": 768,
+      "vae_tile_size_encode": 1024,
+      "vae_tile_size_decode": 1024,
+      "color_fix_type": "wavelet",
+      "keep_model_loaded": false,
+      "seed": 123,
+      "ccsr_model": [
+        "100",
+        0
+      ],
+      "image": [
+        "141",
+        0
+      ]
+    },
+    "class_type": "CCSR_Upscale",
+    "_meta": {
+      "title": "VL CCSR Upscale"
+    }
+  },
+  "140": {
+    "inputs": {
+      "filepath": [
+        "142",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "141": {
+    "inputs": {
+      "image": "input_img_path"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Load Image From Path"
+    }
+  },
+  "142": {
+    "inputs": {
+      "value": "_COLOR"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Color"
+    }
+  },
+  "144": {
+    "inputs": {
+      "value": "_DEPTH"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Depth"
+    }
+  },
+  "145": {
+    "inputs": {
+      "filepath": [
+        "144",
+        0
+      ],
+      "tonemap": "sRGB",
+      "start_frame": 1001,
+      "overwrite": true,
+      "save_workflow": "none",
+      "images": [
+        "143:499",
+        0
+      ]
+    },
+    "class_type": "SaveEXRFrames",
+    "_meta": {
+      "title": "Save EXR Frames"
+    }
+  },
+  "146": {
+    "inputs": {
+      "value": "_THUMB"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Thumb"
+    }
+  },
+  "147": {
+    "inputs": {
+      "size": 512,
+      "method": "NEAREST",
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "Resize Longest To"
+    }
+  },
+  "148": {
+    "inputs": {
+      "filepath": [
+        "146",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "147",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "143:499": {
+    "inputs": {
+      "depth_pro_model": [
+        "143:505",
+        0
+      ],
+      "image": [
+        "143:501",
+        0
+      ]
+    },
+    "class_type": "DepthPro",
+    "_meta": {
+      "title": "Depth Pro"
+    }
+  },
+  "143:501": {
+    "inputs": {
+      "scale_by": 0.2,
+      "images": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "easy imageScaleDownBy",
+    "_meta": {
+      "title": "Image Scale Down By"
+    }
+  },
+  "143:505": {
+    "inputs": {
+      "precision": "fp16"
+    },
+    "class_type": "LoadDepthPro",
+    "_meta": {
+      "title": "(Down)Load Depth Pro model"
+    }
+  }
+}

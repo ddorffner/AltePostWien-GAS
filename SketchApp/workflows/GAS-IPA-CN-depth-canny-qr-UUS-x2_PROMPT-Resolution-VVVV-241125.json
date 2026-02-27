@@ -1,0 +1,674 @@
+{
+  "20": {
+    "inputs": {
+      "ckpt_name": "*=CKPT-Model=*"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text": "*=Prompt=*",
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "30": {
+    "inputs": {
+      "text": "Brad Pitt, asian, bokeh, depth of field, blurry, cropped, regular face, saturated, contrast, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, text, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, text, letters, numbers, watermark, low resolution, out of frame, cropped, low quality, blur, out of focus, unsharp, bad colors, oversaturated, nsfw, nudity, disfigured, malformed",
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "31": {
+    "inputs": {
+      "control_net_name": "control-lora-depth-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "32": {
+    "inputs": {
+      "image": "*=PathControlNet01=*",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "34": {
+    "inputs": {
+      "strength": *=StrengthCN01=*,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "29",
+        0
+      ],
+      "negative": [
+        "30",
+        0
+      ],
+      "control_net": [
+        "31",
+        0
+      ],
+      "image": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "37": {
+    "inputs": {
+      "strength": *=StrengthCN02=*,
+      "start_percent": 0.375,
+      "end_percent": 1,
+      "positive": [
+        "34",
+        0
+      ],
+      "negative": [
+        "34",
+        1
+      ],
+      "control_net": [
+        "38",
+        0
+      ],
+      "image": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "38": {
+    "inputs": {
+      "control_net_name": "control-lora-canny-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "52": {
+    "inputs": {
+      "image": "*=PathControlNet02=*",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "158": {
+    "inputs": {
+      "filename_prefix": "GAS_512-*=NamePrefix=*",
+      "images": [
+        "466",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "175": {
+    "inputs": {
+      "upscale_model": [
+        "176",
+        0
+      ],
+      "image": [
+        "466",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "176": {
+    "inputs": {
+      "model_name": "RealESRGAN_x2plus.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "184": {
+    "inputs": {
+      "filename_prefix": "GAS_512x2-*=NamePrefix=*",
+      "images": [
+        "175",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "197": {
+    "inputs": {
+      "preset": "PLUS (high strength)",
+      "model": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "IPAdapterUnifiedLoader",
+    "_meta": {
+      "title": "IPAdapter Unified Loader"
+    }
+  },
+  "198": {
+    "inputs": {
+      "weight": 0.46,
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "image": [
+        "206",
+        0
+      ]
+    },
+    "class_type": "IPAdapterEncoder",
+    "_meta": {
+      "title": "IPAdapter Encoder"
+    }
+  },
+  "199": {
+    "inputs": {
+      "weight": 1,
+      "weight_type": "linear",
+      "start_at": 0,
+      "end_at": 1,
+      "embeds_scaling": "V only",
+      "model": [
+        "197",
+        0
+      ],
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "pos_embed": [
+        "200",
+        0
+      ],
+      "neg_embed": [
+        "202",
+        0
+      ]
+    },
+    "class_type": "IPAdapterEmbeds",
+    "_meta": {
+      "title": "IPAdapter Embeds"
+    }
+  },
+  "200": {
+    "inputs": {
+      "method": "concat",
+      "embed1": [
+        "198",
+        0
+      ],
+      "embed2": [
+        "201",
+        0
+      ],
+      "embed3": [
+        "203",
+        0
+      ]
+    },
+    "class_type": "IPAdapterCombineEmbeds",
+    "_meta": {
+      "title": "IPAdapter Combine Embeds"
+    }
+  },
+  "201": {
+    "inputs": {
+      "weight": 0.89,
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "image": [
+        "205",
+        0
+      ]
+    },
+    "class_type": "IPAdapterEncoder",
+    "_meta": {
+      "title": "IPAdapter Encoder"
+    }
+  },
+  "202": {
+    "inputs": {
+      "method": "concat",
+      "embed1": [
+        "198",
+        1
+      ],
+      "embed2": [
+        "201",
+        1
+      ],
+      "embed3": [
+        "203",
+        1
+      ]
+    },
+    "class_type": "IPAdapterCombineEmbeds",
+    "_meta": {
+      "title": "IPAdapter Combine Embeds"
+    }
+  },
+  "203": {
+    "inputs": {
+      "weight": 0.61,
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "image": [
+        "204",
+        0
+      ]
+    },
+    "class_type": "IPAdapterEncoder",
+    "_meta": {
+      "title": "IPAdapter Encoder"
+    }
+  },
+  "204": {
+    "inputs": {
+      "image": "*=IP-Image-01=*",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "205": {
+    "inputs": {
+      "image": "*=IP-Image-02=*",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "206": {
+    "inputs": {
+      "image": "*=IP-Image-03=*",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "210": {
+    "inputs": {
+      "control_net_name": "TTPLANET_Controlnet_Tile_realistic_v2_fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "211": {
+    "inputs": {
+      "strength": 0.27,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "503",
+        0
+      ],
+      "negative": [
+        "504",
+        0
+      ],
+      "control_net": [
+        "210",
+        0
+      ],
+      "image": [
+        "175",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "234": {
+    "inputs": {
+      "filename_prefix": "GAS_UUS-*=NamePrefix=*",
+      "images": [
+        "470",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "466": {
+    "inputs": {
+      "samples": [
+        "507",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "470": {
+    "inputs": {
+      "seed": 666,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.45,
+      "mode_type": "Chess",
+      "tile_width": 2048,
+      "tile_height": 2048,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 0.4,
+      "seam_fix_width": 256,
+      "seam_fix_mask_blur": 32,
+      "seam_fix_padding": 128,
+      "force_uniform_tiles": true,
+      "tiled_decode": false,
+      "upscaled_image": [
+        "175",
+        0
+      ],
+      "model": [
+        "199",
+        0
+      ],
+      "positive": [
+        "211",
+        0
+      ],
+      "negative": [
+        "211",
+        1
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "UltimateSDUpscaleNoUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale (No Upscale)"
+    }
+  },
+  "471": {
+    "inputs": {
+      "upscale_model": [
+        "176",
+        0
+      ],
+      "image": [
+        "470",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "472": {
+    "inputs": {
+      "filename_prefix": "*=NamePrefix=*",
+      "images": [
+        "471",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "473": {
+    "inputs": {
+      "strength": *=StrengthCN03=*,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "37",
+        0
+      ],
+      "negative": [
+        "37",
+        1
+      ],
+      "control_net": [
+        "474",
+        0
+      ],
+      "image": [
+        "475",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "474": {
+    "inputs": {
+      "control_net_name": "qrcode_monster_sdxl.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "475": {
+    "inputs": {
+      "image": "*=PathControlNet03=*",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "491": {
+    "inputs": {
+      "width": *=WIDTH=*,
+      "height": *=HEIGHT=*,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "493": {
+    "inputs": {
+      "strength": 0.27,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "503",
+        0
+      ],
+      "negative": [
+        "504",
+        0
+      ],
+      "control_net": [
+        "210",
+        0
+      ],
+      "image": [
+        "471",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "494": {
+    "inputs": {
+      "seed": 666,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.45,
+      "mode_type": "Chess",
+      "tile_width": 4096,
+      "tile_height": 4096,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 0.4,
+      "seam_fix_width": 256,
+      "seam_fix_mask_blur": 32,
+      "seam_fix_padding": 128,
+      "force_uniform_tiles": true,
+      "tiled_decode": false,
+      "upscaled_image": [
+        "471",
+        0
+      ],
+      "model": [
+        "199",
+        0
+      ],
+      "positive": [
+        "493",
+        0
+      ],
+      "negative": [
+        "493",
+        1
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "UltimateSDUpscaleNoUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale (No Upscale)"
+    }
+  },
+  "503": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "504": {
+    "inputs": {
+      "text": "text, letters, numbers, watermark, low resolution, out of frame, cropped, low quality, blur, out of focus, unsharp, bad colors, oversaturated, nsfw, nudity, disfigured, malformed",
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "507": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": 666,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "start_at_step": 0,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "199",
+        0
+      ],
+      "positive": [
+        "473",
+        0
+      ],
+      "negative": [
+        "473",
+        1
+      ],
+      "latent_image": [
+        "491",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)"
+    }
+  }
+}

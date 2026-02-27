@@ -1,0 +1,1195 @@
+{
+  "214": {
+    "inputs": {
+      "roll": 0,
+      "h_deg": 0,
+      "v_deg": 180,
+      "padding_mode": "bilinear",
+      "e_img": [
+        "464",
+        0
+      ]
+    },
+    "class_type": "Equirectangular Rotation",
+    "_meta": {
+      "title": "Equirectangular Rotation"
+    }
+  },
+  "228": {
+    "inputs": {
+      "image": "C:\\Users\\SHA.ART\\Documents\\AltePost\\ComfyUI\\input\\stitch4.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "VL Load Image Mask Borders"
+    }
+  },
+  "229": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "228",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "232": {
+    "inputs": {
+      "seed": 1,
+      "tileX": 0,
+      "tileY": 0,
+      "steps": 20,
+      "cfg": 3,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.12,
+      "model": [
+        "693",
+        0
+      ],
+      "positive": [
+        "367",
+        0
+      ],
+      "negative": [
+        "368",
+        0
+      ],
+      "latent_image": [
+        "290",
+        0
+      ]
+    },
+    "class_type": "Asymmetric Tiled KSampler",
+    "_meta": {
+      "title": "VL Sampler Repair Pano"
+    }
+  },
+  "235": {
+    "inputs": {
+      "pixels": [
+        "285",
+        0
+      ],
+      "vae": [
+        "719",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "241": {
+    "inputs": {
+      "seed": 1,
+      "tileX": 0,
+      "tileY": 0,
+      "steps": 20,
+      "cfg": 3.5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.12,
+      "model": [
+        "693",
+        0
+      ],
+      "positive": [
+        "367",
+        0
+      ],
+      "negative": [
+        "368",
+        0
+      ],
+      "latent_image": [
+        "242",
+        0
+      ]
+    },
+    "class_type": "Asymmetric Tiled KSampler",
+    "_meta": {
+      "title": "VL Sampler Floor"
+    }
+  },
+  "242": {
+    "inputs": {
+      "samples": [
+        "243",
+        0
+      ],
+      "mask": [
+        "245",
+        0
+      ]
+    },
+    "class_type": "SetLatentNoiseMask",
+    "_meta": {
+      "title": "Set Latent Noise Mask"
+    }
+  },
+  "243": {
+    "inputs": {
+      "pixels": [
+        "302",
+        5
+      ],
+      "vae": [
+        "719",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "245": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "246",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "246": {
+    "inputs": {
+      "image": "C:\\Users\\SHA.ART\\Documents\\AltePost\\ComfyUI\\input\\bodenrepair3.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "VL Load Image Mask Floor"
+    }
+  },
+  "285": {
+    "inputs": {
+      "width": 2048,
+      "height": 5120,
+      "position": "top-center",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "214",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "287": {
+    "inputs": {
+      "stitch": "right",
+      "feathering": 0,
+      "image_a": [
+        "465",
+        0
+      ],
+      "image_b": [
+        "396",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "288": {
+    "inputs": {
+      "stitch": "left",
+      "feathering": 0,
+      "image_a": [
+        "287",
+        0
+      ],
+      "image_b": [
+        "397",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "290": {
+    "inputs": {
+      "samples": [
+        "235",
+        0
+      ],
+      "mask": [
+        "229",
+        0
+      ]
+    },
+    "class_type": "SetLatentNoiseMask",
+    "_meta": {
+      "title": "Set Latent Noise Mask"
+    }
+  },
+  "295": {
+    "inputs": {
+      "tile_size": 2048,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "232",
+        0
+      ],
+      "vae": [
+        "719",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "299": {
+    "inputs": {
+      "tile_size": 2048,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "241",
+        0
+      ],
+      "vae": [
+        "719",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "300": {
+    "inputs": {
+      "filename_prefix": "floor",
+      "images": [
+        "496",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image Floor"
+    }
+  },
+  "301": {
+    "inputs": {
+      "face_width": -1,
+      "padding_mode": "bilinear",
+      "cube_format": "stack",
+      "e_img": [
+        "391",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Cubemap",
+    "_meta": {
+      "title": "Equirectangular to Cubemap"
+    }
+  },
+  "302": {
+    "inputs": {
+      "face_stack": [
+        "301",
+        0
+      ]
+    },
+    "class_type": "Split Cubemap Faces",
+    "_meta": {
+      "title": "Split Cubemap Faces"
+    }
+  },
+  "367": {
+    "inputs": {
+      "text": "4K",
+      "clip": [
+        "718",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL UPSCALE PROMPT"
+    }
+  },
+  "368": {
+    "inputs": {
+      "text": "blurry",
+      "clip": [
+        "718",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL UPSCALE NEG PROMPT"
+    }
+  },
+  "391": {
+    "inputs": {
+      "left": 0,
+      "top": 1280,
+      "right": 0,
+      "bottom": 0,
+      "feathering": 0,
+      "image": [
+        "288",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "396": {
+    "inputs": {
+      "width": 1024,
+      "height": 5120,
+      "position": "top-left",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "490",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "397": {
+    "inputs": {
+      "width": 1024,
+      "height": 5120,
+      "position": "top-right",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "490",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "405": {
+    "inputs": {
+      "h": -1,
+      "w": -1,
+      "padding_mode": "bicubic",
+      "cube_format": "stack",
+      "e_img": [
+        "406",
+        0
+      ]
+    },
+    "class_type": "Cubemap to Equirectangular",
+    "_meta": {
+      "title": "Cubemap to Equirectangular"
+    }
+  },
+  "406": {
+    "inputs": {
+      "Front": [
+        "302",
+        0
+      ],
+      "Right": [
+        "302",
+        1
+      ],
+      "Back": [
+        "302",
+        2
+      ],
+      "Left": [
+        "302",
+        3
+      ],
+      "Up": [
+        "496",
+        0
+      ],
+      "Down": [
+        "496",
+        0
+      ]
+    },
+    "class_type": "Stack Cubemap Faces",
+    "_meta": {
+      "title": "Stack Cubemap Faces"
+    }
+  },
+  "436": {
+    "inputs": {
+      "width": 128,
+      "height": 640,
+      "position": "top-left",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "700",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "437": {
+    "inputs": {
+      "width": 128,
+      "height": 640,
+      "position": "top-right",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "700",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "440": {
+    "inputs": {
+      "stitch": "right",
+      "feathering": 0,
+      "image_a": [
+        "700",
+        0
+      ],
+      "image_b": [
+        "436",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "441": {
+    "inputs": {
+      "stitch": "left",
+      "feathering": 0,
+      "image_a": [
+        "440",
+        0
+      ],
+      "image_b": [
+        "437",
+        0
+      ]
+    },
+    "class_type": "Image Stitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "464": {
+    "inputs": {
+      "width": 12800,
+      "height": 5120,
+      "position": "top-center",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "678",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "465": {
+    "inputs": {
+      "width": 10752,
+      "height": 5120,
+      "position": "top-center",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "464",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "🔧 Image Crop"
+    }
+  },
+  "470": {
+    "inputs": {
+      "filename_prefix": "UNREPAIRED",
+      "images": [
+        "391",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "490": {
+    "inputs": {
+      "blend_percentage": 1,
+      "image_a": [
+        "285",
+        0
+      ],
+      "image_b": [
+        "295",
+        0
+      ],
+      "mask": [
+        "492",
+        0
+      ]
+    },
+    "class_type": "Image Blend by Mask",
+    "_meta": {
+      "title": "Image Blend by Mask"
+    }
+  },
+  "492": {
+    "inputs": {
+      "mask": [
+        "229",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "495": {
+    "inputs": {
+      "mask": [
+        "245",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "496": {
+    "inputs": {
+      "blend_percentage": 1,
+      "image_a": [
+        "302",
+        5
+      ],
+      "image_b": [
+        "299",
+        0
+      ],
+      "mask": [
+        "495",
+        0
+      ]
+    },
+    "class_type": "Image Blend by Mask",
+    "_meta": {
+      "title": "Image Blend FLOOR WITH MASK"
+    }
+  },
+  "585": {
+    "inputs": {
+      "image": "..."
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Upscale"
+    }
+  },
+  "592": {
+    "inputs": {
+      "value": "_DEPTH"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Save Image Depth EXR"
+    }
+  },
+  "593": {
+    "inputs": {
+      "filepath": [
+        "592",
+        0
+      ],
+      "tonemap": "sRGB",
+      "start_frame": 1001,
+      "overwrite": true,
+      "save_workflow": "none",
+      "images": [
+        "505:499",
+        0
+      ]
+    },
+    "class_type": "SaveEXRFrames",
+    "_meta": {
+      "title": "Save EXR Frames"
+    }
+  },
+  "630": {
+    "inputs": {
+      "image": "input_image_style"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Style"
+    }
+  },
+  "631": {
+    "inputs": {
+      "value": ""
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Color"
+    }
+  },
+  "632": {
+    "inputs": {
+      "value": "_THUMB"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Thumb"
+    }
+  },
+  "633": {
+    "inputs": {
+      "size": 512,
+      "method": "NEAREST",
+      "image": [
+        "405",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "Resize Longest To"
+    }
+  },
+  "657": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "decoder_tile_size": [
+        "665",
+        0
+      ],
+      "SUPIR_VAE": [
+        "660",
+        1
+      ],
+      "latents": [
+        "668",
+        0
+      ]
+    },
+    "class_type": "SUPIR_decode",
+    "_meta": {
+      "title": "SUPIR Decode"
+    }
+  },
+  "658": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "665",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "661",
+        0
+      ],
+      "image": [
+        "661",
+        1
+      ]
+    },
+    "class_type": "SUPIR_encode",
+    "_meta": {
+      "title": "SUPIR Encode"
+    }
+  },
+  "660": {
+    "inputs": {
+      "supir_model": "SUPIR-v0Q_fp16.safetensors",
+      "fp8_unet": false,
+      "diffusion_dtype": "auto",
+      "high_vram": true,
+      "model": [
+        "720",
+        0
+      ],
+      "clip": [
+        "718",
+        0
+      ],
+      "vae": [
+        "719",
+        0
+      ]
+    },
+    "class_type": "SUPIR_model_loader_v2",
+    "_meta": {
+      "title": "SUPIR Model Loader (v2)"
+    }
+  },
+  "661": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "665",
+        0
+      ],
+      "decoder_tile_size": [
+        "665",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "660",
+        1
+      ],
+      "image": [
+        "672",
+        0
+      ]
+    },
+    "class_type": "SUPIR_first_stage",
+    "_meta": {
+      "title": "SUPIR First Stage (Denoiser)"
+    }
+  },
+  "665": {
+    "inputs": {
+      "value": 1024
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Size"
+    }
+  },
+  "666": {
+    "inputs": {
+      "value": 512
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Stride"
+    }
+  },
+  "667": {
+    "inputs": {
+      "positive_prompt": "high quality, detailed",
+      "negative_prompt": "blurry",
+      "SUPIR_model": [
+        "660",
+        0
+      ],
+      "latents": [
+        "661",
+        2
+      ]
+    },
+    "class_type": "SUPIR_conditioner",
+    "_meta": {
+      "title": "SUPIR Conditioner"
+    }
+  },
+  "668": {
+    "inputs": {
+      "seed": [
+        "671",
+        0
+      ],
+      "steps": 12,
+      "cfg_scale_start": 0.95,
+      "cfg_scale_end": 1.1,
+      "EDM_s_churn": 2,
+      "s_noise": 1.002,
+      "DPMPP_eta": 0.1,
+      "control_scale_start": 1,
+      "control_scale_end": 0.95,
+      "restore_cfg": 1.0000000000000002,
+      "keep_model_loaded": false,
+      "sampler": "RestoreDPMPP2MSampler",
+      "sampler_tile_size": [
+        "665",
+        0
+      ],
+      "sampler_tile_stride": [
+        "666",
+        0
+      ],
+      "SUPIR_model": [
+        "660",
+        0
+      ],
+      "latents": [
+        "658",
+        0
+      ],
+      "positive": [
+        "667",
+        0
+      ],
+      "negative": [
+        "667",
+        1
+      ]
+    },
+    "class_type": "SUPIR_sample",
+    "_meta": {
+      "title": "VL SUPIR Sampler"
+    }
+  },
+  "671": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "Seed (rgthree)"
+    }
+  },
+  "672": {
+    "inputs": {
+      "width": 4000,
+      "height": 2000,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "441",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "VL Upscale Resize 1"
+    }
+  },
+  "675": {
+    "inputs": {
+      "model_name": "RealESRGAN_x4plus.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "VL Load Upscale Model GAN"
+    }
+  },
+  "677": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 0.4,
+      "multithread": true,
+      "image_ref": [
+        "672",
+        0
+      ],
+      "image_target": [
+        "657",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "VL Color Match"
+    }
+  },
+  "678": {
+    "inputs": {
+      "width": 16000,
+      "height": 8000,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "685",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "VL Upscale Resize Final"
+    }
+  },
+  "685": {
+    "inputs": {
+      "upscale_by": 2,
+      "seed": [
+        "671",
+        0
+      ],
+      "steps": 20,
+      "cfg": 3,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.12,
+      "mode_type": "None",
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "mask_blur": 16,
+      "tile_padding": 32,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 16,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": "enable",
+      "tiled_decode": false,
+      "image": [
+        "677",
+        0
+      ],
+      "model": [
+        "720",
+        0
+      ],
+      "positive": [
+        "367",
+        0
+      ],
+      "negative": [
+        "368",
+        0
+      ],
+      "vae": [
+        "719",
+        0
+      ],
+      "upscale_model": [
+        "675",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "VL Ultimate SD Upscale"
+    }
+  },
+  "690": {
+    "inputs": {
+      "filepath": [
+        "631",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "405",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "691": {
+    "inputs": {
+      "filepath": [
+        "632",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "633",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "692": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "693": {
+    "inputs": {
+      "weight": 0.4,
+      "start_percent": 0.1,
+      "end_percent": 0.6,
+      "model": [
+        "720",
+        0
+      ],
+      "ipadapter_flux": [
+        "692",
+        0
+      ],
+      "image": [
+        "630",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "694": {
+    "inputs": {
+      "seed": 15403590006133,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "deis",
+      "scheduler": "normal",
+      "denoise": 0.12,
+      "model": [
+        "720",
+        0
+      ],
+      "latent_image": [
+        "695",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "VL KSampler Refiner"
+    }
+  },
+  "695": {
+    "inputs": {
+      "noise_std": 0.15,
+      "samples": [
+        "699",
+        0
+      ]
+    },
+    "class_type": "Latent Noise Injection",
+    "_meta": {
+      "title": "VL Refiner Noise Injection"
+    }
+  },
+  "699": {
+    "inputs": {
+      "pixels": [
+        "585",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "700": {
+    "inputs": {
+      "samples": [
+        "694",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "718": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "719": {
+    "inputs": {
+      "vae_name": "flux-vae-bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "720": {
+    "inputs": {
+      "unet_name": "flux1-dev-Q6_K.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "VL Load Checkpoint Upscale"
+    }
+  },
+  "505:499": {
+    "inputs": {
+      "image": [
+        "505:501",
+        0
+      ]
+    },
+    "class_type": "DepthPro",
+    "_meta": {
+      "title": "Depth Pro"
+    }
+  },
+  "505:501": {
+    "inputs": {
+      "scale_by": 0.25,
+      "images": [
+        "405",
+        0
+      ]
+    },
+    "class_type": "easy imageScaleDownBy",
+    "_meta": {
+      "title": "Image Scale Down By"
+    }
+  }
+}

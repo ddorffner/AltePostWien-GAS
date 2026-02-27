@@ -1,0 +1,396 @@
+{
+  "20": {
+    "inputs": {
+      "ckpt_name": "Juggernaut_X_RunDiffusion.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "30": {
+    "inputs": {
+      "text": "text",
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "31": {
+    "inputs": {
+      "control_net_name": "control-lora-depth-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "32": {
+    "inputs": {
+      "image": "hof4depthd (1).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "34": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "29",
+        0
+      ],
+      "negative": [
+        "30",
+        0
+      ],
+      "control_net": [
+        "31",
+        0
+      ],
+      "image": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "37": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0.8,
+      "end_percent": 1,
+      "positive": [
+        "34",
+        0
+      ],
+      "negative": [
+        "34",
+        1
+      ],
+      "control_net": [
+        "38",
+        0
+      ],
+      "image": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "38": {
+    "inputs": {
+      "control_net_name": "control-lora-canny-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "52": {
+    "inputs": {
+      "image": "hof4edged (1).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "150": {
+    "inputs": {
+      "seed": 666,
+      "tileX": 1,
+      "tileY": 0,
+      "steps": 30,
+      "cfg": 7,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "199",
+        0
+      ],
+      "positive": [
+        "37",
+        0
+      ],
+      "negative": [
+        "37",
+        1
+      ],
+      "latent_image": [
+        "157",
+        0
+      ]
+    },
+    "class_type": "Asymmetric Tiled KSampler",
+    "_meta": {
+      "title": "Asymmetric Tiled KSampler"
+    }
+  },
+  "157": {
+    "inputs": {
+      "resolution": "1408x704 (2.0)",
+      "batch_size": 1
+    },
+    "class_type": "SDXLEmptyLatentSizePicker+",
+    "_meta": {
+      "title": "🔧 SDXL Empty Latent Size Picker"
+    }
+  },
+  "158": {
+    "inputs": {
+      "filename_prefix": "hof",
+      "images": [
+        "169",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "163": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "resize_source": false
+    },
+    "class_type": "LatentCompositeMasked",
+    "_meta": {
+      "title": "LatentCompositeMasked"
+    }
+  },
+  "169": {
+    "inputs": {
+      "samples": [
+        "150",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "Circular VAEDecode",
+    "_meta": {
+      "title": "Circular VAEDecode"
+    }
+  },
+  "178": {
+    "inputs": {
+      "image": "hof4shaded (1).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "187": {
+    "inputs": {
+      "image": "hof4maskd (1).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "197": {
+    "inputs": {
+      "preset": "PLUS (high strength)",
+      "model": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "IPAdapterUnifiedLoader",
+    "_meta": {
+      "title": "IPAdapter Unified Loader"
+    }
+  },
+  "198": {
+    "inputs": {
+      "weight": 0.18,
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "image": [
+        "206",
+        0
+      ]
+    },
+    "class_type": "IPAdapterEncoder",
+    "_meta": {
+      "title": "IPAdapter Encoder"
+    }
+  },
+  "199": {
+    "inputs": {
+      "weight": 1,
+      "weight_type": "linear",
+      "start_at": 0,
+      "end_at": 1,
+      "embeds_scaling": "V only",
+      "model": [
+        "197",
+        0
+      ],
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "pos_embed": [
+        "200",
+        0
+      ],
+      "neg_embed": [
+        "202",
+        0
+      ]
+    },
+    "class_type": "IPAdapterEmbeds",
+    "_meta": {
+      "title": "IPAdapter Embeds"
+    }
+  },
+  "200": {
+    "inputs": {
+      "method": "concat",
+      "embed1": [
+        "198",
+        0
+      ],
+      "embed2": [
+        "201",
+        0
+      ],
+      "embed3": [
+        "203",
+        0
+      ]
+    },
+    "class_type": "IPAdapterCombineEmbeds",
+    "_meta": {
+      "title": "IPAdapter Combine Embeds"
+    }
+  },
+  "201": {
+    "inputs": {
+      "weight": 0.17,
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "image": [
+        "205",
+        0
+      ]
+    },
+    "class_type": "IPAdapterEncoder",
+    "_meta": {
+      "title": "IPAdapter Encoder"
+    }
+  },
+  "202": {
+    "inputs": {
+      "method": "concat",
+      "embed1": [
+        "198",
+        1
+      ],
+      "embed2": [
+        "201",
+        1
+      ],
+      "embed3": [
+        "203",
+        1
+      ]
+    },
+    "class_type": "IPAdapterCombineEmbeds",
+    "_meta": {
+      "title": "IPAdapter Combine Embeds"
+    }
+  },
+  "203": {
+    "inputs": {
+      "weight": 0.25,
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "image": [
+        "204",
+        0
+      ]
+    },
+    "class_type": "IPAdapterEncoder",
+    "_meta": {
+      "title": "IPAdapter Encoder"
+    }
+  },
+  "204": {
+    "inputs": {
+      "image": "Bildschirm_foto 2024-04-18 um 00.13.37 (1).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "205": {
+    "inputs": {
+      "image": "Bildschirm_foto 2024-04-18 um 00.15.26 (1).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "206": {
+    "inputs": {
+      "image": "Bildschirm_foto 2024-04-18 um 00.21.07 (1).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  }
+}

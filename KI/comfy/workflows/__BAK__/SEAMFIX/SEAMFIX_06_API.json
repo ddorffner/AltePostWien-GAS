@@ -1,0 +1,247 @@
+{
+  "35": {
+    "inputs": {
+      "roll_x": 0,
+      "roll_y": 0,
+      "roll_x_by_50_percent": true,
+      "image": [
+        "104",
+        0
+      ]
+    },
+    "class_type": "Roll Image Axes",
+    "_meta": {
+      "title": "Roll Image Axes"
+    }
+  },
+  "36": {
+    "inputs": {
+      "frac_width": 0,
+      "pixel_width": 320,
+      "feather": 120,
+      "roll_x_by_50_percent": false,
+      "image": [
+        "104",
+        0
+      ]
+    },
+    "class_type": "Create Seam Mask",
+    "_meta": {
+      "title": "VL Create Seam Mask"
+    }
+  },
+  "53": {
+    "inputs": {
+      "roll_x": 0,
+      "roll_y": 0,
+      "roll_x_by_50_percent": true,
+      "image": [
+        "76",
+        0
+      ]
+    },
+    "class_type": "Roll Image Axes",
+    "_meta": {
+      "title": "Roll Image Axes"
+    }
+  },
+  "71": {
+    "inputs": {
+      "ckpt_name": "Juggernaut_RunDiffusionPhoto2_Lightning_4Steps.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "VL Load Checkpoint"
+    }
+  },
+  "73": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "71",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "74": {
+    "inputs": {
+      "text": "blurry, low quality",
+      "clip": [
+        "71",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "75": {
+    "inputs": {
+      "pixels": [
+        "35",
+        0
+      ],
+      "vae": [
+        "71",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "76": {
+    "inputs": {
+      "samples": [
+        "100",
+        0
+      ],
+      "vae": [
+        "71",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "77": {
+    "inputs": {
+      "samples": [
+        "75",
+        0
+      ],
+      "mask": [
+        "36",
+        0
+      ]
+    },
+    "class_type": "SetLatentNoiseMask",
+    "_meta": {
+      "title": "Set Latent Noise Mask"
+    }
+  },
+  "81": {
+    "inputs": {
+      "mask": [
+        "36",
+        0
+      ]
+    },
+    "class_type": "MaskPreview",
+    "_meta": {
+      "title": "MaskPreview"
+    }
+  },
+  "82": {
+    "inputs": {
+      "images": [
+        "35",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "85": {
+    "inputs": {
+      "images": [
+        "76",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "86": {
+    "inputs": {
+      "images": [
+        "53",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "99": {
+    "inputs": {
+      "image": "\\\\10.1.91.11\\data-pg8\\ComfyUI-Output\\_UPSCALED\\eidechsenauge_2025-09-30\\HOF_Color.png"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Upscale"
+    }
+  },
+  "100": {
+    "inputs": {
+      "seed": 203415667452691,
+      "tiling": 1,
+      "steps": 6,
+      "cfg": 2,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.88,
+      "model": [
+        "71",
+        0
+      ],
+      "positive": [
+        "73",
+        0
+      ],
+      "negative": [
+        "74",
+        0
+      ],
+      "latent_image": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "Tiled KSampler",
+    "_meta": {
+      "title": "VL Tiled KSampler"
+    }
+  },
+  "104": {
+    "inputs": {
+      "factor": 0.6,
+      "resampler": "bicubic",
+      "IMAGE": [
+        "99",
+        0
+      ]
+    },
+    "class_type": "JDC_ResizeFactor",
+    "_meta": {
+      "title": "VL Resize Image by Factor"
+    }
+  },
+  "105": {
+    "inputs": {
+      "filepath": "test.png",
+      "overwrite": true,
+      "image": [
+        "53",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "VL Output Path Color"
+    }
+  }
+}

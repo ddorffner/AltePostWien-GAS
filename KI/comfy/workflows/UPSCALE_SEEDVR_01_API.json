@@ -1,0 +1,304 @@
+{
+  "10": {
+    "inputs": {
+      "seed": 42,
+      "resolution": 4096,
+      "max_resolution": 4096,
+      "batch_size": 1,
+      "uniform_batch_size": false,
+      "color_correction": "lab",
+      "temporal_overlap": 0,
+      "prepend_frames": 0,
+      "input_noise_scale": 0,
+      "latent_noise_scale": 0,
+      "offload_device": "cpu",
+      "enable_debug": false,
+      "image": [
+        "41",
+        0
+      ],
+      "dit": [
+        "14",
+        0
+      ],
+      "vae": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "SeedVR2VideoUpscaler",
+    "_meta": {
+      "title": "VL SeedVR 1"
+    }
+  },
+  "13": {
+    "inputs": {
+      "model": "ema_vae_fp16.safetensors",
+      "device": "cuda:0",
+      "encode_tiled": true,
+      "encode_tile_size": 1024,
+      "encode_tile_overlap": 128,
+      "decode_tiled": true,
+      "decode_tile_size": 1024,
+      "decode_tile_overlap": 128,
+      "tile_debug": "false",
+      "offload_device": "cpu",
+      "cache_model": false
+    },
+    "class_type": "SeedVR2LoadVAEModel",
+    "_meta": {
+      "title": "VL SeedVR2 VAE"
+    }
+  },
+  "14": {
+    "inputs": {
+      "model": "seedvr2_ema_7b-Q4_K_M.gguf",
+      "device": "cuda:0",
+      "blocks_to_swap": 36,
+      "swap_io_components": false,
+      "offload_device": "cpu",
+      "cache_model": false,
+      "attention_mode": "sdpa"
+    },
+    "class_type": "SeedVR2LoadDiTModel",
+    "_meta": {
+      "title": "VL SeedVR2 DIT"
+    }
+  },
+  "27": {
+    "inputs": {
+      "seed": 42,
+      "resolution": 8192,
+      "max_resolution": 8192,
+      "batch_size": 1,
+      "uniform_batch_size": false,
+      "color_correction": "lab",
+      "temporal_overlap": 0,
+      "prepend_frames": 0,
+      "input_noise_scale": 0,
+      "latent_noise_scale": 0,
+      "offload_device": "cpu",
+      "enable_debug": false,
+      "image": [
+        "10",
+        0
+      ],
+      "dit": [
+        "14",
+        0
+      ],
+      "vae": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "SeedVR2VideoUpscaler",
+    "_meta": {
+      "title": "VL SeedVR 2"
+    }
+  },
+  "28": {
+    "inputs": {
+      "image": [
+        "41",
+        0
+      ]
+    },
+    "class_type": "easy imageSize",
+    "_meta": {
+      "title": "ImageSize"
+    }
+  },
+  "34": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "width": [
+        "37",
+        0
+      ],
+      "height": [
+        "38",
+        0
+      ],
+      "crop": "disabled",
+      "image": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "VL Upscale Image"
+    }
+  },
+  "37": {
+    "inputs": {
+      "a": [
+        "28",
+        0
+      ],
+      "b": 6,
+      "operation": "multiply"
+    },
+    "class_type": "easy mathInt",
+    "_meta": {
+      "title": "VL Multiply Width"
+    }
+  },
+  "38": {
+    "inputs": {
+      "a": [
+        "28",
+        1
+      ],
+      "b": 6,
+      "operation": "multiply"
+    },
+    "class_type": "easy mathInt",
+    "_meta": {
+      "title": "VL Multiply Height"
+    }
+  },
+  "41": {
+    "inputs": {
+      "image": "input_img_path"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Load Image From Path"
+    }
+  },
+  "42": {
+    "inputs": {
+      "filepath": [
+        "46",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "34",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "43": {
+    "inputs": {
+      "filepath": [
+        "48",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "49",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "44": {
+    "inputs": {
+      "filepath": [
+        "47",
+        0
+      ],
+      "tonemap": "sRGB",
+      "start_frame": 1001,
+      "overwrite": true,
+      "save_workflow": "none",
+      "images": [
+        "45:499",
+        0
+      ]
+    },
+    "class_type": "SaveEXRFrames",
+    "_meta": {
+      "title": "Save EXR Frames"
+    }
+  },
+  "46": {
+    "inputs": {
+      "value": "_COLOR"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Color"
+    }
+  },
+  "47": {
+    "inputs": {
+      "value": "_DEPTH"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Depth"
+    }
+  },
+  "48": {
+    "inputs": {
+      "value": "_THUMB"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Thumb"
+    }
+  },
+  "49": {
+    "inputs": {
+      "size": 512,
+      "method": "NEAREST",
+      "image": [
+        "34",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "Resize Longest To"
+    }
+  },
+  "45:499": {
+    "inputs": {
+      "depth_pro_model": [
+        "45:505",
+        0
+      ],
+      "image": [
+        "45:501",
+        0
+      ]
+    },
+    "class_type": "DepthPro",
+    "_meta": {
+      "title": "Depth Pro"
+    }
+  },
+  "45:501": {
+    "inputs": {
+      "scale_by": 0.2,
+      "images": [
+        "34",
+        0
+      ]
+    },
+    "class_type": "easy imageScaleDownBy",
+    "_meta": {
+      "title": "Image Scale Down By"
+    }
+  },
+  "45:505": {
+    "inputs": {
+      "precision": "fp16"
+    },
+    "class_type": "LoadDepthPro",
+    "_meta": {
+      "title": "(Down)Load Depth Pro model"
+    }
+  }
+}

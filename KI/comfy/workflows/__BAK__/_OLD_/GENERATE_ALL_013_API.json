@@ -1,0 +1,698 @@
+{
+  "65": {
+    "inputs": {
+      "guidance": 2.9000000000000004,
+      "conditioning": [
+        "67",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "VL FluxGuidance"
+    }
+  },
+  "66": {
+    "inputs": {
+      "text": "dof, depth of field, blurry, overexposed, noise, noisy",
+      "clip": [
+        "282",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL Negative Prompt Gen"
+    }
+  },
+  "67": {
+    "inputs": {
+      "text": [
+        "69",
+        0
+      ],
+      "clip": [
+        "282",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "69": {
+    "inputs": {
+      "string_a": [
+        "70",
+        2
+      ],
+      "string_b": [
+        "74",
+        0
+      ],
+      "delimiter": ""
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "Concatenate"
+    }
+  },
+  "70": {
+    "inputs": {
+      "text_input": "",
+      "task": "prompt_gen_mixed_caption",
+      "fill_mask": true,
+      "keep_model_loaded": false,
+      "max_new_tokens": 256,
+      "num_beams": 3,
+      "do_sample": true,
+      "output_mask_select": "",
+      "seed": 399348640856758,
+      "image": [
+        "267",
+        0
+      ],
+      "florence2_model": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "Florence2Run",
+    "_meta": {
+      "title": "VL Florence2Run"
+    }
+  },
+  "71": {
+    "inputs": {
+      "model": "MiaoshouAI/Florence-2-large-PromptGen-v2.0",
+      "precision": "fp16",
+      "attention": "eager",
+      "convert_to_safetensors": true
+    },
+    "class_type": "DownloadAndLoadFlorence2Model",
+    "_meta": {
+      "title": "VL DownloadAndLoadFlorence2Model"
+    }
+  },
+  "74": {
+    "inputs": {
+      "value": "perspective looking up, objects arranged neatly and repeatedly using available space"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Post Prompt Gen"
+    }
+  },
+  "75": {
+    "inputs": {
+      "guidance": 3,
+      "conditioning": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "VL FluxGuidance Negative"
+    }
+  },
+  "77": {
+    "inputs": {
+      "size": 1280,
+      "method": "BICUBIC",
+      "image": [
+        "235",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL ControlNet Resize Longest"
+    }
+  },
+  "101": {
+    "inputs": {
+      "image": [
+        "263",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "106": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "108": {
+    "inputs": {
+      "downsampling_factor": 2,
+      "downsampling_function": "bilinear",
+      "mode": "keep aspect ratio",
+      "weight": 0.5,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "127",
+        0
+      ],
+      "style_model": [
+        "115",
+        0
+      ],
+      "clip_vision": [
+        "106",
+        0
+      ],
+      "image": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "109": {
+    "inputs": {
+      "samples": [
+        "113",
+        0
+      ],
+      "vae": [
+        "282",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "111": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "VL Sampler"
+    }
+  },
+  "112": {
+    "inputs": {
+      "scheduler": "ddim_uniform",
+      "steps": 40,
+      "denoise": 1,
+      "model": [
+        "118",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "113": {
+    "inputs": {
+      "noise": [
+        "117",
+        0
+      ],
+      "guider": [
+        "124",
+        0
+      ],
+      "sampler": [
+        "111",
+        0
+      ],
+      "sigmas": [
+        "112",
+        0
+      ],
+      "latent_image": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "115": {
+    "inputs": {
+      "style_model_name": "flux1-redux-dev.safetensors"
+    },
+    "class_type": "StyleModelLoader",
+    "_meta": {
+      "title": "Load Style Model"
+    }
+  },
+  "116": {
+    "inputs": {
+      "width": [
+        "101",
+        0
+      ],
+      "height": [
+        "101",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "117": {
+    "inputs": {
+      "noise_seed": 42123851236988
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "VL Seed Gen"
+    }
+  },
+  "118": {
+    "inputs": {
+      "max_shift": 1,
+      "base_shift": 0.5,
+      "width": [
+        "101",
+        0
+      ],
+      "height": [
+        "101",
+        1
+      ],
+      "model": [
+        "165",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "ModelSamplingFlux"
+    }
+  },
+  "124": {
+    "inputs": {
+      "model": [
+        "165",
+        0
+      ],
+      "conditioning": [
+        "281",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "125": {
+    "inputs": {
+      "type": "depth",
+      "control_net": [
+        "128",
+        0
+      ]
+    },
+    "class_type": "SetShakkerLabsUnionControlNetType",
+    "_meta": {
+      "title": "Set Shakker Labs Union ControlNet Type"
+    }
+  },
+  "127": {
+    "inputs": {
+      "strength": 0.4000000000000001,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "75",
+        0
+      ],
+      "control_net": [
+        "125",
+        0
+      ],
+      "image": [
+        "263",
+        0
+      ],
+      "vae": [
+        "282",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 1"
+    }
+  },
+  "128": {
+    "inputs": {
+      "control_net_name": "controlnet-union_shakker.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "156": {
+    "inputs": {
+      "size": 1024,
+      "method": "BICUBIC",
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Input Image Resize Longest"
+    }
+  },
+  "164": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "165": {
+    "inputs": {
+      "weight": 0.7,
+      "start_percent": 0.1,
+      "end_percent": 0.8,
+      "model": [
+        "282",
+        0
+      ],
+      "ipadapter_flux": [
+        "164",
+        0
+      ],
+      "image": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "235": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Depth"
+    }
+  },
+  "236": {
+    "inputs": {
+      "image": "..."
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Style"
+    }
+  },
+  "246": {
+    "inputs": {
+      "value": "test.png"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Original"
+    }
+  },
+  "250": {
+    "inputs": {
+      "filepath": [
+        "246",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "254": {
+    "inputs": {
+      "text": [
+        "69",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "VL Show Text"
+    }
+  },
+  "255": {
+    "inputs": {
+      "images": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "263": {
+    "inputs": {
+      "blur_radius": 1,
+      "sigma": 1,
+      "image": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "ImageBlur",
+    "_meta": {
+      "title": "VL Image Blur Depth"
+    }
+  },
+  "265": {
+    "inputs": {
+      "images": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "267": {
+    "inputs": {
+      "size": 800,
+      "method": "BICUBIC",
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Input Image Resize Florence"
+    }
+  },
+  "268": {
+    "inputs": {
+      "control_net_name": "controlnet-union_shakker.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "269": {
+    "inputs": {
+      "type": "canny",
+      "control_net": [
+        "268",
+        0
+      ]
+    },
+    "class_type": "SetShakkerLabsUnionControlNetType",
+    "_meta": {
+      "title": "Set Shakker Labs Union ControlNet Type"
+    }
+  },
+  "271": {
+    "inputs": {
+      "strength": 0.3,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "positive": [
+        "108",
+        0
+      ],
+      "negative": [
+        "75",
+        0
+      ],
+      "control_net": [
+        "269",
+        0
+      ],
+      "image": [
+        "274",
+        0
+      ],
+      "vae": [
+        "282",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Canny"
+    }
+  },
+  "272": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Canny"
+    }
+  },
+  "273": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Normal"
+    }
+  },
+  "274": {
+    "inputs": {
+      "size": 1280,
+      "method": "BICUBIC",
+      "image": [
+        "272",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL ControlNet Resize Longest"
+    }
+  },
+  "275": {
+    "inputs": {
+      "size": 1280,
+      "method": "BICUBIC",
+      "image": [
+        "273",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL ControlNet Resize Longest"
+    }
+  },
+  "276": {
+    "inputs": {
+      "control_net_name": "jasper_controlnet_normal\\diffusion_pytorch_model.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "278": {
+    "inputs": {
+      "strength": 0.7,
+      "start_percent": 0,
+      "end_percent": 0.8,
+      "positive": [
+        "271",
+        0
+      ],
+      "negative": [
+        "271",
+        1
+      ],
+      "control_net": [
+        "276",
+        0
+      ],
+      "image": [
+        "275",
+        0
+      ],
+      "vae": [
+        "282",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Normal"
+    }
+  },
+  "281": {
+    "inputs": {
+      "conditioning_1": [
+        "278",
+        0
+      ],
+      "conditioning_2": [
+        "278",
+        1
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "282": {
+    "inputs": {
+      "ckpt_name": "flux1-dev-fp8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  }
+}

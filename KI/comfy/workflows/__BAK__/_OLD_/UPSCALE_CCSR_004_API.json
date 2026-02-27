@@ -1,0 +1,459 @@
+{
+  "2": {
+    "inputs": {
+      "ckpt_name": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "VL Load Checkpoint SDXL"
+    }
+  },
+  "10": {
+    "inputs": {
+      "method": "Mixture of Diffusers",
+      "tile_width": 768,
+      "tile_height": 768,
+      "tile_overlap": 64,
+      "tile_batch_size": 4,
+      "model": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "TiledDiffusion",
+    "_meta": {
+      "title": "VL Tiled Diffusion"
+    }
+  },
+  "16": {
+    "inputs": {
+      "pixels": [
+        "40",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "23": {
+    "inputs": {
+      "add_noise": true,
+      "noise_seed": 501061442506463,
+      "cfg": 1,
+      "model": [
+        "10",
+        0
+      ],
+      "positive": [
+        "106",
+        0
+      ],
+      "negative": [
+        "106",
+        0
+      ],
+      "sampler": [
+        "25",
+        0
+      ],
+      "sigmas": [
+        "24",
+        0
+      ],
+      "latent_image": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "SamplerCustom",
+    "_meta": {
+      "title": "SamplerCustom"
+    }
+  },
+  "24": {
+    "inputs": {
+      "divide_by_last_sigma": false,
+      "divide_by": 1,
+      "offset_by": 1,
+      "sigmas": [
+        "26",
+        0
+      ]
+    },
+    "class_type": "FlipSigmasAdjusted",
+    "_meta": {
+      "title": "Flip Sigmas Adjusted"
+    }
+  },
+  "25": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "26": {
+    "inputs": {
+      "scheduler": "normal",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "27": {
+    "inputs": {
+      "strength": 0.01,
+      "normalize": false,
+      "average": false,
+      "mix_randn_amount": 0,
+      "seed": 29334347146611,
+      "latents": [
+        "16",
+        0
+      ],
+      "noise": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "InjectNoiseToLatent",
+    "_meta": {
+      "title": "Inject Noise To Latent"
+    }
+  },
+  "32": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ykvca_00001_.png&type=temp&subfolder=&rand=0.044792431921027775"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ykvca_00002_.png&type=temp&subfolder=&rand=0.34592692245522616"
+          }
+        ]
+      },
+      "image_a": [
+        "141",
+        0
+      ],
+      "image_b": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "39": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 0.5,
+      "multithread": true,
+      "image_ref": [
+        "137",
+        0
+      ],
+      "image_target": [
+        "150",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "VL Color Match"
+    }
+  },
+  "40": {
+    "inputs": {
+      "amount": 0.8,
+      "image": [
+        "137",
+        0
+      ]
+    },
+    "class_type": "ImageCASharpening+",
+    "_meta": {
+      "title": "VL Image Contrast Adaptive Sharpening"
+    }
+  },
+  "69": {
+    "inputs": {
+      "images": [
+        "137",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "100": {
+    "inputs": {
+      "ckpt_name": "real-world_ccsr-fp16.safetensors"
+    },
+    "class_type": "CCSR_Model_Select",
+    "_meta": {
+      "title": "VL CCSR Model"
+    }
+  },
+  "106": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "2",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "133": {
+    "inputs": {
+      "add_noise": "disable",
+      "noise_seed": 0,
+      "steps": 10,
+      "cfg": 1,
+      "sampler_name": "dpmpp_2m_sde_gpu",
+      "scheduler": "karras",
+      "start_at_step": 6,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "10",
+        0
+      ],
+      "positive": [
+        "106",
+        0
+      ],
+      "negative": [
+        "106",
+        0
+      ],
+      "latent_image": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "VL KSampler"
+    }
+  },
+  "137": {
+    "inputs": {
+      "resize_method": "lanczos",
+      "scale_by": 4,
+      "steps": 40,
+      "t_max": 0.6667,
+      "t_min": 0.3333,
+      "sampling_method": "ccsr_tiled_mixdiff",
+      "tile_size": 512,
+      "tile_stride": 256,
+      "vae_tile_size_encode": 1024,
+      "vae_tile_size_decode": 1024,
+      "color_fix_type": "adain",
+      "keep_model_loaded": false,
+      "seed": 123,
+      "ccsr_model": [
+        "100",
+        0
+      ],
+      "image": [
+        "141",
+        0
+      ]
+    },
+    "class_type": "CCSR_Upscale",
+    "_meta": {
+      "title": "VL CCSR Upscale"
+    }
+  },
+  "140": {
+    "inputs": {
+      "filepath": [
+        "142",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "141": {
+    "inputs": {
+      "image": "ComfyUI_00001_-assets\\ComfyUI_00001_.png [output]"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Load Image From Path"
+    }
+  },
+  "142": {
+    "inputs": {
+      "value": "_COLOR"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Color"
+    }
+  },
+  "144": {
+    "inputs": {
+      "value": "_DEPTH"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Depth"
+    }
+  },
+  "145": {
+    "inputs": {
+      "filepath": [
+        "144",
+        0
+      ],
+      "tonemap": "sRGB",
+      "start_frame": 1001,
+      "overwrite": true,
+      "save_workflow": "none",
+      "images": [
+        "143:499",
+        0
+      ]
+    },
+    "class_type": "SaveEXRFrames",
+    "_meta": {
+      "title": "Save EXR Frames"
+    }
+  },
+  "146": {
+    "inputs": {
+      "value": "_THUMB"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Thumb"
+    }
+  },
+  "147": {
+    "inputs": {
+      "size": 512,
+      "method": "NEAREST",
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "Resize Longest To"
+    }
+  },
+  "148": {
+    "inputs": {
+      "filepath": [
+        "146",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "147",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "150": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 128,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "133",
+        0
+      ],
+      "vae": [
+        "2",
+        2
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VL VAE Decode Tiled"
+    }
+  },
+  "143:499": {
+    "inputs": {
+      "depth_pro_model": [
+        "143:505",
+        0
+      ],
+      "image": [
+        "143:501",
+        0
+      ]
+    },
+    "class_type": "DepthPro",
+    "_meta": {
+      "title": "Depth Pro"
+    }
+  },
+  "143:501": {
+    "inputs": {
+      "scale_by": 0.2,
+      "images": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "easy imageScaleDownBy",
+    "_meta": {
+      "title": "Image Scale Down By"
+    }
+  },
+  "143:505": {
+    "inputs": {
+      "precision": "fp16"
+    },
+    "class_type": "LoadDepthPro",
+    "_meta": {
+      "title": "(Down)Load Depth Pro model"
+    }
+  }
+}

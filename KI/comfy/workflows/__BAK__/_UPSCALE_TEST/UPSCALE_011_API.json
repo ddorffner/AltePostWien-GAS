@@ -1,0 +1,601 @@
+{
+  "2": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "decoder_tile_size": [
+        "10",
+        0
+      ],
+      "SUPIR_VAE": [
+        "5",
+        1
+      ],
+      "latents": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "SUPIR_decode",
+    "_meta": {
+      "title": "SUPIR Decode"
+    }
+  },
+  "3": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "10",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "6",
+        0
+      ],
+      "image": [
+        "6",
+        1
+      ]
+    },
+    "class_type": "SUPIR_encode",
+    "_meta": {
+      "title": "SUPIR Encode"
+    }
+  },
+  "5": {
+    "inputs": {
+      "supir_model": "SUPIR-v0Q_fp16.safetensors",
+      "fp8_unet": false,
+      "diffusion_dtype": "auto",
+      "high_vram": true,
+      "model": [
+        "70",
+        0
+      ],
+      "vae": [
+        "65",
+        0
+      ]
+    },
+    "class_type": "SUPIR_model_loader_v2",
+    "_meta": {
+      "title": "SUPIR Model Loader (v2)"
+    }
+  },
+  "6": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "10",
+        0
+      ],
+      "decoder_tile_size": [
+        "10",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "5",
+        1
+      ],
+      "image": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "SUPIR_first_stage",
+    "_meta": {
+      "title": "SUPIR First Stage (Denoiser)"
+    }
+  },
+  "10": {
+    "inputs": {
+      "value": 1024
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Size"
+    }
+  },
+  "11": {
+    "inputs": {
+      "value": 512
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Stride"
+    }
+  },
+  "12": {
+    "inputs": {
+      "positive_prompt": "high quality, detailed",
+      "negative_prompt": "blurry",
+      "SUPIR_model": [
+        "5",
+        0
+      ],
+      "latents": [
+        "6",
+        2
+      ]
+    },
+    "class_type": "SUPIR_conditioner",
+    "_meta": {
+      "title": "SUPIR Conditioner"
+    }
+  },
+  "13": {
+    "inputs": {
+      "seed": [
+        "16",
+        0
+      ],
+      "steps": 12,
+      "cfg_scale_start": 1,
+      "cfg_scale_end": 1.1,
+      "EDM_s_churn": 2,
+      "s_noise": 1.002,
+      "DPMPP_eta": 0.1,
+      "control_scale_start": 1,
+      "control_scale_end": 0.9,
+      "restore_cfg": 1.0000000000000002,
+      "keep_model_loaded": false,
+      "sampler": "RestoreDPMPP2MSampler",
+      "sampler_tile_size": [
+        "10",
+        0
+      ],
+      "sampler_tile_stride": [
+        "11",
+        0
+      ],
+      "SUPIR_model": [
+        "5",
+        0
+      ],
+      "latents": [
+        "3",
+        0
+      ],
+      "positive": [
+        "12",
+        0
+      ],
+      "negative": [
+        "12",
+        1
+      ]
+    },
+    "class_type": "SUPIR_sample",
+    "_meta": {
+      "title": "VL SUPIR Sampler"
+    }
+  },
+  "16": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "Seed (rgthree)"
+    }
+  },
+  "17": {
+    "inputs": {
+      "model": "depth_anything_v2_vits_fp16.safetensors"
+    },
+    "class_type": "DownloadAndLoadDepthAnythingV2Model",
+    "_meta": {
+      "title": "VL Depth Model"
+    }
+  },
+  "18": {
+    "inputs": {
+      "width": 2400,
+      "height": 688,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": "stretch",
+      "pad_color": "0, 0, 0",
+      "crop_position": "center",
+      "divisible_by": 1,
+      "device": "gpu",
+      "image": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "VL Depth Output Size Gen"
+    }
+  },
+  "19": {
+    "inputs": {
+      "da_model": [
+        "17",
+        0
+      ],
+      "images": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "DepthAnything_V2",
+    "_meta": {
+      "title": "Depth Anything V2"
+    }
+  },
+  "20": {
+    "inputs": {
+      "width": 3600,
+      "height": 1032,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "47",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "VL Upscale Resize 1"
+    }
+  },
+  "21": {
+    "inputs": {
+      "text": "4K, realistic",
+      "clip": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL UPSCALE PROMPT"
+    }
+  },
+  "22": {
+    "inputs": {
+      "text": "blurry",
+      "clip": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL UPSCALE NEG PROMPT"
+    }
+  },
+  "23": {
+    "inputs": {
+      "model_name": "RealESRGAN_x2.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "25": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 0.3,
+      "multithread": true,
+      "image_ref": [
+        "20",
+        0
+      ],
+      "image_target": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "Color Match"
+    }
+  },
+  "26": {
+    "inputs": {
+      "width": 9600,
+      "height": 2752,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "35",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "VL Upscale Resize Final"
+    }
+  },
+  "29": {
+    "inputs": {
+      "value": "DGN_Color"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Color"
+    }
+  },
+  "30": {
+    "inputs": {
+      "value": "DGN_Thumb"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Thumb"
+    }
+  },
+  "31": {
+    "inputs": {
+      "value": "DGN_Depth"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Depth"
+    }
+  },
+  "32": {
+    "inputs": {
+      "width": 4800,
+      "height": 1376,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": "stretch",
+      "pad_color": "0, 0, 0",
+      "crop_position": "center",
+      "divisible_by": 1,
+      "device": "gpu",
+      "image": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "VL Depth Output Size Final"
+    }
+  },
+  "33": {
+    "inputs": {
+      "filepath": [
+        "31",
+        0
+      ],
+      "tonemap": "sRGB",
+      "start_frame": 1001,
+      "overwrite": true,
+      "save_workflow": "none",
+      "images": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "SaveEXRFrames",
+    "_meta": {
+      "title": "Save EXR Frames"
+    }
+  },
+  "34": {
+    "inputs": {
+      "size": 512,
+      "method": "NEAREST",
+      "image": [
+        "47",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "Resize Longest To"
+    }
+  },
+  "35": {
+    "inputs": {
+      "upscale_by": 2,
+      "seed": [
+        "16",
+        0
+      ],
+      "steps": 12,
+      "cfg": 3,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.15000000000000002,
+      "mode_type": "None",
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "mask_blur": 16,
+      "tile_padding": 32,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 16,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": "enable",
+      "tiled_decode": false,
+      "image": [
+        "25",
+        0
+      ],
+      "model": [
+        "70",
+        0
+      ],
+      "positive": [
+        "21",
+        0
+      ],
+      "negative": [
+        "22",
+        0
+      ],
+      "vae": [
+        "65",
+        0
+      ],
+      "upscale_model": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "VL Ultimate SD Upscale"
+    }
+  },
+  "37": {
+    "inputs": {
+      "image": "..."
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Upscale"
+    }
+  },
+  "42": {
+    "inputs": {
+      "filepath": [
+        "29",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "26",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "43": {
+    "inputs": {
+      "filepath": [
+        "30",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "34",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "44": {
+    "inputs": {
+      "noise_std": 0.15,
+      "samples": [
+        "46",
+        0
+      ]
+    },
+    "class_type": "Latent Noise Injection",
+    "_meta": {
+      "title": "VL Refiner Noise Injection"
+    }
+  },
+  "45": {
+    "inputs": {
+      "seed": 15403590006133,
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "deis",
+      "scheduler": "normal",
+      "denoise": 0.12,
+      "model": [
+        "70",
+        0
+      ],
+      "positive": [
+        "21",
+        0
+      ],
+      "negative": [
+        "22",
+        0
+      ],
+      "latent_image": [
+        "44",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "VL KSampler Refiner"
+    }
+  },
+  "46": {
+    "inputs": {
+      "pixels": [
+        "37",
+        0
+      ],
+      "vae": [
+        "65",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "47": {
+    "inputs": {
+      "samples": [
+        "45",
+        0
+      ],
+      "vae": [
+        "65",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "65": {
+    "inputs": {
+      "vae_name": "flux-vae-bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "66": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "70": {
+    "inputs": {
+      "unet_name": "flux1-dev-Q6_K.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "VL Load Checkpoint Upscale"
+    }
+  }
+}

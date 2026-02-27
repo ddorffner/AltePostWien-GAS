@@ -1,0 +1,2342 @@
+{
+  "3": {
+    "inputs": {
+      "unet_name": "flux1-dev-Q8_0.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "VL Model Loader GGUF"
+    }
+  },
+  "10": {
+    "inputs": {
+      "Front": [
+        "166",
+        0
+      ],
+      "Right": [
+        "355",
+        0
+      ],
+      "Back": [
+        "382",
+        0
+      ],
+      "Left": [
+        "409",
+        0
+      ],
+      "Up": [
+        "14",
+        0
+      ],
+      "Down": [
+        "436",
+        0
+      ]
+    },
+    "class_type": "Stack Cubemap Faces",
+    "_meta": {
+      "title": "Stack Cubemap Faces"
+    }
+  },
+  "11": {
+    "inputs": {
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "12": {
+    "inputs": {
+      "images": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "14": {
+    "inputs": {
+      "width": [
+        "306",
+        0
+      ],
+      "height": [
+        "306",
+        0
+      ],
+      "batch_size": 1,
+      "color": 0
+    },
+    "class_type": "EmptyImage",
+    "_meta": {
+      "title": "EmptyImage"
+    }
+  },
+  "16": {
+    "inputs": {
+      "image": "C:\\Users\\SHA.ART\\Documents\\AltePost\\AltePostWien\\Assets\\Images\\DepthMap\\HOF\\HOF.png"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Depth"
+    }
+  },
+  "17": {
+    "inputs": {
+      "image": "C:\\Quellsammlung\\SHA-500-Quellbilder-2025-09-22\\Hundertwasserhaus.jpg"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Style"
+    }
+  },
+  "18": {
+    "inputs": {
+      "size": [
+        "306",
+        0
+      ],
+      "method": "NEAREST",
+      "image": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Input Image Resize Longest"
+    }
+  },
+  "21": {
+    "inputs": {
+      "h": -1,
+      "w": -1,
+      "padding_mode": "bilinear",
+      "cube_format": "stack",
+      "e_img": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "Cubemap to Equirectangular",
+    "_meta": {
+      "title": "Cubemap to Equirectangular"
+    }
+  },
+  "59": {
+    "inputs": {
+      "max_width": 1024,
+      "images": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "PanoramaViewerNode",
+    "_meta": {
+      "title": "Preview 360 Panorama"
+    }
+  },
+  "147": {
+    "inputs": {
+      "style_model_name": "flux1-redux-dev.safetensors"
+    },
+    "class_type": "StyleModelLoader",
+    "_meta": {
+      "title": "Load Style Model"
+    }
+  },
+  "148": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "150": {
+    "inputs": {
+      "image": [
+        "6:286",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "151": {
+    "inputs": {
+      "width": [
+        "150",
+        0
+      ],
+      "height": [
+        "150",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "152": {
+    "inputs": {
+      "sampler_name": "dpmpp_2m"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "153": {
+    "inputs": {
+      "noise": [
+        "175",
+        0
+      ],
+      "guider": [
+        "154",
+        0
+      ],
+      "sampler": [
+        "152",
+        0
+      ],
+      "sigmas": [
+        "172",
+        0
+      ],
+      "latent_image": [
+        "151",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "154": {
+    "inputs": {
+      "model": [
+        "157",
+        0
+      ],
+      "conditioning": [
+        "163",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "156": {
+    "inputs": {
+      "vae_name": "flux-vae-bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "157": {
+    "inputs": {
+      "weight": 0.7,
+      "start_percent": 0.1,
+      "end_percent": 0.8,
+      "model": [
+        "3",
+        0
+      ],
+      "ipadapter_flux": [
+        "158",
+        0
+      ],
+      "image": [
+        "54:56",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "158": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "161": {
+    "inputs": {
+      "control_net_name": "controlnet-union_shakker.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "162": {
+    "inputs": {
+      "type": "depth",
+      "control_net": [
+        "161",
+        0
+      ]
+    },
+    "class_type": "SetShakkerLabsUnionControlNetType",
+    "_meta": {
+      "title": "Set Shakker Labs Union ControlNet Type"
+    }
+  },
+  "163": {
+    "inputs": {
+      "downsampling_factor": 2,
+      "downsampling_function": "bilinear",
+      "mode": "keep aspect ratio",
+      "weight": 0.29,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "164",
+        0
+      ],
+      "style_model": [
+        "147",
+        0
+      ],
+      "clip_vision": [
+        "148",
+        0
+      ],
+      "image": [
+        "54:56",
+        0
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "164": {
+    "inputs": {
+      "conditioning_1": [
+        "174",
+        0
+      ],
+      "conditioning_2": [
+        "174",
+        1
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "166": {
+    "inputs": {
+      "samples": [
+        "153",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "172": {
+    "inputs": {
+      "scheduler": "ddim_uniform",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "157",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "173": {
+    "inputs": {
+      "strength": 0.7,
+      "start_percent": 0,
+      "end_percent": 0.7,
+      "positive": [
+        "20:65",
+        0
+      ],
+      "negative": [
+        "20:75",
+        0
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:286",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 1"
+    }
+  },
+  "174": {
+    "inputs": {
+      "strength": 0,
+      "start_percent": 0.5,
+      "end_percent": 0.9,
+      "positive": [
+        "173",
+        0
+      ],
+      "negative": [
+        "173",
+        1
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:286",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 2"
+    }
+  },
+  "175": {
+    "inputs": {
+      "noise_seed": 42123851236992
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "VL Seed Gen"
+    }
+  },
+  "306": {
+    "inputs": {
+      "number": 1000
+    },
+    "class_type": "StaticNumberInt",
+    "_meta": {
+      "title": "Static Number Int"
+    }
+  },
+  "312": {
+    "inputs": {
+      "images": [
+        "54:56",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "313": {
+    "inputs": {
+      "images": [
+        "54:56",
+        1
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "314": {
+    "inputs": {
+      "images": [
+        "54:56",
+        2
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "315": {
+    "inputs": {
+      "images": [
+        "54:56",
+        3
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "334": {
+    "inputs": {
+      "image": [
+        "6:289",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "335": {
+    "inputs": {
+      "model": [
+        "340",
+        0
+      ],
+      "conditioning": [
+        "346",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "337": {
+    "inputs": {
+      "strength": 0.6,
+      "start_percent": 0.5,
+      "end_percent": 0.9,
+      "positive": [
+        "349",
+        0
+      ],
+      "negative": [
+        "349",
+        1
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:289",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 2"
+    }
+  },
+  "340": {
+    "inputs": {
+      "weight": 0.7,
+      "start_percent": 0.1,
+      "end_percent": 0.8,
+      "model": [
+        "3",
+        0
+      ],
+      "ipadapter_flux": [
+        "158",
+        0
+      ],
+      "image": [
+        "54:56",
+        1
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "343": {
+    "inputs": {
+      "conditioning_1": [
+        "337",
+        0
+      ],
+      "conditioning_2": [
+        "337",
+        1
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "346": {
+    "inputs": {
+      "downsampling_factor": 2,
+      "downsampling_function": "bilinear",
+      "mode": "keep aspect ratio",
+      "weight": 0.5,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "343",
+        0
+      ],
+      "style_model": [
+        "147",
+        0
+      ],
+      "clip_vision": [
+        "148",
+        0
+      ],
+      "image": [
+        "54:56",
+        1
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "349": {
+    "inputs": {
+      "strength": 0.5,
+      "start_percent": 0,
+      "end_percent": 0.55,
+      "positive": [
+        "20:65",
+        0
+      ],
+      "negative": [
+        "20:75",
+        0
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:289",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 1"
+    }
+  },
+  "351": {
+    "inputs": {
+      "width": [
+        "334",
+        0
+      ],
+      "height": [
+        "334",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "352": {
+    "inputs": {
+      "scheduler": "ddim_uniform",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "340",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "354": {
+    "inputs": {
+      "noise": [
+        "175",
+        0
+      ],
+      "guider": [
+        "335",
+        0
+      ],
+      "sampler": [
+        "152",
+        0
+      ],
+      "sigmas": [
+        "352",
+        0
+      ],
+      "latent_image": [
+        "351",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "355": {
+    "inputs": {
+      "samples": [
+        "354",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "361": {
+    "inputs": {
+      "image": [
+        "6:287",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "362": {
+    "inputs": {
+      "model": [
+        "367",
+        0
+      ],
+      "conditioning": [
+        "373",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "364": {
+    "inputs": {
+      "strength": 0.6,
+      "start_percent": 0.5,
+      "end_percent": 0.9,
+      "positive": [
+        "376",
+        0
+      ],
+      "negative": [
+        "376",
+        1
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:287",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 2"
+    }
+  },
+  "367": {
+    "inputs": {
+      "weight": 0.7,
+      "start_percent": 0.1,
+      "end_percent": 0.8,
+      "model": [
+        "3",
+        0
+      ],
+      "ipadapter_flux": [
+        "158",
+        0
+      ],
+      "image": [
+        "54:56",
+        2
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "370": {
+    "inputs": {
+      "conditioning_1": [
+        "364",
+        0
+      ],
+      "conditioning_2": [
+        "364",
+        1
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "373": {
+    "inputs": {
+      "downsampling_factor": 2,
+      "downsampling_function": "bilinear",
+      "mode": "keep aspect ratio",
+      "weight": 0.5,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "370",
+        0
+      ],
+      "style_model": [
+        "147",
+        0
+      ],
+      "clip_vision": [
+        "148",
+        0
+      ],
+      "image": [
+        "54:56",
+        2
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "376": {
+    "inputs": {
+      "strength": 0.5,
+      "start_percent": 0,
+      "end_percent": 0.55,
+      "positive": [
+        "20:65",
+        0
+      ],
+      "negative": [
+        "20:75",
+        0
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:287",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 1"
+    }
+  },
+  "378": {
+    "inputs": {
+      "width": [
+        "361",
+        0
+      ],
+      "height": [
+        "361",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "379": {
+    "inputs": {
+      "scheduler": "ddim_uniform",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "367",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "381": {
+    "inputs": {
+      "noise": [
+        "175",
+        0
+      ],
+      "guider": [
+        "362",
+        0
+      ],
+      "sampler": [
+        "152",
+        0
+      ],
+      "sigmas": [
+        "379",
+        0
+      ],
+      "latent_image": [
+        "378",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "382": {
+    "inputs": {
+      "samples": [
+        "381",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "388": {
+    "inputs": {
+      "image": [
+        "6:288",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "389": {
+    "inputs": {
+      "model": [
+        "394",
+        0
+      ],
+      "conditioning": [
+        "400",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "391": {
+    "inputs": {
+      "strength": 0.6,
+      "start_percent": 0.5,
+      "end_percent": 0.9,
+      "positive": [
+        "403",
+        0
+      ],
+      "negative": [
+        "403",
+        1
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:288",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 2"
+    }
+  },
+  "394": {
+    "inputs": {
+      "weight": 0.7,
+      "start_percent": 0.1,
+      "end_percent": 0.8,
+      "model": [
+        "3",
+        0
+      ],
+      "ipadapter_flux": [
+        "158",
+        0
+      ],
+      "image": [
+        "54:56",
+        3
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "397": {
+    "inputs": {
+      "conditioning_1": [
+        "391",
+        0
+      ],
+      "conditioning_2": [
+        "391",
+        1
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "400": {
+    "inputs": {
+      "downsampling_factor": 2,
+      "downsampling_function": "bilinear",
+      "mode": "keep aspect ratio",
+      "weight": 0.5,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "397",
+        0
+      ],
+      "style_model": [
+        "147",
+        0
+      ],
+      "clip_vision": [
+        "148",
+        0
+      ],
+      "image": [
+        "54:56",
+        3
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "403": {
+    "inputs": {
+      "strength": 0.5,
+      "start_percent": 0,
+      "end_percent": 0.55,
+      "positive": [
+        "20:65",
+        0
+      ],
+      "negative": [
+        "20:75",
+        0
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:288",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 1"
+    }
+  },
+  "405": {
+    "inputs": {
+      "width": [
+        "388",
+        0
+      ],
+      "height": [
+        "388",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "406": {
+    "inputs": {
+      "scheduler": "normal",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "394",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "408": {
+    "inputs": {
+      "noise": [
+        "175",
+        0
+      ],
+      "guider": [
+        "389",
+        0
+      ],
+      "sampler": [
+        "152",
+        0
+      ],
+      "sigmas": [
+        "406",
+        0
+      ],
+      "latent_image": [
+        "405",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "409": {
+    "inputs": {
+      "samples": [
+        "408",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "415": {
+    "inputs": {
+      "image": [
+        "6:296",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "416": {
+    "inputs": {
+      "model": [
+        "438",
+        0
+      ],
+      "conditioning": [
+        "427",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "418": {
+    "inputs": {
+      "strength": 0.6,
+      "start_percent": 0.5,
+      "end_percent": 0.9,
+      "positive": [
+        "430",
+        0
+      ],
+      "negative": [
+        "430",
+        1
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:296",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 2"
+    }
+  },
+  "421": {
+    "inputs": {
+      "weight": 0.7,
+      "start_percent": 0.1,
+      "end_percent": 0.8,
+      "model": [
+        "3",
+        0
+      ],
+      "ipadapter_flux": [
+        "158",
+        0
+      ],
+      "image": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "424": {
+    "inputs": {
+      "conditioning_1": [
+        "418",
+        0
+      ],
+      "conditioning_2": [
+        "418",
+        1
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "427": {
+    "inputs": {
+      "downsampling_factor": 2,
+      "downsampling_function": "bilinear",
+      "mode": "keep aspect ratio",
+      "weight": 0.5,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "424",
+        0
+      ],
+      "style_model": [
+        "147",
+        0
+      ],
+      "clip_vision": [
+        "148",
+        0
+      ],
+      "image": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "430": {
+    "inputs": {
+      "strength": 0.5,
+      "start_percent": 0,
+      "end_percent": 0.55,
+      "positive": [
+        "20:65",
+        0
+      ],
+      "negative": [
+        "20:75",
+        0
+      ],
+      "control_net": [
+        "162",
+        0
+      ],
+      "image": [
+        "6:296",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 1"
+    }
+  },
+  "432": {
+    "inputs": {
+      "width": [
+        "415",
+        0
+      ],
+      "height": [
+        "415",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "433": {
+    "inputs": {
+      "scheduler": "normal",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "438",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "435": {
+    "inputs": {
+      "noise": [
+        "175",
+        0
+      ],
+      "guider": [
+        "416",
+        0
+      ],
+      "sampler": [
+        "152",
+        0
+      ],
+      "sigmas": [
+        "433",
+        0
+      ],
+      "latent_image": [
+        "432",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "436": {
+    "inputs": {
+      "samples": [
+        "435",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "438": {
+    "inputs": {
+      "lora_name": "FLUX-dev-lora-AntiBlur.safetensors",
+      "strength_model": 0.4000000000000001,
+      "model": [
+        "421",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "VL Lora 1"
+    }
+  },
+  "448": {
+    "inputs": {
+      "weight": 0.5,
+      "start_percent": 0.1,
+      "end_percent": 0.6,
+      "model": [
+        "515",
+        0
+      ],
+      "ipadapter_flux": [
+        "158",
+        0
+      ],
+      "image": [
+        "491",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter Outpaint"
+    }
+  },
+  "463": {
+    "inputs": {
+      "samples": [
+        "507",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "465": {
+    "inputs": {
+      "lora_name": "aidmaHyperrealism-FLUX-v0.3.safetensors",
+      "strength_model": 0.5,
+      "model": [
+        "448",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "VL Lora 1"
+    }
+  },
+  "469": {
+    "inputs": {
+      "images": [
+        "463",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "484": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoaderGGUF",
+    "_meta": {
+      "title": "DualCLIPLoader (GGUF)"
+    }
+  },
+  "491": {
+    "inputs": {
+      "target_width": 3200,
+      "target_height": 800,
+      "padding_color": "white",
+      "interpolation": "area",
+      "image": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "ResizeAndPadImage",
+    "_meta": {
+      "title": "ResizeAndPadImage"
+    }
+  },
+  "492": {
+    "inputs": {
+      "images": [
+        "491",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "501": {
+    "inputs": {
+      "mask": [
+        "503",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "502": {
+    "inputs": {
+      "images": [
+        "501",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "503": {
+    "inputs": {
+      "expand": 24,
+      "incremental_expandrate": 0,
+      "tapered_corners": true,
+      "flip_input": false,
+      "blur_radius": 8,
+      "lerp_alpha": 1,
+      "decay_factor": 1,
+      "fill_holes": false,
+      "mask": [
+        "514",
+        0
+      ]
+    },
+    "class_type": "GrowMaskWithBlur",
+    "_meta": {
+      "title": "Grow Mask With Blur"
+    }
+  },
+  "507": {
+    "inputs": {
+      "seed": 454624645622096,
+      "steps": 20,
+      "cfg": 3,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "535",
+        0
+      ],
+      "positive": [
+        "508",
+        0
+      ],
+      "negative": [
+        "508",
+        1
+      ],
+      "latent_image": [
+        "508",
+        2
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "508": {
+    "inputs": {
+      "noise_mask": true,
+      "positive": [
+        "20:65",
+        0
+      ],
+      "negative": [
+        "20:75",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ],
+      "pixels": [
+        "491",
+        0
+      ],
+      "mask": [
+        "503",
+        0
+      ]
+    },
+    "class_type": "InpaintModelConditioning",
+    "_meta": {
+      "title": "InpaintModelConditioning"
+    }
+  },
+  "514": {
+    "inputs": {
+      "red": 255,
+      "green": 255,
+      "blue": 255,
+      "threshold": 0,
+      "image": [
+        "491",
+        0
+      ]
+    },
+    "class_type": "MaskFromColor+",
+    "_meta": {
+      "title": "🔧 Mask From Color"
+    }
+  },
+  "515": {
+    "inputs": {
+      "strength": 1,
+      "model": [
+        "517",
+        0
+      ]
+    },
+    "class_type": "DifferentialDiffusion",
+    "_meta": {
+      "title": "Differential Diffusion"
+    }
+  },
+  "517": {
+    "inputs": {
+      "unet_name": "flux1-fill-dev-Q6_K.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF)"
+    }
+  },
+  "530": {
+    "inputs": {
+      "images": [
+        "166",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "531": {
+    "inputs": {
+      "images": [
+        "355",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "532": {
+    "inputs": {
+      "images": [
+        "382",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "533": {
+    "inputs": {
+      "images": [
+        "409",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "534": {
+    "inputs": {
+      "images": [
+        "436",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "535": {
+    "inputs": {
+      "max_shift": 1.3,
+      "base_shift": 0.5,
+      "width": [
+        "536",
+        0
+      ],
+      "height": [
+        "536",
+        1
+      ],
+      "model": [
+        "465",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "ModelSamplingFlux"
+    }
+  },
+  "536": {
+    "inputs": {
+      "image": [
+        "491",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "537": {
+    "inputs": {
+      "filename_prefix": "front",
+      "images": [
+        "54:56",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "538": {
+    "inputs": {
+      "filename_prefix": "right",
+      "images": [
+        "54:56",
+        1
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "539": {
+    "inputs": {
+      "filename_prefix": "back",
+      "images": [
+        "54:56",
+        2
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "540": {
+    "inputs": {
+      "filename_prefix": "left",
+      "images": [
+        "54:56",
+        3
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "541": {
+    "inputs": {
+      "pixels": [
+        "54:56",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "542": {
+    "inputs": {
+      "images": [
+        "6:286",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "742": {
+    "inputs": {
+      "value": "_ORIG"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Original"
+    }
+  },
+  "743": {
+    "inputs": {
+      "filepath": [
+        "742",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "6:284": {
+    "inputs": {
+      "blur_radius": 1,
+      "sigma": 1,
+      "image": [
+        "6:279",
+        0
+      ]
+    },
+    "class_type": "ImageBlur",
+    "_meta": {
+      "title": "VL Image Blur Depth"
+    }
+  },
+  "6:287": {
+    "inputs": {
+      "face_width": [
+        "306",
+        0
+      ],
+      "padding_mode": "bilinear",
+      "cube_face": "Back",
+      "e_img": [
+        "6:284",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Face",
+    "_meta": {
+      "title": "Equirectangular to Face"
+    }
+  },
+  "6:288": {
+    "inputs": {
+      "face_width": [
+        "306",
+        0
+      ],
+      "padding_mode": "bilinear",
+      "cube_face": "Left",
+      "e_img": [
+        "6:284",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Face",
+    "_meta": {
+      "title": "Equirectangular to Face"
+    }
+  },
+  "6:295": {
+    "inputs": {
+      "face_width": [
+        "306",
+        0
+      ],
+      "padding_mode": "bilinear",
+      "cube_face": "Up",
+      "e_img": [
+        "6:284",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Face",
+    "_meta": {
+      "title": "Equirectangular to Face"
+    }
+  },
+  "6:296": {
+    "inputs": {
+      "face_width": [
+        "306",
+        0
+      ],
+      "padding_mode": "bilinear",
+      "cube_face": "Down",
+      "e_img": [
+        "6:284",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Face",
+    "_meta": {
+      "title": "Equirectangular to Face"
+    }
+  },
+  "6:286": {
+    "inputs": {
+      "face_width": [
+        "306",
+        0
+      ],
+      "padding_mode": "bilinear",
+      "cube_face": "Front",
+      "e_img": [
+        "6:284",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Face",
+    "_meta": {
+      "title": "Equirectangular to Face"
+    }
+  },
+  "6:289": {
+    "inputs": {
+      "face_width": [
+        "306",
+        0
+      ],
+      "padding_mode": "bilinear",
+      "cube_face": "Right",
+      "e_img": [
+        "6:284",
+        0
+      ]
+    },
+    "class_type": "Equirectangular to Face",
+    "_meta": {
+      "title": "Equirectangular to Face"
+    }
+  },
+  "6:279": {
+    "inputs": {
+      "size": 2048,
+      "method": "BICUBIC",
+      "image": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Depth Input Resize Longest"
+    }
+  },
+  "20:69": {
+    "inputs": {
+      "string_a": [
+        "20:70",
+        2
+      ],
+      "string_b": [
+        "20:74",
+        0
+      ],
+      "delimiter": ""
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "Concatenate"
+    }
+  },
+  "20:267": {
+    "inputs": {
+      "size": 800,
+      "method": "BICUBIC",
+      "image": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Input Image Resize Florence"
+    }
+  },
+  "20:254": {
+    "inputs": {
+      "text_0": "A photo-realistic depiction of a multi-story building in Prague, Czech Republic, featuring a colorful facade with a variety of shapes and textures. the building, known as hundertwasser's house, is located in the center of the image, with its distinctive curved façade and multi-storey design. the facade is composed of six distinct sections, each with its own unique combination of colors, including pink, blue, yellow, green, and red, creating a vibrant and eye-catching display. The building is surrounded by lush greenery, with plants growing on the windows and balconies, adding a touch of greenery to the otherwise colourful facade. a street lamp stands in the foreground, casting a warm glow on the scene. the sky is clear and bright, with a few clouds scattered across it, and the overall atmosphere is peaceful and serene.\n\nwindows, blue sky, outdoors, day, no people, balcony, tree, street light, balcony railing, street lamp, building, window, ivy. quadriptych on a big facade, straight perspective, high quality",
+      "text": [
+        "20:69",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "VL Show Text"
+    }
+  },
+  "20:71": {
+    "inputs": {
+      "model": "MiaoshouAI/Florence-2-large-PromptGen-v2.0",
+      "precision": "fp16",
+      "attention": "eager",
+      "convert_to_safetensors": true
+    },
+    "class_type": "DownloadAndLoadFlorence2Model",
+    "_meta": {
+      "title": "VL DownloadAndLoadFlorence2Model"
+    }
+  },
+  "20:67": {
+    "inputs": {
+      "text": [
+        "20:69",
+        0
+      ],
+      "clip": [
+        "484",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "20:66": {
+    "inputs": {
+      "text": "dof, depth of field, blurry, overexposed, noise, noisy",
+      "clip": [
+        "484",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL Negative Prompt Gen"
+    }
+  },
+  "20:252": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "20:75": {
+    "inputs": {
+      "guidance": 3,
+      "conditioning": [
+        "20:66",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "VL FluxGuidance Negative"
+    }
+  },
+  "20:70": {
+    "inputs": {
+      "text_input": "",
+      "task": "detailed_caption",
+      "fill_mask": true,
+      "keep_model_loaded": false,
+      "max_new_tokens": 256,
+      "num_beams": 3,
+      "do_sample": true,
+      "output_mask_select": "",
+      "seed": 787610168871345,
+      "image": [
+        "20:267",
+        0
+      ],
+      "florence2_model": [
+        "20:71",
+        0
+      ]
+    },
+    "class_type": "Florence2Run",
+    "_meta": {
+      "title": "VL Florence2Run"
+    }
+  },
+  "20:74": {
+    "inputs": {
+      "value": ". quadriptych on a big facade, straight perspective, high quality"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Post Prompt Gen"
+    }
+  },
+  "20:65": {
+    "inputs": {
+      "guidance": 5,
+      "conditioning": [
+        "20:67",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "VL FluxGuidance"
+    }
+  },
+  "54:59": {
+    "inputs": {
+      "images": [
+        "54:56",
+        2
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "54:58": {
+    "inputs": {
+      "images": [
+        "54:56",
+        1
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "54:57": {
+    "inputs": {
+      "images": [
+        "54:56",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "54:54": {
+    "inputs": {
+      "row": 1,
+      "column": 4,
+      "images": [
+        "54:36",
+        0
+      ]
+    },
+    "class_type": "easy imageSplitGrid",
+    "_meta": {
+      "title": "imageSplitGrid"
+    }
+  },
+  "54:56": {
+    "inputs": {
+      "images": [
+        "54:54",
+        0
+      ]
+    },
+    "class_type": "easy imagesSplitImage",
+    "_meta": {
+      "title": "imagesSplitImage"
+    }
+  },
+  "54:60": {
+    "inputs": {
+      "images": [
+        "54:56",
+        3
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "54:25": {
+    "inputs": {
+      "image": [
+        "463",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "54:40": {
+    "inputs": {
+      "comparison": "a > b",
+      "a": [
+        "54:25",
+        1
+      ],
+      "b": [
+        "54:25",
+        0
+      ]
+    },
+    "class_type": "easy compare",
+    "_meta": {
+      "title": "Compare"
+    }
+  },
+  "54:36": {
+    "inputs": {
+      "boolean": [
+        "54:40",
+        0
+      ],
+      "on_true": [
+        "54:41",
+        0
+      ],
+      "on_false": [
+        "463",
+        0
+      ]
+    },
+    "class_type": "easy ifElse",
+    "_meta": {
+      "title": "If else"
+    }
+  },
+  "54:41": {
+    "inputs": {
+      "rotation": "90 degrees",
+      "image": [
+        "463",
+        0
+      ]
+    },
+    "class_type": "ImageRotate",
+    "_meta": {
+      "title": "ImageRotate"
+    }
+  }
+}

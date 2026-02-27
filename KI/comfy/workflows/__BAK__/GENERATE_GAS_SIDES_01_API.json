@@ -1,0 +1,1583 @@
+{
+  "65": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "67",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "VL FluxGuidance"
+    }
+  },
+  "66": {
+    "inputs": {
+      "text": "dof, depth of field, blurry, overexposed, noise, noisy",
+      "clip": [
+        "252",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL Negative Prompt Gen"
+    }
+  },
+  "67": {
+    "inputs": {
+      "text": [
+        "74",
+        0
+      ],
+      "clip": [
+        "252",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "74": {
+    "inputs": {
+      "value": "perspective looking up, objects arranged neatly and repeatedly using available space, everything in focus"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Post Prompt Gen"
+    }
+  },
+  "75": {
+    "inputs": {
+      "guidance": 3,
+      "conditioning": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "VL FluxGuidance Negative"
+    }
+  },
+  "101": {
+    "inputs": {
+      "image": [
+        "528",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "102": {
+    "inputs": {
+      "unet_name": "flux1-dev-Q8_0.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "VL Load Checkpoint GGUF"
+    }
+  },
+  "106": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "108": {
+    "inputs": {
+      "downsampling_factor": 1.1,
+      "downsampling_function": "bilinear",
+      "mode": "keep aspect ratio",
+      "weight": 1,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "286",
+        0
+      ],
+      "style_model": [
+        "115",
+        0
+      ],
+      "clip_vision": [
+        "106",
+        0
+      ],
+      "image": [
+        "502",
+        0
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "109": {
+    "inputs": {
+      "samples": [
+        "113",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "110": {
+    "inputs": {
+      "vae_name": "flux-vae-bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "111": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "VL Sampler"
+    }
+  },
+  "112": {
+    "inputs": {
+      "scheduler": "normal",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "118",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "113": {
+    "inputs": {
+      "noise": [
+        "117",
+        0
+      ],
+      "guider": [
+        "124",
+        0
+      ],
+      "sampler": [
+        "111",
+        0
+      ],
+      "sigmas": [
+        "112",
+        0
+      ],
+      "latent_image": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "115": {
+    "inputs": {
+      "style_model_name": "flux1-redux-dev.safetensors"
+    },
+    "class_type": "StyleModelLoader",
+    "_meta": {
+      "title": "Load Style Model"
+    }
+  },
+  "116": {
+    "inputs": {
+      "width": [
+        "101",
+        0
+      ],
+      "height": [
+        "101",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "117": {
+    "inputs": {
+      "noise_seed": 42123851236988
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "VL Seed Gen"
+    }
+  },
+  "118": {
+    "inputs": {
+      "max_shift": 1.15,
+      "base_shift": 0.5,
+      "width": [
+        "101",
+        0
+      ],
+      "height": [
+        "101",
+        1
+      ],
+      "model": [
+        "288",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "ModelSamplingFlux"
+    }
+  },
+  "124": {
+    "inputs": {
+      "model": [
+        "288",
+        0
+      ],
+      "conditioning": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "156": {
+    "inputs": {
+      "size": 1500,
+      "method": "BICUBIC",
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Input Image Resize Longest"
+    }
+  },
+  "236": {
+    "inputs": {
+      "image": "INPUT_IMG_KONTEXT"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Style"
+    }
+  },
+  "252": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "273": {
+    "inputs": {
+      "image": "IMG_NORMAL"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Normal LEFT"
+    }
+  },
+  "275": {
+    "inputs": {
+      "size": 1800,
+      "method": "LANCZOS",
+      "image": [
+        "273",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Resize CN Longest"
+    }
+  },
+  "276": {
+    "inputs": {
+      "control_net_name": "jasper_controlnet_normal\\diffusion_pytorch_model.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "278": {
+    "inputs": {
+      "strength": 0.65,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "75",
+        0
+      ],
+      "control_net": [
+        "276",
+        0
+      ],
+      "image": [
+        "528",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Normal"
+    }
+  },
+  "286": {
+    "inputs": {
+      "conditioning_1": [
+        "509",
+        0
+      ],
+      "conditioning_2": [
+        "509",
+        1
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "287": {
+    "inputs": {
+      "lora_name": "shakker_antidof.safetensors",
+      "strength_model": 1.5,
+      "model": [
+        "102",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "VL Lora 1"
+    }
+  },
+  "288": {
+    "inputs": {
+      "lora_name": "artaug.safetensors",
+      "strength_model": 0.9,
+      "model": [
+        "287",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "VL Lora 2"
+    }
+  },
+  "312": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 0.5,
+      "multithread": true,
+      "image_ref": [
+        "156",
+        0
+      ],
+      "image_target": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "VL Color Match"
+    }
+  },
+  "317": {
+    "inputs": {
+      "blur_radius": 8,
+      "sigma": 1,
+      "image": [
+        "275",
+        0
+      ]
+    },
+    "class_type": "ImageBlur",
+    "_meta": {
+      "title": "VL Image Blur Normal"
+    }
+  },
+  "339": {
+    "inputs": {
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "bottom": 0,
+      "image": [
+        "317",
+        0
+      ]
+    },
+    "class_type": "CropImagePercentage",
+    "_meta": {
+      "title": "VL CN Image Crop"
+    }
+  },
+  "413": {
+    "inputs": {
+      "seed": [
+        "418",
+        0
+      ],
+      "steps": 12,
+      "cfg_scale_start": 1,
+      "cfg_scale_end": 1.1,
+      "EDM_s_churn": 2,
+      "s_noise": 1.002,
+      "DPMPP_eta": 0.1,
+      "control_scale_start": 1,
+      "control_scale_end": 0.9,
+      "restore_cfg": 1.0000000000000002,
+      "keep_model_loaded": false,
+      "sampler": "RestoreDPMPP2MSampler",
+      "sampler_tile_size": [
+        "423",
+        0
+      ],
+      "sampler_tile_stride": [
+        "417",
+        0
+      ],
+      "SUPIR_model": [
+        "420",
+        0
+      ],
+      "latents": [
+        "414",
+        0
+      ],
+      "positive": [
+        "415",
+        0
+      ],
+      "negative": [
+        "415",
+        1
+      ]
+    },
+    "class_type": "SUPIR_sample",
+    "_meta": {
+      "title": "VL SUPIR Sampler"
+    }
+  },
+  "414": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "423",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "419",
+        0
+      ],
+      "image": [
+        "419",
+        1
+      ]
+    },
+    "class_type": "SUPIR_encode",
+    "_meta": {
+      "title": "SUPIR Encode"
+    }
+  },
+  "415": {
+    "inputs": {
+      "positive_prompt": "high quality, detailed",
+      "negative_prompt": "blurry",
+      "SUPIR_model": [
+        "420",
+        0
+      ],
+      "latents": [
+        "419",
+        2
+      ]
+    },
+    "class_type": "SUPIR_conditioner",
+    "_meta": {
+      "title": "VL SUPIR Conditioner"
+    }
+  },
+  "416": {
+    "inputs": {
+      "ckpt_name": "Juggernaut_RunDiffusionPhoto2_Lightning_4Steps.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "VL SUPIR SDXL Model"
+    }
+  },
+  "417": {
+    "inputs": {
+      "value": 512
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Stride"
+    }
+  },
+  "418": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "VL SUPIR Seed"
+    }
+  },
+  "419": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "423",
+        0
+      ],
+      "decoder_tile_size": [
+        "423",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "420",
+        1
+      ],
+      "image": [
+        "421",
+        0
+      ]
+    },
+    "class_type": "SUPIR_first_stage",
+    "_meta": {
+      "title": "SUPIR First Stage (Denoiser)"
+    }
+  },
+  "420": {
+    "inputs": {
+      "supir_model": "SUPIR-v0Q_fp16.safetensors",
+      "fp8_unet": false,
+      "diffusion_dtype": "auto",
+      "high_vram": true,
+      "model": [
+        "416",
+        0
+      ],
+      "clip": [
+        "416",
+        1
+      ],
+      "vae": [
+        "416",
+        2
+      ]
+    },
+    "class_type": "SUPIR_model_loader_v2",
+    "_meta": {
+      "title": "VL SUPIR Model"
+    }
+  },
+  "421": {
+    "inputs": {
+      "width": 3840,
+      "height": 2160,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "312",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "VL Upscale Resize"
+    }
+  },
+  "423": {
+    "inputs": {
+      "value": 1024
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Size"
+    }
+  },
+  "424": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "decoder_tile_size": [
+        "423",
+        0
+      ],
+      "SUPIR_VAE": [
+        "420",
+        1
+      ],
+      "latents": [
+        "413",
+        0
+      ]
+    },
+    "class_type": "SUPIR_decode",
+    "_meta": {
+      "title": "SUPIR Decode"
+    }
+  },
+  "450": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "VL Sampler"
+    }
+  },
+  "451": {
+    "inputs": {
+      "noise_seed": 42123851236988
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "VL Seed Gen"
+    }
+  },
+  "452": {
+    "inputs": {
+      "filepath": [
+        "456",
+        0
+      ],
+      "overwrite": true,
+      "image": [
+        "535",
+        0
+      ]
+    },
+    "class_type": "SaveImageDynamic",
+    "_meta": {
+      "title": "Save Image Dynamic"
+    }
+  },
+  "453": {
+    "inputs": {
+      "lora_name": "artaug.safetensors",
+      "strength_model": 0.9,
+      "model": [
+        "454",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "VL Lora 2"
+    }
+  },
+  "454": {
+    "inputs": {
+      "lora_name": "shakker_antidof.safetensors",
+      "strength_model": 1.5,
+      "model": [
+        "102",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "VL Lora 1"
+    }
+  },
+  "456": {
+    "inputs": {
+      "value": "GAS_SIDES"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path SIDES"
+    }
+  },
+  "458": {
+    "inputs": {
+      "max_shift": 1.15,
+      "base_shift": 0.5,
+      "width": [
+        "489",
+        0
+      ],
+      "height": [
+        "489",
+        1
+      ],
+      "model": [
+        "453",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "ModelSamplingFlux"
+    }
+  },
+  "459": {
+    "inputs": {
+      "scheduler": "normal",
+      "steps": 20,
+      "denoise": 1,
+      "model": [
+        "458",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "460": {
+    "inputs": {
+      "noise": [
+        "451",
+        0
+      ],
+      "guider": [
+        "463",
+        0
+      ],
+      "sampler": [
+        "450",
+        0
+      ],
+      "sigmas": [
+        "459",
+        0
+      ],
+      "latent_image": [
+        "461",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "461": {
+    "inputs": {
+      "width": [
+        "489",
+        0
+      ],
+      "height": [
+        "489",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "463": {
+    "inputs": {
+      "model": [
+        "453",
+        0
+      ],
+      "conditioning": [
+        "479",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "466": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "470",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "472",
+        0
+      ],
+      "image": [
+        "472",
+        1
+      ]
+    },
+    "class_type": "SUPIR_encode",
+    "_meta": {
+      "title": "SUPIR Encode"
+    }
+  },
+  "467": {
+    "inputs": {
+      "positive_prompt": "high quality, detailed",
+      "negative_prompt": "blurry",
+      "SUPIR_model": [
+        "420",
+        0
+      ],
+      "latents": [
+        "472",
+        2
+      ]
+    },
+    "class_type": "SUPIR_conditioner",
+    "_meta": {
+      "title": "VL SUPIR Conditioner"
+    }
+  },
+  "468": {
+    "inputs": {
+      "value": 512
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Stride"
+    }
+  },
+  "469": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "VL SUPIR Seed"
+    }
+  },
+  "470": {
+    "inputs": {
+      "value": 1024
+    },
+    "class_type": "ImpactInt",
+    "_meta": {
+      "title": "Tile Size"
+    }
+  },
+  "472": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "encoder_tile_size": [
+        "470",
+        0
+      ],
+      "decoder_tile_size": [
+        "470",
+        0
+      ],
+      "encoder_dtype": "auto",
+      "SUPIR_VAE": [
+        "420",
+        1
+      ],
+      "image": [
+        "488",
+        0
+      ]
+    },
+    "class_type": "SUPIR_first_stage",
+    "_meta": {
+      "title": "SUPIR First Stage (Denoiser)"
+    }
+  },
+  "474": {
+    "inputs": {
+      "method": "mkl",
+      "strength": 0.5,
+      "multithread": true,
+      "image_ref": [
+        "156",
+        0
+      ],
+      "image_target": [
+        "492",
+        0
+      ]
+    },
+    "class_type": "ColorMatch",
+    "_meta": {
+      "title": "VL Color Match"
+    }
+  },
+  "475": {
+    "inputs": {
+      "strength": 0.65,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "75",
+        0
+      ],
+      "control_net": [
+        "276",
+        0
+      ],
+      "image": [
+        "339",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Normal"
+    }
+  },
+  "479": {
+    "inputs": {
+      "downsampling_factor": 1.1,
+      "downsampling_function": "bilinear",
+      "mode": "keep aspect ratio",
+      "weight": 1,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "480",
+        0
+      ],
+      "style_model": [
+        "115",
+        0
+      ],
+      "clip_vision": [
+        "106",
+        0
+      ],
+      "image": [
+        "501",
+        0
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "480": {
+    "inputs": {
+      "conditioning_1": [
+        "519",
+        0
+      ],
+      "conditioning_2": [
+        "519",
+        1
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "488": {
+    "inputs": {
+      "width": 3840,
+      "height": 2160,
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 8,
+      "image": [
+        "474",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "VL Upscale Resize"
+    }
+  },
+  "489": {
+    "inputs": {
+      "image": [
+        "339",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "492": {
+    "inputs": {
+      "samples": [
+        "460",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "495": {
+    "inputs": {
+      "seed": [
+        "469",
+        0
+      ],
+      "steps": 12,
+      "cfg_scale_start": 1,
+      "cfg_scale_end": 1.1,
+      "EDM_s_churn": 2,
+      "s_noise": 1.002,
+      "DPMPP_eta": 0.1,
+      "control_scale_start": 1,
+      "control_scale_end": 0.9,
+      "restore_cfg": 1.0000000000000002,
+      "keep_model_loaded": false,
+      "sampler": "RestoreDPMPP2MSampler",
+      "sampler_tile_size": [
+        "470",
+        0
+      ],
+      "sampler_tile_stride": [
+        "468",
+        0
+      ],
+      "SUPIR_model": [
+        "420",
+        0
+      ],
+      "latents": [
+        "466",
+        0
+      ],
+      "positive": [
+        "467",
+        0
+      ],
+      "negative": [
+        "467",
+        1
+      ]
+    },
+    "class_type": "SUPIR_sample",
+    "_meta": {
+      "title": "VL SUPIR Sampler"
+    }
+  },
+  "496": {
+    "inputs": {
+      "use_tiled_vae": true,
+      "decoder_tile_size": [
+        "470",
+        0
+      ],
+      "SUPIR_VAE": [
+        "420",
+        1
+      ],
+      "latents": [
+        "495",
+        0
+      ]
+    },
+    "class_type": "SUPIR_decode",
+    "_meta": {
+      "title": "SUPIR Decode"
+    }
+  },
+  "497": {
+    "inputs": {
+      "left": 0,
+      "right": 35,
+      "top": 0,
+      "bottom": 0,
+      "image": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "CropImagePercentage",
+    "_meta": {
+      "title": "VL Crop LEFT"
+    }
+  },
+  "498": {
+    "inputs": {
+      "left": 35,
+      "right": 0,
+      "top": 0,
+      "bottom": 0,
+      "image": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "CropImagePercentage",
+    "_meta": {
+      "title": "VL Crop RIGHT"
+    }
+  },
+  "501": {
+    "inputs": {
+      "angle": 90,
+      "image": [
+        "497",
+        0
+      ]
+    },
+    "class_type": "RotateImageNode",
+    "_meta": {
+      "title": "VL Rotate LEFT"
+    }
+  },
+  "502": {
+    "inputs": {
+      "angle": 90,
+      "image": [
+        "498",
+        0
+      ]
+    },
+    "class_type": "RotateImageNode",
+    "_meta": {
+      "title": "VL Rotate RIGHT"
+    }
+  },
+  "503": {
+    "inputs": {
+      "image": "IMG_NORMAL"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Depth LEFT"
+    }
+  },
+  "505": {
+    "inputs": {
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "bottom": 0,
+      "image": [
+        "507",
+        0
+      ]
+    },
+    "class_type": "CropImagePercentage",
+    "_meta": {
+      "title": "VL CN Image Crop"
+    }
+  },
+  "506": {
+    "inputs": {
+      "size": 1800,
+      "method": "LANCZOS",
+      "image": [
+        "503",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Resize CN Longest"
+    }
+  },
+  "507": {
+    "inputs": {
+      "blur_radius": 8,
+      "sigma": 1,
+      "image": [
+        "506",
+        0
+      ]
+    },
+    "class_type": "ImageBlur",
+    "_meta": {
+      "title": "VL Image Blur Depth"
+    }
+  },
+  "509": {
+    "inputs": {
+      "strength": 0.65,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "positive": [
+        "278",
+        0
+      ],
+      "negative": [
+        "278",
+        1
+      ],
+      "control_net": [
+        "533",
+        0
+      ],
+      "image": [
+        "531",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth"
+    }
+  },
+  "519": {
+    "inputs": {
+      "strength": 0.65,
+      "start_percent": 0,
+      "end_percent": 0.6,
+      "positive": [
+        "475",
+        0
+      ],
+      "negative": [
+        "475",
+        1
+      ],
+      "control_net": [
+        "533",
+        0
+      ],
+      "image": [
+        "505",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth"
+    }
+  },
+  "522": {
+    "inputs": {
+      "size": 1800,
+      "method": "LANCZOS",
+      "image": [
+        "526",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Resize CN Longest"
+    }
+  },
+  "523": {
+    "inputs": {
+      "blur_radius": 8,
+      "sigma": 1,
+      "image": [
+        "522",
+        0
+      ]
+    },
+    "class_type": "ImageBlur",
+    "_meta": {
+      "title": "VL Image Blur Normal"
+    }
+  },
+  "525": {
+    "inputs": {
+      "size": 1800,
+      "method": "LANCZOS",
+      "image": [
+        "527",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Resize CN Longest"
+    }
+  },
+  "526": {
+    "inputs": {
+      "image": "IMG_NORMAL"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Normal RIGHT"
+    }
+  },
+  "527": {
+    "inputs": {
+      "image": "IMG_NORMAL"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Depth RIGHT"
+    }
+  },
+  "528": {
+    "inputs": {
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "bottom": 0,
+      "image": [
+        "523",
+        0
+      ]
+    },
+    "class_type": "CropImagePercentage",
+    "_meta": {
+      "title": "VL CN Image Crop"
+    }
+  },
+  "530": {
+    "inputs": {
+      "blur_radius": 8,
+      "sigma": 1,
+      "image": [
+        "525",
+        0
+      ]
+    },
+    "class_type": "ImageBlur",
+    "_meta": {
+      "title": "VL Image Blur Depth"
+    }
+  },
+  "531": {
+    "inputs": {
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "bottom": 0,
+      "image": [
+        "530",
+        0
+      ]
+    },
+    "class_type": "CropImagePercentage",
+    "_meta": {
+      "title": "VL CN Image Crop"
+    }
+  },
+  "533": {
+    "inputs": {
+      "control_net_name": "jasper_flux1-dev-controlnet-depth.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "535": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": false,
+      "spacing_width": 0,
+      "spacing_color": "black",
+      "image1": [
+        "496",
+        0
+      ],
+      "image2": [
+        "424",
+        0
+      ]
+    },
+    "class_type": "ImageStitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "538": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": false,
+      "spacing_width": 0,
+      "spacing_color": "black",
+      "image1": [
+        "536:499",
+        0
+      ],
+      "image2": [
+        "537:499",
+        0
+      ]
+    },
+    "class_type": "ImageStitch",
+    "_meta": {
+      "title": "Image Stitch"
+    }
+  },
+  "541": {
+    "inputs": {
+      "filepath": [
+        "542",
+        0
+      ],
+      "tonemap": "sRGB",
+      "start_frame": 1001,
+      "overwrite": true,
+      "save_workflow": "none",
+      "images": [
+        "538",
+        0
+      ]
+    },
+    "class_type": "SaveEXRFrames",
+    "_meta": {
+      "title": "Save EXR Frames"
+    }
+  },
+  "542": {
+    "inputs": {
+      "value": "_DEPTH"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Depth"
+    }
+  },
+  "536:499": {
+    "inputs": {
+      "depth_pro_model": [
+        "536:505",
+        0
+      ],
+      "image": [
+        "536:501",
+        0
+      ]
+    },
+    "class_type": "DepthPro",
+    "_meta": {
+      "title": "Depth Pro"
+    }
+  },
+  "536:501": {
+    "inputs": {
+      "scale_by": 0.5,
+      "images": [
+        "496",
+        0
+      ]
+    },
+    "class_type": "easy imageScaleDownBy",
+    "_meta": {
+      "title": "Image Scale Down By"
+    }
+  },
+  "536:505": {
+    "inputs": {
+      "precision": "fp16"
+    },
+    "class_type": "LoadDepthPro",
+    "_meta": {
+      "title": "(Down)Load Depth Pro model"
+    }
+  },
+  "537:499": {
+    "inputs": {
+      "depth_pro_model": [
+        "537:505",
+        0
+      ],
+      "image": [
+        "537:501",
+        0
+      ]
+    },
+    "class_type": "DepthPro",
+    "_meta": {
+      "title": "Depth Pro"
+    }
+  },
+  "537:501": {
+    "inputs": {
+      "scale_by": 0.5,
+      "images": [
+        "424",
+        0
+      ]
+    },
+    "class_type": "easy imageScaleDownBy",
+    "_meta": {
+      "title": "Image Scale Down By"
+    }
+  },
+  "537:505": {
+    "inputs": {
+      "precision": "fp16"
+    },
+    "class_type": "LoadDepthPro",
+    "_meta": {
+      "title": "(Down)Load Depth Pro model"
+    }
+  }
+}

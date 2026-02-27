@@ -1,0 +1,255 @@
+{
+  "127": {
+    "inputs": {
+      "strength": 0.4000000000000001,
+      "start_percent": 0,
+      "end_percent": 0.30000000000000004,
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "75",
+        0
+      ],
+      "control_net": [
+        "125",
+        0
+      ],
+      "image": [
+        "77",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 1"
+    }
+  },  
+  "143": {
+    "inputs": {
+      "strength": 0.44000000000000006,
+      "start_percent": 0,
+      "end_percent": 0.5000000000000001,
+      "positive": [
+        "108",
+        0
+      ],
+      "negative": [
+        "75",
+        0
+      ],
+      "control_net": [
+        "125",
+        0
+      ],
+      "image": [
+        "77",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 2"
+    }
+  },
+  "156": {
+    "inputs": {
+      "size": 1024,
+      "method": "NEAREST",
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Input Image Resize Longest"
+    }
+  },
+  "164": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "165": {
+    "inputs": {
+      "weight": 0.7500000000000001,
+      "start_percent": 0,
+      "end_percent": 0.9000000000000002,
+      "model": [
+        "123",
+        0
+      ],
+      "ipadapter_flux": [
+        "164",
+        0
+      ],
+      "image": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "235": {
+    "inputs": {
+      "image": "C:\\ASSETS\\DepthMap\\DGN\\DGN.jpg"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Depth Input Image"
+    }
+  },
+  "236": {
+    "inputs": {
+      "image": "..."
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image"
+    }
+  },
+  "245": {
+    "inputs": {
+      "filepath": [
+        "246",
+        0
+      ],
+      "png_16bit": false,
+      "image": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "SaveImageAndPromptExact",
+    "_meta": {
+      "title": "Save Image And Prompt (exact)"
+    }
+  },
+  "246": {
+    "inputs": {
+      "value": "ORIGINAL"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Original"
+    }
+  },  
+  "117": {
+    "inputs": {
+      "noise_seed": 123456
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "VL Seed Gen"
+    }
+  },
+  "123": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "VL Model Gen"
+    }
+  },
+  "108": {
+    "inputs": {
+      "downsampling_factor": 2,
+      "downsampling_function": "bilinear",
+      "mode": "center crop (square)",
+      "weight": 0.45000000000000007,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "127",
+        0
+      ],
+      "style_model": [
+        "115",
+        0
+      ],
+      "clip_vision": [
+        "106",
+        0
+      ],
+      "image": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },  
+  "112": {
+    "inputs": {
+      "scheduler": "ddim_uniform",
+      "steps": 25,
+      "denoise": 1,
+      "model": [
+        "165",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "77": {
+    "inputs": {
+      "size": 1536,
+      "method": "NEAREST",
+      "image": [
+        "235",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Depth Input Resize Longest"
+    }
+  },  
+  "66": {
+    "inputs": {
+      "text": "dof, depth of field, blurry, overexposed, noise",
+      "clip": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL Negative Prompt Gen"
+    }
+  },
+  "74": {
+    "inputs": {
+      "value": "scene arranged on a ceiling, perspective looking straight. symmetric composition, 4k, uhd, sharp focus, detailed\", \"crisp\" \"all in sharp focus, everything in focus"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL POST PROMPT GEN"
+    }
+  },
+}

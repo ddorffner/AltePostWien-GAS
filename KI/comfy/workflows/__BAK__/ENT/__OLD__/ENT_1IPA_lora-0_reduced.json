@@ -1,0 +1,608 @@
+{
+  "20": {
+    "inputs": {
+      "ckpt_name": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "29": {
+    "inputs": {
+      "text": "a wide angle panoramic shot of a snow mountain, smxl, bright sunny day, colorful, <lora:snowmountxl_v1:0.45>, A wide panorama shot of a snowy mountain top, chilly winds breeze around the cloudy peak, beautiful colore pallette, intricate details, award winning, chilly winds",
+      "clip": [
+        "540",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "30": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "540",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "31": {
+    "inputs": {
+      "control_net_name": "qrcode_monster_sdxl.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "32": {
+    "inputs": {
+      "image": "Ent_QRC_Combined (1).jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "34": {
+    "inputs": {
+      "strength": 1.0000000000000002,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "29",
+        0
+      ],
+      "negative": [
+        "30",
+        0
+      ],
+      "control_net": [
+        "31",
+        0
+      ],
+      "image": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "37": {
+    "inputs": {
+      "strength": 0.7500000000000001,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "34",
+        0
+      ],
+      "negative": [
+        "34",
+        1
+      ],
+      "control_net": [
+        "38",
+        0
+      ],
+      "image": [
+        "475",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "38": {
+    "inputs": {
+      "control_net_name": "control-lora-depth-rank256.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "150": {
+    "inputs": {
+      "seed": 666,
+      "tileX": 0,
+      "tileY": 0,
+      "steps": 50,
+      "cfg": 8.5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "536",
+        0
+      ],
+      "positive": [
+        "37",
+        0
+      ],
+      "negative": [
+        "37",
+        1
+      ],
+      "latent_image": [
+        "537",
+        0
+      ]
+    },
+    "class_type": "Asymmetric Tiled KSampler",
+    "_meta": {
+      "title": "Asymmetric Tiled KSampler"
+    }
+  },
+  "158": {
+    "inputs": {
+      "filename_prefix": "ENT_1024",
+      "images": [
+        "466",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "175": {
+    "inputs": {
+      "upscale_model": [
+        "176",
+        0
+      ],
+      "image": [
+        "466",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "176": {
+    "inputs": {
+      "model_name": "RealESRGAN_x2plus.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "184": {
+    "inputs": {
+      "filename_prefix": "ENT_1024x2",
+      "images": [
+        "175",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "197": {
+    "inputs": {
+      "preset": "PLUS (high strength)",
+      "model": [
+        "540",
+        0
+      ]
+    },
+    "class_type": "IPAdapterUnifiedLoader",
+    "_meta": {
+      "title": "IPAdapter Unified Loader"
+    }
+  },
+  "204": {
+    "inputs": {
+      "image": "iStock-157644719.webp"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "210": {
+    "inputs": {
+      "control_net_name": "TTPLANET_Controlnet_Tile_realistic_v2_fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "211": {
+    "inputs": {
+      "strength": 0.27,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "503",
+        0
+      ],
+      "negative": [
+        "504",
+        0
+      ],
+      "control_net": [
+        "210",
+        0
+      ],
+      "image": [
+        "175",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "234": {
+    "inputs": {
+      "filename_prefix": "ENT_UUS",
+      "images": [
+        "470",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "466": {
+    "inputs": {
+      "samples": [
+        "150",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "470": {
+    "inputs": {
+      "seed": 666,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.30000000000000004,
+      "mode_type": "Chess",
+      "tile_width": 2048,
+      "tile_height": 2048,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 0.30000000000000004,
+      "seam_fix_width": 256,
+      "seam_fix_mask_blur": 32,
+      "seam_fix_padding": 128,
+      "force_uniform_tiles": true,
+      "tiled_decode": false,
+      "upscaled_image": [
+        "175",
+        0
+      ],
+      "model": [
+        "536",
+        0
+      ],
+      "positive": [
+        "211",
+        0
+      ],
+      "negative": [
+        "211",
+        1
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "UltimateSDUpscaleNoUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale (No Upscale)"
+    }
+  },
+  "471": {
+    "inputs": {
+      "upscale_model": [
+        "176",
+        0
+      ],
+      "image": [
+        "470",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "472": {
+    "inputs": {
+      "filename_prefix": "ENT_UUSx2",
+      "images": [
+        "471",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "475": {
+    "inputs": {
+      "image": "ab_combo_white.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "493": {
+    "inputs": {
+      "strength": 0.27,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "503",
+        0
+      ],
+      "negative": [
+        "504",
+        0
+      ],
+      "control_net": [
+        "210",
+        0
+      ],
+      "image": [
+        "471",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "494": {
+    "inputs": {
+      "seed": 666,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.30000000000000004,
+      "mode_type": "Chess",
+      "tile_width": 2048,
+      "tile_height": 2048,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "Band Pass",
+      "seam_fix_denoise": 0.3500000000000001,
+      "seam_fix_width": 256,
+      "seam_fix_mask_blur": 32,
+      "seam_fix_padding": 128,
+      "force_uniform_tiles": true,
+      "tiled_decode": false,
+      "upscaled_image": [
+        "471",
+        0
+      ],
+      "model": [
+        "536",
+        0
+      ],
+      "positive": [
+        "493",
+        0
+      ],
+      "negative": [
+        "493",
+        1
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "UltimateSDUpscaleNoUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale (No Upscale)"
+    }
+  },
+  "495": {
+    "inputs": {
+      "upscale_model": [
+        "176",
+        0
+      ],
+      "image": [
+        "494",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "Upscale Image (using Model)"
+    }
+  },
+  "496": {
+    "inputs": {
+      "filename_prefix": "ENT_UUSx2_UUSx2",
+      "images": [
+        "495",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "499": {
+    "inputs": {
+      "filename_prefix": "ENT_UUSx2_UUS",
+      "images": [
+        "494",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "503": {
+    "inputs": {
+      "text": "a wide angle panoramic shot of a snow mountain, smxl, bright sunny day, colorful, <lora:snowmountxl_v1:0.45>, A wide panorama shot of a snowy mountain top, chilly winds breeze around the cloudy peak, beautiful colore pallette, intricate details, award winning, chilly winds",
+      "clip": [
+        "540",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "504": {
+    "inputs": {
+      "text": "text, letters, numbers, watermark, low resolution, out of frame, cropped, low quality, blur, out of focus, unsharp, bad colors, oversaturated, people, person, silhoutte, man, woman, nsfw, nudity, disfigured, malformed",
+      "clip": [
+        "540",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "531": {
+    "inputs": {
+      "filename_prefix": "ENT_Depth",
+      "images": [
+        "538",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "536": {
+    "inputs": {
+      "weight": 0.26000000000000006,
+      "start_at": 0,
+      "end_at": 1,
+      "weight_type": "standard",
+      "model": [
+        "197",
+        0
+      ],
+      "ipadapter": [
+        "197",
+        1
+      ],
+      "image": [
+        "204",
+        0
+      ]
+    },
+    "class_type": "IPAdapter",
+    "_meta": {
+      "title": "IPAdapter"
+    }
+  },
+  "537": {
+    "inputs": {
+      "pixels": [
+        "539",
+        0
+      ],
+      "vae": [
+        "20",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "538": {
+    "inputs": {
+      "ckpt_name": "depth_anything_vitl14.pth",
+      "resolution": 2048,
+      "image": [
+        "495",
+        0
+      ]
+    },
+    "class_type": "DepthAnythingPreprocessor",
+    "_meta": {
+      "title": "Depth Anything"
+    }
+  },
+  "539": {
+    "inputs": {
+      "image": "Ent_IMG_Combined .jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "540": {
+    "inputs": {
+      "lora_name": "snowmountxl_v1.safetensors",
+      "strength_model": 0,
+      "strength_clip": 1,
+      "model": [
+        "20",
+        0
+      ],
+      "clip": [
+        "20",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  }
+}

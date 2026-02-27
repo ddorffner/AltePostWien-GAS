@@ -1,0 +1,696 @@
+{
+  "65": {
+    "inputs": {
+      "guidance": 2.9000000000000004,
+      "conditioning": [
+        "67",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "VL FluxGuidance"
+    }
+  },
+  "66": {
+    "inputs": {
+      "text": "dof, depth of field, blurry, overexposed, noise",
+      "clip": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "VL Negative Prompt Gen"
+    }
+  },
+  "67": {
+    "inputs": {
+      "text": [
+        "69",
+        0
+      ],
+      "clip": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "68": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "69": {
+    "inputs": {
+      "string_a": [
+        "70",
+        2
+      ],
+      "string_b": [
+        "74",
+        0
+      ],
+      "delimiter": ""
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "Concatenate"
+    }
+  },
+  "70": {
+    "inputs": {
+      "text_input": "",
+      "task": "more_detailed_caption",
+      "fill_mask": true,
+      "keep_model_loaded": false,
+      "max_new_tokens": 1024,
+      "num_beams": 3,
+      "do_sample": true,
+      "output_mask_select": "",
+      "seed": 229181029129501,
+      "image": [
+        "156",
+        0
+      ],
+      "florence2_model": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "Florence2Run",
+    "_meta": {
+      "title": "Florence2Run"
+    }
+  },
+  "71": {
+    "inputs": {
+      "model": "gokaygokay/Florence-2-SD3-Captioner",
+      "precision": "fp16",
+      "attention": "eager"
+    },
+    "class_type": "DownloadAndLoadFlorence2Model",
+    "_meta": {
+      "title": "DownloadAndLoadFlorence2Model"
+    }
+  },
+  "74": {
+    "inputs": {
+      "value": "scene arranged on a ceiling, perspective looking straight. symmetric composition, 4k, uhd, sharp focus, detailed\", \"crisp\" \"all in sharp focus, everything in focus"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Post Prompt Gen"
+    }
+  },
+  "75": {
+    "inputs": {
+      "guidance": 3,
+      "conditioning": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "VL FluxGuidance Negative"
+    }
+  },
+  "77": {
+    "inputs": {
+      "size": 1536,
+      "method": "NEAREST",
+      "image": [
+        "235",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Depth Input Resize Longest"
+    }
+  },
+  "101": {
+    "inputs": {
+      "image": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "🔧 Get Image Size"
+    }
+  },
+  "106": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "108": {
+    "inputs": {
+      "downsampling_factor": 2,
+      "downsampling_function": "bilinear",
+      "mode": "center crop (square)",
+      "weight": 0.45000000000000007,
+      "autocrop_margin": 0.1,
+      "conditioning": [
+        "127",
+        0
+      ],
+      "style_model": [
+        "115",
+        0
+      ],
+      "clip_vision": [
+        "106",
+        0
+      ],
+      "image": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ReduxAdvanced",
+    "_meta": {
+      "title": "VL Redux"
+    }
+  },
+  "109": {
+    "inputs": {
+      "samples": [
+        "113",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "110": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "111": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "112": {
+    "inputs": {
+      "scheduler": "ddim_uniform",
+      "steps": 25,
+      "denoise": 1,
+      "model": [
+        "165",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "VL Scheduler"
+    }
+  },
+  "113": {
+    "inputs": {
+      "noise": [
+        "117",
+        0
+      ],
+      "guider": [
+        "124",
+        0
+      ],
+      "sampler": [
+        "111",
+        0
+      ],
+      "sigmas": [
+        "112",
+        0
+      ],
+      "latent_image": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "115": {
+    "inputs": {
+      "style_model_name": "flux1-redux-dev.safetensors"
+    },
+    "class_type": "StyleModelLoader",
+    "_meta": {
+      "title": "Load Style Model"
+    }
+  },
+  "116": {
+    "inputs": {
+      "width": [
+        "101",
+        0
+      ],
+      "height": [
+        "101",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "117": {
+    "inputs": {
+      "noise_seed": 123456
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "VL Seed Gen"
+    }
+  },
+  "123": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "VL Model Gen"
+    }
+  },
+  "124": {
+    "inputs": {
+      "model": [
+        "165",
+        0
+      ],
+      "conditioning": [
+        "143",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "125": {
+    "inputs": {
+      "type": "depth",
+      "control_net": [
+        "128",
+        0
+      ]
+    },
+    "class_type": "SetShakkerLabsUnionControlNetType",
+    "_meta": {
+      "title": "Set Shakker Labs Union ControlNet Type"
+    }
+  },
+  "127": {
+    "inputs": {
+      "strength": 0.4000000000000001,
+      "start_percent": 0,
+      "end_percent": 0.30000000000000004,
+      "positive": [
+        "65",
+        0
+      ],
+      "negative": [
+        "75",
+        0
+      ],
+      "control_net": [
+        "125",
+        0
+      ],
+      "image": [
+        "77",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 1"
+    }
+  },
+  "128": {
+    "inputs": {
+      "control_net_name": "controlnet-union_shakker.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "141": {
+    "inputs": {
+      "type": "depth",
+      "control_net": [
+        "142",
+        0
+      ]
+    },
+    "class_type": "SetShakkerLabsUnionControlNetType",
+    "_meta": {
+      "title": "Set Shakker Labs Union ControlNet Type"
+    }
+  },
+  "142": {
+    "inputs": {
+      "control_net_name": "controlnet-union_shakker.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "143": {
+    "inputs": {
+      "strength": 0.44000000000000006,
+      "start_percent": 0,
+      "end_percent": 0.5000000000000001,
+      "positive": [
+        "108",
+        0
+      ],
+      "negative": [
+        "75",
+        0
+      ],
+      "control_net": [
+        "125",
+        0
+      ],
+      "image": [
+        "77",
+        0
+      ],
+      "vae": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "VL ControlNet Depth 2"
+    }
+  },
+  "144": {
+    "inputs": {
+      "low_threshold": 8,
+      "high_threshold": 30,
+      "resolution": 512,
+      "image": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "CannyEdgePreprocessor",
+    "_meta": {
+      "title": "Canny Edge"
+    }
+  },
+  "147": {
+    "inputs": {
+      "type": "canny",
+      "control_net": [
+        "128",
+        0
+      ]
+    },
+    "class_type": "SetShakkerLabsUnionControlNetType",
+    "_meta": {
+      "title": "Set Shakker Labs Union ControlNet Type"
+    }
+  },
+  "156": {
+    "inputs": {
+      "size": 1024,
+      "method": "NEAREST",
+      "image": [
+        "236",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "VL Input Image Resize Longest"
+    }
+  },
+  "164": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "165": {
+    "inputs": {
+      "weight": 0.7500000000000001,
+      "start_percent": 0,
+      "end_percent": 0.9000000000000002,
+      "model": [
+        "123",
+        0
+      ],
+      "ipadapter_flux": [
+        "164",
+        0
+      ],
+      "image": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "VL IPAdapter"
+    }
+  },
+  "235": {
+    "inputs": {
+      "image": "C:\\ASSETS\\DepthMap\\DGN\\DGN.jpg"
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Depth"
+    }
+  },
+  "236": {
+    "inputs": {
+      "image": "..."
+    },
+    "class_type": "LoadImageFromPath",
+    "_meta": {
+      "title": "VL Input Image Style"
+    }
+  },
+  "245": {
+    "inputs": {
+      "filepath": [
+        "246",
+        0
+      ],
+      "png_16bit": false,
+      "image": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "SaveImageAndPromptExact",
+    "_meta": {
+      "title": "Save Image And Prompt (exact)"
+    }
+  },
+  "246": {
+    "inputs": {
+      "value": "ORIGINAL"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "VL Output Path Original"
+    }
+  },
+  "238:1": {
+    "inputs": {
+      "conditioning": [
+        "238:6",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "238:2": {
+    "inputs": {
+      "samples": [
+        "238:3",
+        0
+      ],
+      "vae": [
+        "238:10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "238:3": {
+    "inputs": {
+      "seed": 0,
+      "steps": 20,
+      "cfg": 8,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "238:8",
+        0
+      ],
+      "positive": [
+        "238:4",
+        0
+      ],
+      "negative": [
+        "238:7",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "238:4": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "238:1",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "238:5": {
+    "inputs": {
+      "filename_prefix": "kontext",
+      "images": [
+        "238:2",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "238:6": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "238:9",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "238:7": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "238:9",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "238:8": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "238:9": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "sdxl",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "238:10": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  }
+}

@@ -1,0 +1,895 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 174467654078615,
+      "steps": 5,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "37",
+        0
+      ],
+      "positive": [
+        "35",
+        0
+      ],
+      "negative": [
+        "35",
+        1
+      ],
+      "latent_image": [
+        "35",
+        2
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "blurry, overexposed, low detail, artificial, cartoonish, noise artifacts",
+      "clip": [
+        "34",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "32",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "17": {
+    "inputs": {
+      "image": "DGN_contrast_2.5.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image Depth"
+    }
+  },
+  "23": {
+    "inputs": {
+      "text": [
+        "96",
+        0
+      ],
+      "clip": [
+        "34",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "26": {
+    "inputs": {
+      "guidance": 4,
+      "conditioning": [
+        "105",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "32": {
+    "inputs": {
+      "vae_name": "flux-vae-bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "34": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "35": {
+    "inputs": {
+      "positive": [
+        "26",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "vae": [
+        "32",
+        0
+      ],
+      "pixels": [
+        "74",
+        0
+      ]
+    },
+    "class_type": "InstructPixToPixConditioning",
+    "_meta": {
+      "title": "InstructPixToPixConditioning"
+    }
+  },
+  "37": {
+    "inputs": {
+      "lora_name": "flux1-depth-dev-lora.safetensors",
+      "strength_model": 0.9000000000000001,
+      "model": [
+        "42",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    }
+  },
+  "40": {
+    "inputs": {
+      "unet_name": "flux1-krea-dev-Q8_0.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF)"
+    }
+  },
+  "42": {
+    "inputs": {
+      "weight": 0.8500000000000002,
+      "start_percent": 0.10000000000000002,
+      "end_percent": 0.8900000000000002,
+      "model": [
+        "40",
+        0
+      ],
+      "ipadapter_flux": [
+        "62",
+        0
+      ],
+      "image": [
+        "91",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "Apply IPAdapter Flux Model"
+    }
+  },
+  "43": {
+    "inputs": {
+      "image": "0b7885edbe4b9bfcb271bac686547215.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "51": {
+    "inputs": {
+      "filename_prefix": "DNG_TEST_07/1X_",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "62": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "63": {
+    "inputs": {
+      "images": [
+        "91",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "67": {
+    "inputs": {
+      "filename_prefix": "DNG_TEST_07/1X_depth_",
+      "tonemap": "sRGB",
+      "version": 1,
+      "start_frame": 1001,
+      "frame_pad": 4,
+      "save_workflow": "none",
+      "images": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "SaveEXR",
+    "_meta": {
+      "title": "Save EXR"
+    }
+  },
+  "68": {
+    "inputs": {
+      "da_model": [
+        "69",
+        0
+      ],
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "DepthAnything_V2",
+    "_meta": {
+      "title": "Depth Anything V2"
+    }
+  },
+  "69": {
+    "inputs": {
+      "model": "depth_anything_v2_vits_fp16.safetensors"
+    },
+    "class_type": "DownloadAndLoadDepthAnythingV2Model",
+    "_meta": {
+      "title": "DownloadAndLoadDepthAnythingV2Model"
+    }
+  },
+  "71": {
+    "inputs": {
+      "images": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "74": {
+    "inputs": {
+      "size": 1728,
+      "method": "NEAREST",
+      "image": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "Resize Longest To"
+    }
+  },
+  "75": {
+    "inputs": {
+      "images": [
+        "74",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "90": {
+    "inputs": {
+      "value": " Perspective: looking straight up onto a projected ceiling, with the projection surrounding the viewer on all sides and creating an immersive experience. patterns, textures, symmetry Technical Quality: Ultra-wide lens, high-resolution, soft atmospheric depth in the farthest areas, playful lights and shadows, seamless blending around the entire field of view."
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "String"
+    }
+  },
+  "91": {
+    "inputs": {
+      "mode": "incremental_image",
+      "seed": 295,
+      "index": 2,
+      "label": "Batch 001",
+      "path": "C:\\Users\\SHA.ART\\Documents\\AltePost\\Footage\\IMG\\Quellsammlung\\2025-07-30 Quellbilder GEWÖLBE 2",
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "true"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch"
+    }
+  },
+  "92": {
+    "inputs": {
+      "value": "A cluster of white silkworm cocoons entangled in delicate silk fibers and interwoven dry bamboo stems, close-up macro shot, hyper-detailed textures, ultra-sharp focus, photorealistic lighting, shallow depth of field, natural organic colors, high-resolution 8K, fine fabric strands and matte surface  Perspective: looking straight up onto a projected ceiling, with the projection surrounding the viewer on all sides and creating an immersive experience. patterns, textures, symmetry Technical Quality: Ultra-wide lens, high-resolution, soft atmospheric depth in the farthest areas, playful lights and shadows, seamless blending around the entire field of view."
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "String"
+    }
+  },
+  "96": {
+    "inputs": {
+      "string_a": [
+        "98",
+        2
+      ],
+      "string_b": [
+        "90",
+        0
+      ],
+      "delimiter": ""
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "Concatenate"
+    }
+  },
+  "98": {
+    "inputs": {
+      "text_input": "",
+      "task": "more_detailed_caption",
+      "fill_mask": true,
+      "keep_model_loaded": false,
+      "max_new_tokens": 1024,
+      "num_beams": 3,
+      "do_sample": true,
+      "output_mask_select": "",
+      "seed": 693480014770867,
+      "image": [
+        "91",
+        0
+      ],
+      "florence2_model": [
+        "99",
+        0
+      ]
+    },
+    "class_type": "Florence2Run",
+    "_meta": {
+      "title": "Florence2Run"
+    }
+  },
+  "99": {
+    "inputs": {
+      "model": "gokaygokay/Florence-2-SD3-Captioner",
+      "precision": "fp16",
+      "attention": "sdpa",
+      "convert_to_safetensors": false
+    },
+    "class_type": "DownloadAndLoadFlorence2Model",
+    "_meta": {
+      "title": "DownloadAndLoadFlorence2Model"
+    }
+  },
+  "100": {
+    "inputs": {
+      "text_0": "A detailed and intricate drawing is displayed on a black background. The drawing is of a large fish, with a unique body shape. The fish is outlined in a deep blue hue, with intricate lines and shapes. The head of the fish is made up of small circular circles, adding a touch of contrast to the overall design. There are several smaller circular circles on the left and right corners of the design, as well as small circular circular circles in the middle of the image. The background is a solid black, making the fish appear to be the focal point of this image.",
+      "text": [
+        "98",
+        2
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "103": {
+    "inputs": {
+      "ipadapter": "ip-adapter.bin",
+      "clip_vision": "google/siglip-so400m-patch14-384",
+      "provider": "cuda"
+    },
+    "class_type": "IPAdapterFluxLoader",
+    "_meta": {
+      "title": "Load IPAdapter Flux Model"
+    }
+  },
+  "104": {
+    "inputs": {
+      "weight": 1,
+      "start_percent": 0,
+      "end_percent": 1,
+      "ipadapter_flux": [
+        "103",
+        0
+      ]
+    },
+    "class_type": "ApplyIPAdapterFlux",
+    "_meta": {
+      "title": "Apply IPAdapter Flux Model"
+    }
+  },
+  "105": {
+    "inputs": {
+      "conditioning1": [
+        "23",
+        0
+      ],
+      "conditioning2": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "ImpactCombineConditionings",
+    "_meta": {
+      "title": "Combine Conditionings"
+    }
+  },
+  "106": {
+    "inputs": {
+      "noise_seed": 257762932021983,
+      "steps": 25,
+      "timestep_to_start_cfg": 1,
+      "true_gs": 3.5,
+      "image_to_image_strength": 0,
+      "denoise_strength": 1,
+      "model": [
+        "115",
+        0
+      ],
+      "conditioning": [
+        "107",
+        0
+      ],
+      "neg_conditioning": [
+        "110",
+        0
+      ],
+      "latent_image": [
+        "114",
+        0
+      ],
+      "controlnet_condition": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "XlabsSampler",
+    "_meta": {
+      "title": "Xlabs Sampler"
+    }
+  },
+  "107": {
+    "inputs": {
+      "clip_l": "man with microphone in the office, anime",
+      "t5xxl": "man with microphone in the office, anime",
+      "guidance": 4,
+      "clip": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux"
+    }
+  },
+  "108": {
+    "inputs": {
+      "strength": 0.86,
+      "controlnet": [
+        "113",
+        0
+      ]
+    },
+    "class_type": "ApplyFluxControlNet",
+    "_meta": {
+      "title": "Apply Flux ControlNet"
+    }
+  },
+  "109": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "110": {
+    "inputs": {
+      "clip_l": "",
+      "t5xxl": "",
+      "guidance": 4,
+      "clip": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux"
+    }
+  },
+  "111": {
+    "inputs": {
+      "samples": [
+        "106",
+        0
+      ],
+      "vae": [
+        "112",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "112": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "113": {
+    "inputs": {
+      "model_name": "flux-dev",
+      "controlnet_path": "flux-depth-controlnet.safetensors"
+    },
+    "class_type": "LoadFluxControlNet",
+    "_meta": {
+      "title": "Load Flux ControlNet"
+    }
+  },
+  "114": {
+    "inputs": {
+      "width": 768,
+      "height": 768,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "115": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "116": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "117": {
+    "inputs": {
+      "strength": 0.7000000000000001,
+      "controlnet": [
+        "125",
+        0
+      ]
+    },
+    "class_type": "ApplyFluxControlNet",
+    "_meta": {
+      "title": "Apply Flux ControlNet"
+    }
+  },
+  "118": {
+    "inputs": {
+      "clip_l": "handsome man in balenciaga style, fashion, vogue image",
+      "t5xxl": "handsome man in balenciaga style, fashion, vogue image",
+      "guidance": 4,
+      "clip": [
+        "122",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux"
+    }
+  },
+  "119": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "120": {
+    "inputs": {
+      "samples": [
+        "123",
+        0
+      ],
+      "vae": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "121": {
+    "inputs": {
+      "clip_l": "bad photo",
+      "t5xxl": "bad photo",
+      "guidance": 4,
+      "clip": [
+        "122",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux"
+    }
+  },
+  "122": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "123": {
+    "inputs": {
+      "noise_seed": 324242532548,
+      "steps": 25,
+      "timestep_to_start_cfg": 1,
+      "true_gs": 3.5,
+      "image_to_image_strength": 0,
+      "denoise_strength": 1,
+      "model": [
+        "116",
+        0
+      ],
+      "conditioning": [
+        "118",
+        0
+      ],
+      "neg_conditioning": [
+        "121",
+        0
+      ],
+      "latent_image": [
+        "119",
+        0
+      ],
+      "controlnet_condition": [
+        "117",
+        0
+      ]
+    },
+    "class_type": "XlabsSampler",
+    "_meta": {
+      "title": "Xlabs Sampler"
+    }
+  },
+  "124": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "125": {
+    "inputs": {
+      "model_name": "flux-dev-fp8",
+      "controlnet_path": "flux-depth-controlnet-v3.safetensors"
+    },
+    "class_type": "LoadFluxControlNet",
+    "_meta": {
+      "title": "Load Flux ControlNet"
+    }
+  },
+  "126": {
+    "inputs": {
+      "samples": [
+        "134",
+        0
+      ],
+      "vae": [
+        "135",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "127": {
+    "inputs": {
+      "clip_l": "",
+      "t5xxl": "",
+      "guidance": 4,
+      "clip": [
+        "133",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux"
+    }
+  },
+  "128": {
+    "inputs": {
+      "clip_l": "holding sign with glowing green text \"X-LABS IP Adapter\"",
+      "t5xxl": "holding sign with glowing green text \"X-LABS IP Adapter\"",
+      "guidance": 4,
+      "clip": [
+        "133",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux"
+    }
+  },
+  "129": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "130": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "131": {
+    "inputs": {
+      "ip_scale": 0.92,
+      "model": [
+        "130",
+        0
+      ],
+      "ip_adapter_flux": [
+        "132",
+        0
+      ]
+    },
+    "class_type": "ApplyFluxIPAdapter",
+    "_meta": {
+      "title": "Apply Flux IPAdapter"
+    }
+  },
+  "132": {
+    "inputs": {
+      "ipadatper": "flux-ip-adapter.safetensors",
+      "clip_vision": "clip_l_vision.safetensors",
+      "provider": "GPU"
+    },
+    "class_type": "LoadFluxIPAdapter",
+    "_meta": {
+      "title": "Load Flux IPAdatpter"
+    }
+  },
+  "133": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp16.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "134": {
+    "inputs": {
+      "noise_seed": 4,
+      "steps": 50,
+      "timestep_to_start_cfg": 1,
+      "true_gs": 3.5,
+      "image_to_image_strength": 0,
+      "denoise_strength": 1,
+      "model": [
+        "131",
+        0
+      ],
+      "conditioning": [
+        "128",
+        0
+      ],
+      "neg_conditioning": [
+        "127",
+        0
+      ],
+      "latent_image": [
+        "129",
+        0
+      ]
+    },
+    "class_type": "XlabsSampler",
+    "_meta": {
+      "title": "Xlabs Sampler"
+    }
+  },
+  "135": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  }
+}
