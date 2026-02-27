@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="IV2q8mbmmcgOchVPRcnRLt" LanguageVersion="2024.6.7-0113-ga9b832a275" Version="0.128">
+  <NugetDependency Id="MAxAMHRVlRGPOZRH97wzdT" Location="VL.CoreLib" Version="2024.6.7-0113-ga9b832a275" />
+  <Patch Id="UjKDt3egcZJQD2Fvyq1WfF">
+    <Canvas Id="NCtZrzKMdPKOqAVGXlyDcG" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="PPcw7bq8B6WPP1RqiNPj03">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <FullNameCategoryReference ID="Primitive" />
+      </p:NodeReference>
+      <Patch Id="DuqJouFhGhjNO5cp8LuQuw">
+        <Canvas Id="IzNhbiIERwDN3FMbQ5HsuZ" CanvasType="Group">
+          <Pad Id="GHHKVM2AyJ0QbJPHHaPJ7i" Bounds="98,96,700,54" ShowValueBox="true" isIOBox="true" Value="HowTo Launch a scene from the patch">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">24</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="LkPyg9VYTEVLZlAIWITnjt" Comment="" Bounds="249,683,63,128" ShowValueBox="true" isIOBox="true" Value="0">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Float32" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:maximum p:Type="Single">1</p:maximum>
+              <p:minimum p:Type="Single">0</p:minimum>
+              <p:showslider p:Type="Boolean">true</p:showslider>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="168,379,71,19" Id="EfJyHwhmXNsL5c1OPevDMx">
+            <p:NodeReference LastCategoryFullName="Kairos" LastDependency="VL.Kairos.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Kairos" NeedsToBeDirectParent="true" />
+              <Choice Kind="ProcessAppFlag" Name="Launcher1D" />
+            </p:NodeReference>
+            <Pin Id="N2bKvfAJNrTN9Clqk0T9GO" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Dw5zor2Mz3ELgmhZLV3riS" Name="Model" Kind="InputPin">
+              <p:DefaultValue Global_Transition_Duration="2" ID="e2179f85-bc6c-48e4-a0e7-511a293c9f16" xmlns:r="reflection" r:Version="2">
+                <Scenes>
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="42527c82-3d19-4aa2-80e9-ffbeb8fcdabb" Name="Scene 01" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="adabb428-ed86-4249-9121-5b53bb378f29" Name="Scene 02" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="5d92686e-57c0-4cad-b20c-e54b23bd7988" Name="Scene 03" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="e88e31e5-4911-4af7-9b0d-ab4b69e17f98" Name="Scene 04" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="0242ae97-0b4f-475b-875a-63ae8885dcdc" Name="Scene 05" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="8ee8fdc2-b252-4cfd-bd96-6ea612c8e446" Name="Scene 06" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="81d0446a-40f5-4c5e-8f92-14cf0fa230c3" Name="Scene 07" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="075cecf7-d21e-414e-8ecd-525a8bf4d1eb" Name="Scene 08" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="77a99b22-aab5-4367-a46a-59b5e1a5664c" Name="Scene 09" />
+                  <Item Color="0.20000005, 0.20000005, 0.20000005, 1" ID="14d1aca2-b32f-4f94-8b54-f42fa87251ad" Name="Scene 10" />
+                </Scenes>
+                <Tracks>
+                  <Item Key="A">
+                    <Value ID="8ec17835-d40f-4395-bbcb-bb78df495915" r:Type="TrackModel (Launcher1D) [Kairos.Launcher1D.Track]">
+                      <Author_IDs>
+                        <Item>LauncherUI</Item>
+                      </Author_IDs>
+                      <Items_Model>
+                        <Item Key="9621b603-e1a2-45f6-bb27-f742c60c8526">
+                          <Value ID="9621b603-e1a2-45f6-bb27-f742c60c8526" r:Type="ConstantValueClipModel (Launcher1D) [Kairos.Launcher1D.Clip]">
+                            <Author_IDs>
+                              <Item>LauncherUI</Item>
+                            </Author_IDs>
+                            <Settings Alpha="1" Enabled="True" Scene_ID="42527c82-3d19-4aa2-80e9-ffbeb8fcdabb" />
+                          </Value>
+                        </Item>
+                        <Item Key="c229450f-bb63-4b07-bbf3-c9de278f87be">
+                          <Value ID="c229450f-bb63-4b07-bbf3-c9de278f87be" r:Type="ConstantValueClipModel (Launcher1D) [Kairos.Launcher1D.Clip]">
+                            <Author_IDs>
+                              <Item></Item>
+                            </Author_IDs>
+                            <Settings Alpha="1" Enabled="True" />
+                            <Value r:Type="Float32 [Primitive]">0.8876404</Value>
+                          </Value>
+                        </Item>
+                        <Item Key="4301b653-fc14-46ca-b637-1e2519140cfc">
+                          <Value ID="4301b653-fc14-46ca-b637-1e2519140cfc" Value_Source_Name="My LFO" r:Type="LiveValueClipModel (Launcher1D) [Kairos.Launcher1D.Clip]">
+                            <Author_IDs>
+                              <Item>LauncherUI</Item>
+                            </Author_IDs>
+                            <Settings Alpha="1" Enabled="True" Scene_ID="5d92686e-57c0-4cad-b20c-e54b23bd7988" />
+                          </Value>
+                        </Item>
+                        <Item Key="04c38558-3080-4d1f-81fc-77eb651bec3e">
+                          <Value ID="04c38558-3080-4d1f-81fc-77eb651bec3e" r:Type="ConstantValueClipModel (Launcher1D) [Kairos.Launcher1D.Clip]">
+                            <Author_IDs>
+                              <Item>LauncherUI</Item>
+                            </Author_IDs>
+                            <Settings Alpha="1" Enabled="True" Scene_ID="adabb428-ed86-4249-9121-5b53bb378f29" />
+                            <Value r:Type="Float32 [Primitive]">0.5</Value>
+                          </Value>
+                        </Item>
+                      </Items_Model>
+                      <Parameter Key="6218ca1f-2260-41b0-b771-8fe7800d2bd8" Path="A" Type_Full_Name="Float32 [Primitive]" />
+                    </Value>
+                  </Item>
+                </Tracks>
+              </p:DefaultValue>
+            </Pin>
+            <Pin Id="VUW2OtS6fjoPc6yArhPFVt" Name="Composition Name" Kind="InputPin" IsHidden="true" />
+            <Pin Id="SGTPfrpFMT4PUtsAE4v4fw" Name="My LFO" Kind="InputPin" PinGroupName="Input">
+              <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="TypeFlag" Name="Float32" />
+                <CategoryReference Kind="Category" Name="Primitive" NeedsToBeDirectParent="true" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="HkvERZ7HcypMVknKi1Mhc0" Name="Output" Kind="StateOutputPin" />
+          </Node>
+          <Node Bounds="128,633,124,19" Id="Gv7an8rKMGCPWdc8bJr2Fx">
+            <p:NodeReference LastCategoryFullName="Kairos.Sampling" LastDependency="VL.Kairos.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="CompositionSampler (IComposition1D)" />
+            </p:NodeReference>
+            <Pin Id="UllFpat1DjdOkaAMhugT3r" Name="Model" Kind="InputPin">
+              <p:DefaultValue xmlns:r="reflection" r:Version="2">
+                <Track_Samplers>
+                  <Item Key="A">
+                    <Value Channel_Binding_Enabled="True" Enabled="True" Output_Pin_Enabled="True" TDomain="Float64" Track_ID="A" Type_Full_Name="Float32 [Primitive]">
+                      <Background_Value r:Type="Float32 [Primitive]">0</Background_Value>
+                      <Parameter Key="6218ca1f-2260-41b0-b771-8fe7800d2bd8" Path="A" Type_Full_Name="Float32 [Primitive]" />
+                      <Source_Track_Model ID="8ec17835-d40f-4395-bbcb-bb78df495915" r:Type="TrackModel (Launcher1D) [Kairos.Launcher1D.Track]">
+                        <Author_IDs>
+                          <Item>LauncherUI</Item>
+                        </Author_IDs>
+                        <Items_Model>
+                          <Item Key="9621b603-e1a2-45f6-bb27-f742c60c8526">
+                            <Value ID="9621b603-e1a2-45f6-bb27-f742c60c8526" r:Type="ConstantValueClipModel (Launcher1D) [Kairos.Launcher1D.Clip]">
+                              <Author_IDs>
+                                <Item>LauncherUI</Item>
+                              </Author_IDs>
+                              <Settings Alpha="1" Enabled="True" Scene_ID="42527c82-3d19-4aa2-80e9-ffbeb8fcdabb" />
+                            </Value>
+                          </Item>
+                          <Item Key="c229450f-bb63-4b07-bbf3-c9de278f87be">
+                            <Value ID="c229450f-bb63-4b07-bbf3-c9de278f87be" r:Type="ConstantValueClipModel (Launcher1D) [Kairos.Launcher1D.Clip]">
+                              <Author_IDs>
+                                <Item></Item>
+                              </Author_IDs>
+                              <Settings Alpha="1" Enabled="True" />
+                              <Value r:Type="Float32 [Primitive]">0.8876404</Value>
+                            </Value>
+                          </Item>
+                          <Item Key="4301b653-fc14-46ca-b637-1e2519140cfc">
+                            <Value ID="4301b653-fc14-46ca-b637-1e2519140cfc" Value_Source_Name="My LFO" r:Type="LiveValueClipModel (Launcher1D) [Kairos.Launcher1D.Clip]">
+                              <Author_IDs>
+                                <Item>LauncherUI</Item>
+                              </Author_IDs>
+                              <Settings Alpha="1" Enabled="True" Scene_ID="5d92686e-57c0-4cad-b20c-e54b23bd7988" />
+                            </Value>
+                          </Item>
+                          <Item Key="04c38558-3080-4d1f-81fc-77eb651bec3e">
+                            <Value ID="04c38558-3080-4d1f-81fc-77eb651bec3e" r:Type="ConstantValueClipModel (Launcher1D) [Kairos.Launcher1D.Clip]">
+                              <Author_IDs>
+                                <Item>LauncherUI</Item>
+                              </Author_IDs>
+                              <Settings Alpha="1" Enabled="True" Scene_ID="adabb428-ed86-4249-9121-5b53bb378f29" />
+                              <Value r:Type="Float32 [Primitive]">0.5</Value>
+                            </Value>
+                          </Item>
+                        </Items_Model>
+                        <Parameter Key="6218ca1f-2260-41b0-b771-8fe7800d2bd8" Path="A" Type_Full_Name="Float32 [Primitive]" />
+                      </Source_Track_Model>
+                    </Value>
+                  </Item>
+                </Track_Samplers>
+              </p:DefaultValue>
+            </Pin>
+            <Pin Id="GNITdICBuwbLMICJkxu8lN" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="EZeF3erRpUfMxkTl3dQNAl" Name="Composition" Kind="InputPin" />
+            <Pin Id="JCPQKSodRhwLGEiGEZl79J" Name="Sampling Position Provider" Kind="InputPin" />
+            <Pin Id="GZgiWIpfnz8MFdn3JBTEcK" Name="Sampling Position Min Bound" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TYOIy7UdiV3NwcD1I2K7px" Name="Sampling Position Max Bound" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PhumkiJYXaQMNno57FqCwZ" Name="Force Write to Global Channel" Kind="InputPin" IsHidden="true" />
+            <Pin Id="NYEOKPn0leDNhuxOs0nF9E" Name="Enabled" Kind="InputPin" />
+            <Pin Id="HREhVcn2LliQCYCAJYpcph" Name="Output" Kind="StateOutputPin" />
+            <Pin Id="V8ne9lFP0hJMQJnjesyoMr" Name="A" Kind="OutputPin" PinGroupName="Output Values">
+              <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="TypeFlag" Name="Float32" />
+                <CategoryReference Kind="Category" Name="Primitive" NeedsToBeDirectParent="true" />
+              </p:TypeAnnotation>
+            </Pin>
+          </Node>
+          <Node Bounds="207,545,185,19" Id="FIIkXxYxuQcPmlQfCJJJUq">
+            <p:NodeReference LastCategoryFullName="Kairos.Sampling" LastDependency="VL.Kairos.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Clock (Kairos)" />
+            </p:NodeReference>
+            <Pin Id="MfWB5hZ9RsbP76EFAc5eqv" Name="Model" Kind="InputPin">
+              <p:DefaultValue Loop_Out="10" Period="1" Speed="1" />
+            </Pin>
+            <Pin Id="LEIPuOFK9IqO3e3SBRXsFY" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="T2S7rt2vGXRMMH6cWTkxTl" Name="Save Model on Exit Enabled" Kind="InputPin" IsHidden="true" />
+            <Pin Id="SDY9W8uA0hfPCmjarOVadh" Name="Initial Playing" Kind="InputPin" IsHidden="true" />
+            <Pin Id="LAQq6Oic3q8LYGJiCtczsU" Name="Initial Time" Kind="InputPin" IsHidden="true" />
+            <Pin Id="FfbuFZZrzI3LGvIQ78xdRL" Name="BPM" Kind="InputPin" />
+            <Pin Id="Noerqa9aj5oO83tSronaJj" Name="Period" Kind="InputPin" IsHidden="true" />
+            <Pin Id="G4FIqHMaQ7wLlKMXmSqPPc" Name="Speed" Kind="InputPin" IsHidden="true" />
+            <Pin Id="TnTEI2UJf4JMPHU1ViNLSp" Name="Play" Kind="ApplyPin" />
+            <Pin Id="UHWiejtQcisNdb2cT9D13Q" Name="Stop" Kind="ApplyPin" />
+            <Pin Id="LP8zmfoSnjcQXDxQti51vO" Name="Reset" Kind="ApplyPin" />
+            <Pin Id="S7Ve8narSO3NV0bzwyZ5X1" Name="Seconds" Kind="InputPin" />
+            <Pin Id="NEZe2RqmwLKONIeQf9hmzu" Name="Loop In" Kind="InputPin" />
+            <Pin Id="QQAWAeRieW5Oq06BdRiy2y" Name="Loop Out" Kind="InputPin" />
+            <Pin Id="MHHG96D92EpPZbl0Nl9plk" Name="Loop Enabled" Kind="InputPin" />
+            <Pin Id="PTIxqWpMPnwL5OD56TO6Tg" Name="Enabled" Kind="InputPin" />
+            <Pin Id="CQ1SHrtvL7WNfdHHsTO1cV" Name="Output" Kind="StateOutputPin" />
+            <Pin Id="EY8sA0DlUSXO7TzDI5lrtN" Name="Update Stream" Kind="OutputPin" />
+            <Pin Id="GE1qPK7L8rbPdNyDsVtUJc" Name="Phase" Kind="OutputPin" />
+            <Pin Id="DcJnNQmq6fSNmOhMYT7c6P" Name="Cycles" Kind="OutputPin" />
+            <Pin Id="PZbFsQnOJGrLj6WzNZRPrD" Name="Time Step" Kind="OutputPin" />
+            <Pin Id="Dkyigralnz8PH23q1TLgD1" Name="Ticks" Kind="OutputPin" />
+            <Pin Id="SaZ8FLdbMiBLl6Xk9aDueh" Name="Seconds" Kind="OutputPin" />
+            <Pin Id="LilDO5zIMZyNOpc1Hyo4WB" Name="Seconds Float32" Kind="OutputPin" />
+          </Node>
+          <Pad Id="RsmdomdggZnOGcYYBZtDyo" Comment="Enabled" Bounds="249,596,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="387,437,75,19" Id="BhArAfZOZM4OXMelYSvuUi">
+            <p:NodeReference LastCategoryFullName="Kairos.Launcher1D.Utils" LastDependency="VL.Kairos.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="LaunchScene" />
+            </p:NodeReference>
+            <Pin Id="JHD2wzbiLszPbr2dioPrWB" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Oy4OqJctNvALv2CMMbLHSI" Name="Input" Kind="InputPin" />
+            <Pin Id="P4beQ3bvDYSMWaaMebdeQp" Name="Scene Index" Kind="InputPin" />
+            <Pin Id="EHi4nkLEvXoLfYYeCF0sWo" Name="Launch" Kind="InputPin" />
+          </Node>
+          <Pad Id="S4u1hAyxHgSM1pCk4ZfjPn" Comment="Launch" Bounds="459,391,35,35" ShowValueBox="true" isIOBox="true" Value="False">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Bang</p:buttonmode>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="HRdobHmWs6BNIBtsxOP79n" Comment="Scene Index" Bounds="424,344,35,25" ShowValueBox="true" isIOBox="true" Value="1">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">12</p:fontsize>
+              <p:maximum p:Type="Int32">9999</p:maximum>
+              <p:minimum p:Type="Int32">0</p:minimum>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="233,301,45,19" Id="QRzFB2un5PWOxt7UmeckkE">
+            <p:NodeReference LastCategoryFullName="Animation" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="LFO" />
+            </p:NodeReference>
+            <Pin Id="A8xdDPEQVYHMissawDJDku" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="RoyoJiZy2zcLzbqPU2veJU" Name="Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="BEpoykKWmoQNOxdu6W3EVx" Name="New Clock" Kind="InputPin" IsHidden="true" />
+            <Pin Id="PriZbdAAVeLNu4k2pViUuu" Name="Period" Kind="InputPin" DefaultValue="4" />
+            <Pin Id="PbCXSc6PF31MYoGQ9jglom" Name="Pause" Kind="InputPin" />
+            <Pin Id="EcuH0MeMXadPwOfnNWqe1p" Name="Reset" Kind="ApplyPin" />
+            <Pin Id="Ow8tMkV3iVSPmyZZMC6tlj" Name="Phase" Kind="OutputPin" />
+            <Pin Id="AABnlSFX7Z6LADcj1Ynaf0" Name="On New Cycle" Kind="OutputPin" />
+            <Pin Id="PZTAEpfb93KNKguz1E7dUE" Name="Cycles" Kind="OutputPin" />
+          </Node>
+          <Overlay Id="ET1XHNxPmWnNyj7ttCgYiR" Name="Launch Scene" Bounds="353,279,226,208">
+            <p:ColorIndex p:Type="Int32">11</p:ColorIndex>
+          </Overlay>
+        </Canvas>
+        <Patch Id="K4IecsMgqaaOLkPO6cDPhf" Name="Create" />
+        <Patch Id="JOntks5rNcTM1KFXxZyxT0" Name="Update" />
+        <ProcessDefinition Id="EiYDRun5PBgLeF339hwkoZ">
+          <Fragment Id="ML4tVCCnGodNbsniXK0Yob" Patch="K4IecsMgqaaOLkPO6cDPhf" Enabled="true" />
+          <Fragment Id="DIHlh4n9wRpLgwqUIJRz9a" Patch="JOntks5rNcTM1KFXxZyxT0" Enabled="true" />
+          <Fragment Id="VlwcFUhx4IxPXn3YynLQ6C" Patch="M88hO3ZDHfVO6UAVpYhHab" />
+          <Fragment Id="SjompxnqjCAQc9KKKzIy04" Patch="UNNBnRPmtn7PBchFF3b8nw" />
+        </ProcessDefinition>
+        <Slot Id="JEJnGK1CsrrOV54F3VdNKr" Name="UI Tracks" />
+        <Slot Id="MRmXrAgUcVnORJzoJKxTYC" Name="UI Controllers" />
+        <Slot Id="Sege7mMGZFkP5qDEH9w3a6" Name="ClientBounds2" />
+        <Patch Id="M88hO3ZDHfVO6UAVpYhHab" Name="Sample" />
+        <Patch Id="UNNBnRPmtn7PBchFF3b8nw" Name="Draw" />
+        <Link Id="MjVObc1rR5ELJv9enxyCAK" Ids="CQ1SHrtvL7WNfdHHsTO1cV,JCPQKSodRhwLGEiGEZl79J" />
+        <Link Id="KV51iHiAeW9ObKOsGZNlBA" Ids="HkvERZ7HcypMVknKi1Mhc0,EZeF3erRpUfMxkTl3dQNAl" />
+        <Link Id="OCTH4BWsquiO4UY8WYJPsR" Ids="RsmdomdggZnOGcYYBZtDyo,NYEOKPn0leDNhuxOs0nF9E" />
+        <Link Id="VhywH5pvepvQOPuMSgIG5u" Ids="HkvERZ7HcypMVknKi1Mhc0,Oy4OqJctNvALv2CMMbLHSI" />
+        <Link Id="MMCtfL83h1NLAGMixWrqP4" Ids="S4u1hAyxHgSM1pCk4ZfjPn,EHi4nkLEvXoLfYYeCF0sWo" />
+        <Link Id="Ln7gomvBOxPPBLWUo9qm70" Ids="HRdobHmWs6BNIBtsxOP79n,P4beQ3bvDYSMWaaMebdeQp" />
+        <Link Id="IFL0YP8ZJ6AMpRVyrixYGw" Ids="Ow8tMkV3iVSPmyZZMC6tlj,SGTPfrpFMT4PUtsAE4v4fw" />
+        <Link Id="N5hzM7rRO47PVyWjf2kyN9" Ids="V8ne9lFP0hJMQJnjesyoMr,LkPyg9VYTEVLZlAIWITnjt" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="Hn6jln1UutbOKllsdNtOy6" Location="VL.Kairos" Version="0.0.0" />
+  <NugetDependency Id="E5ssFx9cOc8PNn97uMW0SM" Location="VL.Skia" Version="2024.6.7-0113-ga9b832a275" />
+  <NugetDependency Id="Tcb0Z3T3aAKMBsW63UXYj4" Location="VL.ImGui" Version="2024.6.7-0113-ga9b832a275" />
+  <NugetDependency Id="IfHoFH6HadYN9KpomIcXHT" Location="VL.ImGui.Skia" Version="2024.6.7-0113-ga9b832a275" />
+</Document>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="GJoQeSpjAbBQMT1aI7VPwI" LanguageVersion="2023.5.2" Version="0.128">
+  <NugetDependency Id="FKkg4Sotn1AOpp6JWIhtHN" Location="VL.CoreLib" Version="2023.5.2" />
+  <Patch Id="A006gYqbq06MiR248MjpKZ">
+    <Canvas Id="NBF7YdMLpJpLl6CGsq9c9M" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="MvDMAyv3QEaNohO4UPeYTU">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="I2OsRmoXlekOsp9GzRJ7Or">
+        <Canvas Id="NzArjaxsCfQNnTZBJQw4nk" CanvasType="Group">
+          <Node Bounds="658,795,85,26" Id="VdRGAWF5SNRO4kfxudLNC4">
+            <p:NodeReference LastCategoryFullName="Kairos.Common.ValueMonitorUI.IValueMonitor" LastDependency="VL.Kairos.Common.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="InterfaceTypeFlag" Name="IValueMonitor" />
+              <Choice Kind="OperationCallFlag" Name="Draw" />
+            </p:NodeReference>
+            <Pin Id="EVTYqeGN34kPDhxY6tQh0Q" Name="Input" Kind="StateInputPin" />
+            <Pin Id="EAABXjGLq0jOR4quI8yzis" Name="Value" Kind="InputPin" />
+            <Pin Id="Cqphtr7n7nQOxZW1R5tUrJ" Name="Minimum" Kind="InputPin" />
+            <Pin Id="Aye4fdoNg39QTfOCdOl1Yc" Name="Maximum" Kind="InputPin" />
+            <Pin Id="BApu8Ts7XSIQStpLinubtL" Name="Bounds" Kind="InputPin" />
+            <Pin Id="FP3nkl0EeTyOqV9AJOD67G" Name="State Output" Kind="StateOutputPin" />
+            <Pin Id="IYlTKqbzNFJMvpAC6KQSGM" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="714,876,145,19" Id="QHAalw98dXQMGCr8P9ReoM">
+            <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Skia" NeedsToBeDirectParent="true">
+                <p:OuterCategoryReference Kind="Category" Name="Graphics" NeedsToBeDirectParent="true" />
+              </CategoryReference>
+              <Choice Kind="ProcessAppFlag" Name="Renderer" />
+            </p:NodeReference>
+            <Pin Id="E0O6OVlqBrBOBsSFU5TXFo" Name="Bounds" Kind="InputPin" DefaultValue="1035, 385, 616, 439" />
+            <Pin Id="RAl1XhY9vw7OhFoea1ki7F" Name="Input" Kind="InputPin" />
+            <Pin Id="LmRYJIrsSOTPyYHoDBWum2" Name="Color" Kind="InputPin" />
+            <Pin Id="HbG6nXpmSTnP2xIfXrWYmT" Name="Clear" Kind="InputPin" />
+            <Pin Id="USQK6pLjENSOy4ChilVCTL" Name="Space" Kind="InputPin" />
+            <Pin Id="RoJLSKAzb0cNtZCd5vNwV3" Name="Show Cursor" Kind="InputPin" />
+            <Pin Id="JOYriwOvkJoLc3j3DKRjl9" Name="VSync" Kind="InputPin" />
+            <Pin Id="LW3612j3ggVQQXK86OVgNf" Name="Enabled" Kind="InputPin" />
+            <Pin Id="Tx1j6LL779XNcPzQPOZ7v6" Name="Form" Kind="OutputPin" />
+            <Pin Id="P8VmM8mE00jLEGf5FQu6ub" Name="ClientBounds" Kind="OutputPin" />
+            <Pin Id="NtL8gPT38oTNYY9pnjQ7fM" Name="Render Time" Kind="OutputPin" />
+          </Node>
+          <Pad Id="AFGrSVXBykCOhgevD5n9jr" Comment="" Bounds="795,232,42,16" ShowValueBox="true" isIOBox="true" Value="Text">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="566,349,139,86" Id="B7lsBoAlzN2PjV6mWhCGPr">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+              <Choice Kind="ProcessStatefulRegion" Name="Cache" />
+            </p:NodeReference>
+            <Pin Id="PTPaZYdRnI7PN1CHGTfU92" Name="Force" Kind="InputPin" />
+            <Pin Id="BsIw5lPuEhbO1GIPXeDbPU" Name="Dispose Cached Outputs" Kind="InputPin" />
+            <Pin Id="NiY2nH6bWNlQJ2bN5EjI3o" Name="Has Changed" Kind="OutputPin" />
+            <Patch Id="DYREAb9dnM0OIhyzQNy0Vw" ManuallySortedPins="true">
+              <Patch Id="MP22dblSpUyPpVGunrjue4" Name="Create" ManuallySortedPins="true" />
+              <Patch Id="KzbyoiogknMPJeAxK2nWYm" Name="Then" ManuallySortedPins="true" />
+              <Node Bounds="578,381,115,19" Id="ROMMkYuFYhvQNXXUttjmaL">
+                <p:NodeReference LastCategoryFullName="Kairos.Common.ValueMonitorUI" LastDependency="VL.Kairos.Common.vl">
+                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                  <CategoryReference Kind="Category" Name="ValueMonitorUI" NeedsToBeDirectParent="true" />
+                  <Choice Kind="OperationCallFlag" Name="CreateValueMonitorUI" />
+                </p:NodeReference>
+                <Pin Id="H7kkLDcktTAM4bX4OYjPn6" Name="Value" Kind="InputPin" />
+                <Pin Id="TPvGgPmjIC9O7ut7k8gpX8" Name="Output" Kind="OutputPin" />
+              </Node>
+            </Patch>
+            <ControlPoint Id="LV0NQpCqsJ8Mht6zUX5Mwu" Bounds="643,355" Alignment="Top" />
+            <ControlPoint Id="EDfkVROsICTLjyFOhiZO7s" Bounds="581,429" Alignment="Bottom" />
+          </Node>
+        </Canvas>
+        <Patch Id="COfYxrch4gOMDsJYRPbn65" Name="Create" />
+        <Patch Id="KIWyMMSXp82PBSSS9wQFme" Name="Update" />
+        <ProcessDefinition Id="HGEeQAyYmiZQDfJhzv5ymO">
+          <Fragment Id="Osqn6IZefhzQOEKqcjSgad" Patch="COfYxrch4gOMDsJYRPbn65" Enabled="true" />
+          <Fragment Id="NpNo3r8ftitObgZuWn0nyo" Patch="KIWyMMSXp82PBSSS9wQFme" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="UKtq4vnbr1UNBpSw6beChs" Ids="IYlTKqbzNFJMvpAC6KQSGM,RAl1XhY9vw7OhFoea1ki7F" />
+        <Link Id="F5wxPSUiDxpLtsUL8HlGPS" Ids="AFGrSVXBykCOhgevD5n9jr,EAABXjGLq0jOR4quI8yzis" />
+        <Link Id="UGnxYqJuevLQIiUm63cdUf" Ids="AFGrSVXBykCOhgevD5n9jr,LV0NQpCqsJ8Mht6zUX5Mwu" />
+        <Link Id="G4fwZnrFhYTNgbPECevYCA" Ids="LV0NQpCqsJ8Mht6zUX5Mwu,H7kkLDcktTAM4bX4OYjPn6" />
+        <Link Id="KZks9D3hV4bOQ3vb23ixta" Ids="TPvGgPmjIC9O7ut7k8gpX8,EDfkVROsICTLjyFOhiZO7s" />
+        <Link Id="Pb9zGo93VgVNxsfQPyMB6m" Ids="EDfkVROsICTLjyFOhiZO7s,EVTYqeGN34kPDhxY6tQh0Q" />
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="RIBaO7yBpepPfCdo3Zq5qZ" Location="VL.Skia" Version="2023.5.2" />
+  <DocumentDependency Id="GZhQ9cTJglsL7s2bzR0mnk" Location="../vl/VL.Kairos.Common.vl" IsFriend="true" />
+  <NugetDependency Id="DOe2HpHZvFGQBTUAWDoJJN" Location="VL.Kairos" IsFriend="true" Version="0.0.0" />
+</Document>
