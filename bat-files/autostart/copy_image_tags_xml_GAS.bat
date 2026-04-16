@@ -2,8 +2,8 @@
 setlocal
 
 :: Set your source and destination paths here
-set "SOURCE_PATH=C:\Asset-GAS-02\Image"
-set "DEST_PATH=\\10.3.91.11\data-pg8\Asset-GAS-02\Image"
+set "SOURCE_PATH=C:\Asset-GAS-03\Image"
+set "DEST_PATH=\\10.3.91.11\data-pg8\Asset-GAS-03\Image"
 
 :: Display the paths being used
 echo.
