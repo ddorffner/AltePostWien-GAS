@@ -3,9 +3,9 @@ setlocal
 chcp 1252 >nul
 
 REM --- Define possible sources ---
-SET "SOURCE1=\\10.3.92.10\DATA-PG8\Asset-GAS-02"
-SET "SOURCE2=\\10.1.91.11\DATA-PG8\Asset-GAS-02"
-SET "SOURCE3=\\10.3.91.11\DATA-PG8\Asset-GAS-02"
+SET "SOURCE1=\\10.3.92.10\DATA-PG8\Asset-GAS-03"
+SET "SOURCE2=\\10.1.91.11\DATA-PG8\Asset-GAS-03"
+SET "SOURCE3=\\10.3.91.11\DATA-PG8\Asset-GAS-03"
 SET "DEST=C:\Asset-GAS-03"
 
 REM --- Pick whichever source exists ---
