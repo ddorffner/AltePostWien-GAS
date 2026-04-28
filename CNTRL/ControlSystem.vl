@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Document xmlns:p="property" xmlns:r="reflection" Id="PqGPV0LhsjxL5DNneUAbLz" LanguageVersion="2025.7.1" Version="0.128">
-  <NugetDependency Id="RSaUbNrsLfrPKK91b2OFVc" Location="VL.CoreLib" Version="2025.7.1" />
+<Document xmlns:p="property" xmlns:r="reflection" Id="PqGPV0LhsjxL5DNneUAbLz" LanguageVersion="2025.7.0" Version="0.128">
+  <NugetDependency Id="RSaUbNrsLfrPKK91b2OFVc" Location="VL.CoreLib" Version="2025.7.0" />
   <Patch Id="IvOlaKuXQI3NCFm1ZK2vML">
     <Canvas Id="NXd1rh25ZuCQW9ZFhZlKNm" DefaultCategory="AltePost.ControlSystem" CanvasType="FullCategory">
       <!--
@@ -1072,6 +1072,7 @@
                 <Choice Kind="ProcessAppFlag" Name="ApplicationPath" />
               </p:NodeReference>
               <Pin Id="M0waW37WwQAPgFIt5Xn0jb" Name="Output" Kind="OutputPin" />
+              <Pin Id="TvOxxOWIOgqN5JH84tlqdF" Name="Node Context" Kind="InputPin" IsHidden="true" />
             </Node>
             <Node Bounds="1564,530,57,19" Id="UBpfKaNvzOFLAQPanJ9Ygc">
               <p:NodeReference LastCategoryFullName="IO" LastDependency="VL.CoreLib.vl">
@@ -1482,6 +1483,9 @@
                 <Choice Kind="ProcessAppFlag" Name="RedisClient" />
               </p:NodeReference>
               <Pin Id="AHbtGa7iDcRLKyBrGGVX3n" Name="Node Context" Kind="InputPin" IsHidden="true" />
+              <Pin Id="TmLMCQz0cLiPoMAlT5iJOR" Name="App Host" Kind="InputPin" IsHidden="true" />
+              <Pin Id="I0d5rRlqz3GLfme0vqem5l" Name="Frame Clock" Kind="InputPin" IsHidden="true" />
+              <Pin Id="HEQevagWoUGO4fmBLgxJjN" Name="Channel Hub" Kind="InputPin" IsHidden="true" />
               <Pin Id="FtBdAwIYh3uMttuASplwuJ" Name="Model" Kind="InputPin" IsHidden="true">
                 <p:DefaultValue r:Type="Dictionary [Collections]&lt;String [Primitive], BindingModel [IO.Redis]&gt;" xmlns:r="reflection" r:Version="2" />
               </Pin>
@@ -1497,7 +1501,7 @@
               <Pin Id="AuoyCjTEuu1PMMvpmKGvvf" Name="Expiry" Kind="InputPin" IsHidden="true" />
               <Pin Id="K5qCFqLdm1ZP4NvpGMnRfg" Name="When" Kind="InputPin" IsHidden="true" />
               <Pin Id="NqsF8uzJ6wSLz9jXwqqCyA" Name="Connect Async" Kind="InputPin" />
-              <Pin Id="EFxUQeT3HB5MEVNbzQZfvP" Name="Output" Kind="OutputPin" />
+              <Pin Id="Jw8cRPB8l2UMkbuMdzDT0I" Name="Client" Kind="OutputPin" />
               <Pin Id="Vc8WR1cYrD9NO6rQOjHWAX" Name="Is Connected" Kind="OutputPin" />
               <Pin Id="AUFvol4x9GEMeRU8St97AR" Name="Client Name" Kind="OutputPin" />
             </Node>
@@ -1579,6 +1583,7 @@
                 <Choice Kind="ProcessAppFlag" Name="ApplicationPath" />
               </p:NodeReference>
               <Pin Id="Hwygi2AoKjtMee9nuN4LNC" Name="Output" Kind="OutputPin" />
+              <Pin Id="NXKApNc0qH1Ne4F4gFxA3u" Name="Node Context" Kind="InputPin" IsHidden="true" />
             </Node>
             <Pad Id="IhhjegOhF3MLKjU2LmpvmV" Comment="Config File Name" Bounds="208,270,80,15" ShowValueBox="true" isIOBox="true" Value="BRAIN_config">
               <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -1829,7 +1834,6 @@
           <Link Id="UjAF4kW94MEMGASPmBE7nD" Ids="Qyfxvuf4KesQNkIRG8HP3n,Cw5oKa0h9gbNKasVJDkbbX" IsHidden="true" />
           <Slot Id="H4dXN2rBzDaLmZnkZGQP7d" Name="Redis" />
           <Link Id="RwFRNVyGjwQP71dn8K2sy8" Ids="DlkTmPUTx0gMmJKtgA7xS7,Qyfxvuf4KesQNkIRG8HP3n" />
-          <Link Id="RdcI5qfjO2cNeruHXfrcxg" Ids="EFxUQeT3HB5MEVNbzQZfvP,DlkTmPUTx0gMmJKtgA7xS7" />
           <Link Id="Vlsk9f1WwW5OrAy9q0xVYc" Ids="MKQF1eJ5RqLMrKKhGd3bdZ,BpEzy9wiiahNg2sUnfxOsF" IsHidden="true" />
           <Patch Id="Ph0QvUbmr09MGnEmgoJmeg" Name="GetRedis">
             <Pin Id="BpEzy9wiiahNg2sUnfxOsF" Name="Redis" Kind="OutputPin" />
@@ -1859,7 +1863,7 @@
           <Link Id="DCYQsZ9mDThOX46MKGrOxM" Ids="SeA4cdPOhgfOiX7ZVqOnte,P8pyTRJQaFBP9hp6DH4ZZj" />
           <Link Id="DESkGTGG3dXOKv0gtI2HbF" Ids="BLdr3I63iGrPkBEo3owSo3,CoPMyzH9gVEPqyUeOiNn97" />
           <Link Id="DgsxzBFEMkKPXZ46xYQUCr" Ids="CoPMyzH9gVEPqyUeOiNn97,FWB18oMm5qiProRFwVoRCF" IsHidden="true" />
-          <Patch Id="EZH0YGEMFQ6MBBd5gkmNex" Name="Configure" ParticipatingElements="FCVe3AULXVnNjfVZaxwOyj,Qenz8PNXOBSLrVR6L5QdvT,UjUk3HfaK2MO7LVUQcBfpU,CUBFeVmkaiDMxJpXFCGFPZ,RdcI5qfjO2cNeruHXfrcxg" />
+          <Patch Id="EZH0YGEMFQ6MBBd5gkmNex" Name="Configure" ParticipatingElements="FCVe3AULXVnNjfVZaxwOyj,Qenz8PNXOBSLrVR6L5QdvT,UjUk3HfaK2MO7LVUQcBfpU,CUBFeVmkaiDMxJpXFCGFPZ" />
           <ProcessDefinition Id="Tii4BHARXAPO41HeWjgSuN" HasStateOut="true">
             <Fragment Id="HglDOC3lZcXNf2jBa0ZxmE" Patch="TzO6liSjxB3MIXZlkeEP0S" Enabled="true" />
             <Fragment Id="Q9RthTudC9iPFkON5qzn3c" Patch="EZH0YGEMFQ6MBBd5gkmNex" Enabled="true" />
@@ -1906,6 +1910,7 @@
           <Link Id="Aa4k4M4JDCFQDSzQevP0b0" Ids="AhYegtcbliuL3wDXzyNel4,SRDqQ2TQ8rEM4UCsA8k62U" />
           <Link Id="SJsEqdyt5wvNZdFfRuImKD" Ids="J39MoWDQkb5O9rBgRt7luQ,O6GH6T4CLATLR6PeEtkotm" />
           <Link Id="IoK4i3oSj2bOeGgU9BINDl" Ids="PW1U86oq7KCQGiweFF5Txh,J39MoWDQkb5O9rBgRt7luQ" IsHidden="true" />
+          <Link Id="B3XCHA5SLqwP5IbaJ78nSy" Ids="Jw8cRPB8l2UMkbuMdzDT0I,DlkTmPUTx0gMmJKtgA7xS7" />
         </Patch>
       </Node>
       <!--
@@ -3372,6 +3377,7 @@
                 <Choice Kind="ProcessAppFlag" Name="ApplicationPath" />
               </p:NodeReference>
               <Pin Id="R4IROVLbX4cPpKabQRavC6" Name="Output" Kind="OutputPin" />
+              <Pin Id="MKY0rUAjgTKMiPhIhN7HXj" Name="Node Context" Kind="InputPin" IsHidden="true" />
             </Node>
             <Node Bounds="366,1260,25,19" Id="ShA2hG93SemO9Zda7wbCwe">
               <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
@@ -16600,6 +16606,7 @@
                           <Choice Kind="ProcessAppFlag" Name="ApplicationPath" />
                         </p:NodeReference>
                         <Pin Id="B9JWnKHx9D1PT8ONzmxxjT" Name="Output" Kind="OutputPin" />
+                        <Pin Id="KuKY3FB2f26QArPUYRuwLW" Name="Node Context" Kind="InputPin" IsHidden="true" />
                       </Node>
                       <Pad Id="CrkSNsCnC4CP0s43BP1IoW" Comment="" Bounds="-194,230,80,15" ShowValueBox="true" isIOBox="true" Value="BRAIN_config">
                         <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -45693,6 +45700,7 @@
                   <Choice Kind="ProcessAppFlag" Name="ApplicationPath" />
                 </p:NodeReference>
                 <Pin Id="TrNQ0oDH33kOxrKJqxQ5YO" Name="Output" Kind="OutputPin" />
+                <Pin Id="V4w1KifEptoPIKhK9dSpB6" Name="Node Context" Kind="InputPin" IsHidden="true" />
               </Node>
               <Pad Id="Av6ZM4DMvZxM2n7nWqRYv7" Comment="" Bounds="499,80,115,15" ShowValueBox="true" isIOBox="true" Value="BRAIN_NarrativeModel">
                 <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -54854,17 +54862,17 @@
       </Patch>
     </Node>
   </Patch>
-  <NugetDependency Id="RQFtmuh8TW2Nb14xT4rS8g" Location="VL.Skia" Version="2025.7.1" />
-  <NugetDependency Id="Krzmr6YUSjtPNrCirpQIYZ" Location="VL.ImGui" Version="2025.7.1" />
-  <NugetDependency Id="TEsJaFgQFFWNGqPU6JStAt" Location="VL.ImGui.Skia" Version="2025.7.1" />
-  <NugetDependency Id="RcLno8gONWsLlmes29IO0a" Location="VL.CoreLib.Windows" Version="2025.7.1" />
+  <NugetDependency Id="RQFtmuh8TW2Nb14xT4rS8g" Location="VL.Skia" Version="2025.7.0" />
+  <NugetDependency Id="Krzmr6YUSjtPNrCirpQIYZ" Location="VL.ImGui" Version="2025.7.0" />
+  <NugetDependency Id="TEsJaFgQFFWNGqPU6JStAt" Location="VL.ImGui.Skia" Version="2025.7.0" />
+  <NugetDependency Id="RcLno8gONWsLlmes29IO0a" Location="VL.CoreLib.Windows" Version="2025.7.0" />
   <NugetDependency Id="OaOXlPU8Q4xQIPBPuH88YB" Location="VL.Touchy" Version="1.1.0" />
-  <NugetDependency Id="RFqPzXBbZRuMQ8DpnvR2mT" Location="VL.IO.Redis" Version="2025.7.1" />
+  <NugetDependency Id="RFqPzXBbZRuMQ8DpnvR2mT" Location="VL.IO.Redis" Version="2025.7.0" />
   <DocumentDependency Id="HkJBT61zTeAQSr4HiDlikE" Location="../WatchDog-AltePost/WatchDog-Reference.vl" />
   <NugetDependency Id="O0XxdbiR3atNYPXcWBIAHN" Location="VL.SunCalc" Version="0.0.3-alpha" />
   <NugetDependency Id="EBjkDsld9CrNAs12ixZpzN" Location="VL.Kairos" IsFriend="true" Version="0.0.0" />
-  <NugetDependency Id="VdWtIiub5x4NXPwDeM84Tz" Location="VL.IO.OSC" Version="2.0.8" />
-  <NugetDependency Id="RsD5TQVuaoKOt7QSsJ6ErV" Location="VL.HDE" Version="2025.7.1" />
+  <NugetDependency Id="VdWtIiub5x4NXPwDeM84Tz" Location="VL.IO.OSC" Version="2.0.4" />
+  <NugetDependency Id="RsD5TQVuaoKOt7QSsJ6ErV" Location="VL.HDE" Version="2025.7.0" />
   <NugetDependency Id="LJhiGLMKE0UP39LUl3gdKG" Location="VL.Kairos.Runtime" Version="0.0.0" />
-  <NugetDependency Id="DwDVoDkwXU7OAkvbLchaRK" Location="VL.Core" Version="2025.7.1" />
+  <NugetDependency Id="DwDVoDkwXU7OAkvbLchaRK" Location="VL.Core" Version="2025.7.0" />
 </Document>
